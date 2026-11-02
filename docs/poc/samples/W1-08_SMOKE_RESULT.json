@@ -1,0 +1,12 @@
+{
+  "poc_id": "W1-08",
+  "test_type": "environment_smoke_test",
+  "executed_at": "2026-11-02T08:02:49.535815+00:00",
+  "python_version": "3.14.6",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "result": "pass",
+  "judgement": "성공",
+  "product_id": "mock-product-001",
+  "data_type": "mock",
+  "missing_fields": []
+}
