@@ -222,6 +222,13 @@ python docs/poc/samples/w1_08_smoke.py --output "$env:TEMP\W1-08_SMOKE_RESULT_B.
 python -m json.tool "$env:TEMP\W1-08_SMOKE_RESULT_B.json"
 ```
 
+macOS·Linux 환경에서는 다음 명령어를 사용한다.
+
+```bash
+python docs/poc/samples/w1_08_smoke.py --output /tmp/W1-08_SMOKE_RESULT_B.json
+python -m json.tool /tmp/W1-08_SMOKE_RESULT_B.json
+```
+
 이 방법은 결과 파일을 프로젝트 저장소 외부에 생성하므로 기존 실행 증빙을 변경하지 않는다.
 
 #### 6.6.1 PR 검토 및 수정 절차
