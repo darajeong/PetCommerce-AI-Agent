@@ -71,7 +71,7 @@
 | A03 | `product.original_name`, `product.description`, `product.reviews[].text`, `product.original_price`, `product.dimensions`, `product.weight`, `product.options[]` | 번역·정규화 | `normalized_data` 및 `agent_outputs.A03` |
 | **B01** | **`product.images[]`, `product.description`** | 이미지와 설명 비교, 특징 추출 | `agent_outputs.B01` |
 | **B02** | **`product.reviews[].text`, `product.reviews[].rating`** | 리뷰 요약·반복 불만 분석 | `agent_outputs.B02` |
-| **B04** | **`product.dimensions`, `product.weight`, `product.material`, `product.reviews[]`** | 반려동물 적합성 평가(정보 부족 표시) | `agent_outputs.B04` |
+| **B04** | **`product.dimensions`, `product.weight`, `product.material`, `product.reviews[]`, `product.recommended_pet_weight_max`** | 반려동물 적합성 평가(정보 부족 표시) | `agent_outputs.B04` |
 | B05 | `agent_outputs.B01.result`, `agent_outputs.B02.result`, `agent_outputs.B04.result`, `product.original_price` | 점수·등급 계산 | `agent_outputs.B05` |
 | C02 | `product`, `normalized_data`, `agent_outputs.B01/B02/B04/B05` | 상세페이지·주의사항 | `agent_outputs.C02` |
 | E04 | `run`, `agent_outputs`, `approval`, `errors` | 실행 상태·승인·오류 관리 | 실행 이력 |
