@@ -31,9 +31,9 @@
 | B02-01 | 리뷰 요약 | 리뷰를 근거와 함께 장점·단점·만족 요소로 요약하는가? | 리뷰 3세트: `product.reviews[].text`·`rating`, `normalized_data.translated_reviews[]` | 긍정·부정 분류, 요약 | 리뷰 분석 보고서 | 필수 |
 | B02-02 | 반복 불만 | 동일 불만 2건 이상을 횟수·비율로 뽑는가? | 리뷰 3세트: `product.reviews[].review_id`·`text`·`rating`, `normalized_data.translated_reviews[]` | 반복 불만 추출, 신뢰도 평가 | 불만·위험 목록 | 필수 |
 | B03-01 | 품질·안전성 | KC 등 인증·통관 확인 필요 항목을 빠짐없이 표시하는가? | 대표 상품 1건 | 소재·구조·인증·통관 검토 | 품질·안전 보고서 (확인 필요 항목 분류까지, 최종 판단은 사람) | 확장 |
-| B04-01 | 대형견 적합성 | 체형·하중·내구성·안전·사용·세척을 근거와 함께 평가하는가? | 상품 3건: `product.dimensions`·`weight`·`material`·`recommended_pet_weight_max`·`reviews[]`, `normalized_data.conversions[]`(크기·무게 정규화값) | 항목별 점수·근거 | 적합성 평가 | 필수 |
+| B04-01 | 대형견 적합성 | 체형·하중·내구성·안전·사용·세척을 근거와 함께 평가하는가? | 상품 3건: `product.dimensions`·`weight`·`material`·`recommended_pet_weight_max`·`reviews[]`, `normalized_data.normalized_dimensions`·`normalized_weight` | 항목별 점수·근거 | 적합성 평가 | 필수 |
 | B04-02 | 상품별 기준 차이 | 하네스·방석·장난감에 공통+유형별 기준을 적용하는가? | 유형이 다른 상품 3건: `category_id` + B04-01 입력 경로 | 공통·유형별 기준 적용 | 기준 적용표 | 필수 |
-| B05-01 | 점수 계산 | 가격 20·디자인 20·리뷰 20·적합성 25·판매 15로 100점을 계산하는가? | `agent_outputs.B01`·`B02`·`B04`.`result`, `product.original_price`, `normalized_data.conversions[]`(KRW 환산값) | 배점 계산, 근거 연결 | 점수·근거표 | 필수 |
+| B05-01 | 점수 계산 | 가격 20·디자인 20·리뷰 20·적합성 25·판매 15로 100점을 계산하는가? | `agent_outputs.B01`·`B02`·`B04`.`result`, `product.original_price` | 배점 계산, 근거 연결 | 점수·근거표 | 필수 |
 | B05-02 | 등급·정보 부족 | A/B/C 경계를 적용하고 정보 부족을 한 가지로 처리하는가? | 점수 + 정보 부족 사례 | 등급 판정, 감점·보류·추가 확인 | 등급 판정 | 필수 |
 | B06-01 | 큐레이션 | 후보 5개를 같은 규칙으로 순위화하는가? | 테스트 후보 데이터 | 순위화, 추천·제외 이유 | 추천 후보와 근거 | 확장·조건부 |
 | B-INT-01 | 일관성 | 같은 입력 3회에 사실 불일치 0건, 총점 차이 5점 이내인가? | 동일 상품 | 반복 실행·비교 | 반복 비교표 | 필수 보조 |
