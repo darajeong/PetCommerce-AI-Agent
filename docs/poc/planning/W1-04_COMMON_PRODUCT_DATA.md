@@ -42,7 +42,7 @@
 | `product.description_id` | string | 예 | `desc-001` — 설명문 근거 참조 ID |
 | `product.original_price.amount` | number 또는 null | 예 | `100.0` |
 | `product.original_price.currency` | string(ISO 통화코드) 또는 null | 예 | `CNY` |
-| `product.options[]` | object[] | 예 | `{"option_id":"opt-01","name":"size","value":"L"}` |
+| `product.options[]` | object[] | 예 | `{"option_id":"opt-001","name":"size","value":"L"}` |
 | `product.dimensions` | object 또는 null | 예 | `{"length":800,"width":600,"height":100,"unit":"mm"}` |
 | `product.weight` | object 또는 null | 예 | `{"value":2.5,"unit":"kg"}` |
 | `product.material` | string[] 또는 null | 예 | `["polyester"]` |
@@ -50,7 +50,7 @@
 | `product.sales_count` | integer 또는 null | 예 | `null` |
 | `product.rating` | number 또는 null | 예 | `4.5` |
 | `product.shipping` | object 또는 null | 예 | `{"method":"standard","fee":null,"currency":"CNY"}` |
-| `product.supplier` | object 또는 null | 예 | `{"supplier_id":"sup-001","name":"Demo Seller"}` |
+| `product.supplier` | object 또는 null | 예 | `{"supplier_id":"sup-demo-001","name":"Demo Seller"}` |
 | `product.images[]` | object[] | 예 | 이미지별 ID·번호·URL·용도별 권한·출처 |
 | `product.reviews[]` | object[] | 예 | 리뷰별 ID·원문·평점·용도별 권한·출처 |
 
@@ -107,7 +107,7 @@
 | `evidence_ids` | string[] | 예 | `evidence[]` 상세 근거 ID 참조 |
 | `warnings` | string[] | 예 | 사람 확인이 필요한 제약·경고 |
 | `errors` | object[] | 예 | 표준 오류 구조(없으면 빈 배열) |
-| `retry_count` | integer(≥0) | 예 | 자동 재시도 횟수 |
+| `retry_count` | integer(0~2) | 예 | 자동 재시도 횟수, 최대 2회 |
 | `started_at`, `ended_at` | ISO 8601 string 또는 null | 예 | 실행 시각 |
 | `data_type` | enum(`actual`,`test`,`mock`) | 예 | **결과 자체의** 생성 환경. 개별 원본의 실제/Mock 여부는 `field_meta`·배열 항목을 따른다. |
 
