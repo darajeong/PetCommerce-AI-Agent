@@ -66,7 +66,16 @@
         "url": "https://example.com/images/sample-001-1.jpg",
         "source_url": "https://example.com/items/sample-001",
         "rights_status": "needs_review",
-        "data_type": "mock"
+        "data_type": "mock",
+        "image_role": "main",
+        "usage": {
+          "store": "needs_review",
+          "ai_input": "needs_review",
+          "display": "needs_review",
+          "resale": "needs_review"
+        },
+        "usage_policy_url": null,
+        "usage_checked_at": null
       },
       {
         "image_id": "img-002",
@@ -74,7 +83,16 @@
         "url": "https://example.com/images/sample-001-2.jpg",
         "source_url": "https://example.com/items/sample-001",
         "rights_status": "needs_review",
-        "data_type": "mock"
+        "data_type": "mock",
+        "image_role": "detail",
+        "usage": {
+          "store": "needs_review",
+          "ai_input": "needs_review",
+          "display": "needs_review",
+          "resale": "needs_review"
+        },
+        "usage_policy_url": null,
+        "usage_checked_at": null
       }
     ],
     "reviews": [
@@ -83,14 +101,32 @@
         "text": "The mat is soft and easy to clean.",
         "rating": 5,
         "source_url": "https://example.com/items/sample-001",
-        "data_type": "mock"
+        "data_type": "mock",
+        "rights_status": "needs_review",
+        "usage": {
+          "store": "needs_review",
+          "ai_input": "needs_review",
+          "display": "needs_review",
+          "resale": "needs_review"
+        },
+        "usage_policy_url": null,
+        "usage_checked_at": null
       },
       {
         "review_id": "review-002",
         "text": "Size is a little smaller than expected.",
         "rating": 3,
         "source_url": "https://example.com/items/sample-001",
-        "data_type": "mock"
+        "data_type": "mock",
+        "rights_status": "needs_review",
+        "usage": {
+          "store": "needs_review",
+          "ai_input": "needs_review",
+          "display": "needs_review",
+          "resale": "needs_review"
+        },
+        "usage_policy_url": null,
+        "usage_checked_at": null
       }
     ]
   },
@@ -262,8 +298,51 @@
         "rate_source": "길이 단위 변환",
         "converted_at": "2026-11-02T10:00:00+09:00",
         "data_type": "mock"
+      },
+      {
+        "field_path": "product.dimensions.width",
+        "original_value": 600,
+        "original_unit": "mm",
+        "normalized_value": 60,
+        "normalized_unit": "cm",
+        "conversion_rate": 0.1,
+        "rate_source": "길이 단위 변환",
+        "converted_at": "2026-11-02T10:00:00+09:00",
+        "data_type": "mock"
+      },
+      {
+        "field_path": "product.dimensions.height",
+        "original_value": 100,
+        "original_unit": "mm",
+        "normalized_value": 10,
+        "normalized_unit": "cm",
+        "conversion_rate": 0.1,
+        "rate_source": "길이 단위 변환",
+        "converted_at": "2026-11-02T10:00:00+09:00",
+        "data_type": "mock"
+      },
+      {
+        "field_path": "product.weight.value",
+        "original_value": 2.5,
+        "original_unit": "kg",
+        "normalized_value": 2.5,
+        "normalized_unit": "kg",
+        "conversion_rate": 1,
+        "rate_source": "동일 단위 보존",
+        "converted_at": "2026-11-02T10:00:00+09:00",
+        "data_type": "mock"
       }
-    ]
+    ],
+    "normalized_dimensions": {
+      "length": 80,
+      "width": 60,
+      "height": 10,
+      "unit": "cm"
+    },
+    "normalized_weight": {
+      "value": 2.5,
+      "unit": "kg"
+    }
   },
   "evidence": [
     {

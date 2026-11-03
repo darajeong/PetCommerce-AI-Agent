@@ -134,12 +134,81 @@ def validate(sample: dict) -> None:
     require(isinstance(product["weight"], dict), "B04: weight는 object여야 합니다")
     require(isinstance(product["material"], list), "B04: material은 배열이어야 합니다")
 
-    for i, image in enumerate(images):
-        require(image["data_type"] in DATA_TYPES, f"images[{i}].data_type 오류")
-        require(image["rights_status"] in {"usable", "needs_review", "prohibited"},
-                f"images[{i}].rights_status 오류")
-    for i, review in enumerate(reviews):
-        require(review["data_type"] in DATA_TYPES, f"reviews[{i}].data_type 오류")
+    for kind, items in (("images", images), ("reviews", reviews)):
+        for i, item in enumerate(items):
+            label = f"{kind}[{i}]"
+            require(item.get("data_type") in DATA_TYPES, f"{label}.data_type 오류")
+            if kind == "images":
+                require(item.get("image_role") in {"main", "detail", "other"},
+                        f"{label}.image_role 오류")
+            usage = item.get("usage")
+            require(isinstance(usage, dict), f"{label}.usage: 객체 누락")
+            require(set(usage) == {"store", "ai_input", "display", "resale"},
+                    f"{label}.usage: 필수 용도 네 키 필요")
+            allowed_values = {"allowed", "prohibited", "needs_review"}
+            require(all(v in allowed_values for v in usage.values()),
+                    f"{label}.usage: 허용되지 않은 상태값")
+            rights = ("prohibited" if "prohibited" in usage.values() else
+                      "usable" if all(v == "allowed" for v in usage.values()) else
+                      "needs_review")
+            require(item.get("rights_status") == rights,
+                    f"{label}.rights_status: 용도별 사용 판정과 불일치")
+            require("usage_policy_url" in item and "usage_checked_at" in item,
+                    f"{label}: 정책 URL·확인일 필수 키 누락")
+            policy_url = item["usage_policy_url"]
+            checked_at = item["usage_checked_at"]
+            require(policy_url is None or
+                    (isinstance(policy_url, str) and policy_url.startswith(("https://", "http://"))),
+                    f"{label}.usage_policy_url 오류")
+            require(checked_at is None or isinstance(checked_at, str) and bool(checked_at.strip()),
+                    f"{label}.usage_checked_at 오류")
+            if any(v == "allowed" for v in usage.values()):
+                require(bool(policy_url) and bool(checked_at),
+                        f"{label}: allowed에 정책 근거 URL·확인일 필요")
+            if rights == "usable":
+                require(bool(policy_url) and bool(checked_at),
+                        f"{label}: 권리 사용 가능 판정에 근거 필요")
+
+    # 문서 3장의 B01·B02·B04 번역·정규화 입력 경로를 실제 데이터로 검증.
+    nd = sample.get("normalized_data")
+    require(isinstance(nd, dict), "normalized_data 객체 누락")
+    require(isinstance(nd.get("translated_description"), str) and
+            bool(nd["translated_description"].strip()),
+            "B01: normalized_data.translated_description 누락")
+    tr = nd.get("translated_reviews")
+    require(isinstance(tr, list), "B02: normalized_data.translated_reviews 배열 누락")
+    original_review_ids = {r["review_id"] for r in reviews}
+    translated_review_ids = {r.get("review_id") for r in tr if isinstance(r, dict)}
+    require(len(translated_review_ids) == len(tr) and translated_review_ids == original_review_ids,
+            "B02: 번역 리뷰 ID와 원본 리뷰 ID 불일치")
+    for i, r in enumerate(tr):
+        require(isinstance(r.get("translated_text"), str) and bool(r["translated_text"].strip()),
+                f"B02: translated_reviews[{i}].translated_text 오류")
+    dims = nd.get("normalized_dimensions")
+    weight = nd.get("normalized_weight")
+    require(isinstance(dims, dict) and dims.get("unit") == "cm" and
+            all(k in dims and (dims[k] is None or type(dims[k]) in (int, float))
+                for k in ("length", "width", "height")),
+            "B04: normalized_data.normalized_dimensions 오류")
+    require(isinstance(weight, dict) and weight.get("unit") == "kg" and
+            "value" in weight and (weight["value"] is None or type(weight["value"]) in (int, float)),
+            "B04: normalized_data.normalized_weight 오류")
+    by_field = {entry.get("field_path"): entry for entry in nd.get("conversions", [])}
+    for src, dst_value, dst_unit in [
+        ("product.dimensions.length", dims["length"], "cm"),
+        ("product.dimensions.width", dims["width"], "cm"),
+        ("product.dimensions.height", dims["height"], "cm"),
+        ("product.weight.value", weight["value"], "kg"),
+    ]:
+        if dst_value is None:
+            continue
+        entry = by_field.get(src)
+        require(isinstance(entry, dict) and entry.get("normalized_value") == dst_value
+                and entry.get("normalized_unit") == dst_unit
+                and entry.get("original_value") == read_path(sample, src),
+                f"B04: conversions[{src}] 원본·정규화 연결 누락 또는 값 불일치")
+
+
 
     # field_meta 및 missing_fields의 경로가 실제 데이터에 존재하는지 확인.
     field_meta = sample["field_meta"]
@@ -256,6 +325,10 @@ def run_self_tests(sample: dict) -> int:
         "정의 밖 누락 사유": lambda s: s["missing_fields"][0].__setitem__("reason", "other"),
         "없는 evidence_id 참조": lambda s: s["agent_outputs"]["B01"].__setitem__("evidence_ids", ["ev-not-found"]),
         "없는 이미지 원본 ID": lambda s: s["evidence"][0].update(source_type="image", source_id="img-missing"),
+        "정규화 무게 경로 누락": lambda s: s["normalized_data"].pop("normalized_weight"),
+        "권한 요약값 불일치": lambda s: s["product"]["images"][0].__setitem__("rights_status", "usable"),
+        "정의 밖 용도별 권한값": lambda s: s["product"]["reviews"][0]["usage"].__setitem__("ai_input", "maybe"),
+        "사용 권한 필수 키 누락": lambda s: s["product"]["images"][0]["usage"].pop("resale"),
     }
     count = 0
     for label, mutation in cases.items():
@@ -278,7 +351,7 @@ def main() -> None:
     args = parser.parse_args()
     sample = json.loads(args.sample.read_text(encoding="utf-8"))
     validate(sample)
-    print("PASS: W1-04 샘플 JSON 구조 / A02→B01·B02·B04 필드 직접 읽기 / 근거·상태·버전 검증")
+    print("PASS: W1-04 샘플 구조 / A03 번역·정규화 경로 / 이미지·리뷰 사용 권한 / 근거·상태·버전 검증")
     if args.self_test:
         count = run_self_tests(sample)
         print(f"PASS: 의도적 오류 {count}종 모두 검출")
