@@ -1,0 +1,498 @@
+{
+  "schema_version": "0.1",
+  "product_id": "prod-demo-001",
+  "category_id": "pet_bedding",
+  "run": {
+    "run_id": "run-demo-001",
+    "job_id": null,
+    "status": "success",
+    "started_at": "2026-11-02T10:00:00+09:00",
+    "ended_at": "2026-11-02T10:00:08+09:00"
+  },
+  "input_version": 1,
+  "source_version": 1,
+  "product": {
+    "source_url": "https://example.com/items/sample-001",
+    "platform": "mock_catalog",
+    "collection_method": "mock",
+    "collected_at": "2026-11-02T10:00:00+09:00",
+    "original_name": "Large Pet Mat",
+    "description": "Soft washable pet mat. Size 800 x 600 mm.",
+    "description_id": "desc-001",
+    "original_price": {
+      "amount": 100.0,
+      "currency": "CNY"
+    },
+    "options": [
+      {
+        "option_id": "opt-001",
+        "name": "size",
+        "value": "L",
+        "data_type": "mock",
+        "source_url": "https://example.com/items/sample-001"
+      }
+    ],
+    "dimensions": {
+      "length": 800,
+      "width": 600,
+      "height": 100,
+      "unit": "mm"
+    },
+    "weight": {
+      "value": 2.5,
+      "unit": "kg"
+    },
+    "material": [
+      "polyester"
+    ],
+    "recommended_pet_weight_max": null,
+    "sales_count": null,
+    "rating": 4.5,
+    "shipping": {
+      "method": "standard",
+      "fee": null,
+      "currency": "CNY"
+    },
+    "supplier": {
+      "supplier_id": "sup-demo-001",
+      "name": "Demo Seller",
+      "source_url": "https://example.com/items/sample-001",
+      "data_type": "mock"
+    },
+    "images": [
+      {
+        "image_id": "img-001",
+        "image_no": 1,
+        "url": "https://example.com/images/sample-001-1.jpg",
+        "source_url": "https://example.com/items/sample-001",
+        "rights_status": "needs_review",
+        "data_type": "mock",
+        "image_role": "main",
+        "usage": {
+          "store": "needs_review",
+          "ai_input": "needs_review",
+          "display": "needs_review",
+          "resale": "needs_review"
+        },
+        "usage_policy_url": null,
+        "usage_checked_at": null
+      },
+      {
+        "image_id": "img-002",
+        "image_no": 2,
+        "url": "https://example.com/images/sample-001-2.jpg",
+        "source_url": "https://example.com/items/sample-001",
+        "rights_status": "needs_review",
+        "data_type": "mock",
+        "image_role": "detail",
+        "usage": {
+          "store": "needs_review",
+          "ai_input": "needs_review",
+          "display": "needs_review",
+          "resale": "needs_review"
+        },
+        "usage_policy_url": null,
+        "usage_checked_at": null
+      }
+    ],
+    "reviews": [
+      {
+        "review_id": "review-001",
+        "text": "The mat is soft and easy to clean.",
+        "rating": 5,
+        "source_url": "https://example.com/items/sample-001",
+        "data_type": "mock",
+        "rights_status": "needs_review",
+        "usage": {
+          "store": "needs_review",
+          "ai_input": "needs_review",
+          "display": "needs_review",
+          "resale": "needs_review"
+        },
+        "usage_policy_url": null,
+        "usage_checked_at": null
+      },
+      {
+        "review_id": "review-002",
+        "text": "Size is a little smaller than expected.",
+        "rating": 3,
+        "source_url": "https://example.com/items/sample-001",
+        "data_type": "mock",
+        "rights_status": "needs_review",
+        "usage": {
+          "store": "needs_review",
+          "ai_input": "needs_review",
+          "display": "needs_review",
+          "resale": "needs_review"
+        },
+        "usage_policy_url": null,
+        "usage_checked_at": null
+      }
+    ]
+  },
+  "field_meta": {
+    "product.original_name": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.original_name",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.description": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "desc-001",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.description_id": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "desc-001",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.original_price.amount": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.original_price.amount",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.original_price.currency": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.original_price.currency",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.dimensions.length": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.dimensions.length",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.dimensions.width": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.dimensions.width",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.dimensions.height": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.dimensions.height",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.dimensions.unit": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.dimensions.unit",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.weight.value": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.weight.value",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.weight.unit": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.weight.unit",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.material": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.material",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.recommended_pet_weight_max": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.recommended_pet_weight_max",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.sales_count": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.sales_count",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.rating": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.rating",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.shipping.method": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.shipping.method",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.shipping.fee": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.shipping.fee",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.supplier.name": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.supplier.name",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    },
+    "product.options[0].value": {
+      "data_type": "mock",
+      "source_url": "https://example.com/items/sample-001",
+      "source_id": "product.options[0].value",
+      "collected_at": "2026-11-02T10:00:00+09:00"
+    }
+  },
+  "missing_fields": [
+    {
+      "field_path": "product.recommended_pet_weight_max",
+      "reason": "source_missing",
+      "next_action": "공급처에 최대 권장 체중 확인"
+    },
+    {
+      "field_path": "product.sales_count",
+      "reason": "source_missing",
+      "next_action": "원본에서 수집 가능 여부 재확인"
+    },
+    {
+      "field_path": "product.shipping.fee",
+      "reason": "manual_review_required",
+      "next_action": "배송비 수동 확인"
+    }
+  ],
+  "normalized_data": {
+    "translated_name": "대형 반려동물 매트",
+    "translated_description": "세척 가능한 부드러운 반려동물 매트. 크기 800 × 600 mm.",
+    "translated_reviews": [
+      {
+        "review_id": "review-001",
+        "translated_text": "매트가 부드럽고 세척이 쉽습니다."
+      },
+      {
+        "review_id": "review-002",
+        "translated_text": "예상보다 크기가 조금 작습니다."
+      }
+    ],
+    "conversions": [
+      {
+        "field_path": "product.original_price.amount",
+        "original_value": 100.0,
+        "original_unit": "CNY",
+        "normalized_value": 19000.0,
+        "normalized_unit": "KRW",
+        "conversion_rate": 190.0,
+        "rate_source": "합성 Mock 환율(실제 환율 아님)",
+        "converted_at": "2026-11-02T10:00:00+09:00",
+        "data_type": "mock"
+      },
+      {
+        "field_path": "product.dimensions.length",
+        "original_value": 800,
+        "original_unit": "mm",
+        "normalized_value": 80,
+        "normalized_unit": "cm",
+        "conversion_rate": 0.1,
+        "rate_source": "길이 단위 변환",
+        "converted_at": "2026-11-02T10:00:00+09:00",
+        "data_type": "mock"
+      },
+      {
+        "field_path": "product.dimensions.width",
+        "original_value": 600,
+        "original_unit": "mm",
+        "normalized_value": 60,
+        "normalized_unit": "cm",
+        "conversion_rate": 0.1,
+        "rate_source": "길이 단위 변환",
+        "converted_at": "2026-11-02T10:00:00+09:00",
+        "data_type": "mock"
+      },
+      {
+        "field_path": "product.dimensions.height",
+        "original_value": 100,
+        "original_unit": "mm",
+        "normalized_value": 10,
+        "normalized_unit": "cm",
+        "conversion_rate": 0.1,
+        "rate_source": "길이 단위 변환",
+        "converted_at": "2026-11-02T10:00:00+09:00",
+        "data_type": "mock"
+      },
+      {
+        "field_path": "product.weight.value",
+        "original_value": 2.5,
+        "original_unit": "kg",
+        "normalized_value": 2.5,
+        "normalized_unit": "kg",
+        "conversion_rate": 1,
+        "rate_source": "동일 단위 보존",
+        "converted_at": "2026-11-02T10:00:00+09:00",
+        "data_type": "mock"
+      }
+    ],
+    "normalized_dimensions": {
+      "length": 80,
+      "width": 60,
+      "height": 10,
+      "unit": "cm"
+    },
+    "normalized_weight": {
+      "value": 2.5,
+      "unit": "kg"
+    }
+  },
+  "evidence": [
+    {
+      "evidence_id": "ev-001",
+      "target_path": "agent_outputs.B01.result.features[0]",
+      "source_type": "description",
+      "source_id": "desc-001",
+      "quote_or_value": "Soft washable pet mat.",
+      "source_url": "https://example.com/items/sample-001"
+    },
+    {
+      "evidence_id": "ev-002",
+      "target_path": "agent_outputs.B02.result.positive_points[0]",
+      "source_type": "review",
+      "source_id": "review-001",
+      "quote_or_value": "soft and easy to clean",
+      "source_url": "https://example.com/items/sample-001"
+    },
+    {
+      "evidence_id": "ev-003",
+      "target_path": "agent_outputs.B04.result.size_info",
+      "source_type": "product_field",
+      "source_id": "product.dimensions",
+      "quote_or_value": "800 x 600 x 100 mm",
+      "source_url": "https://example.com/items/sample-001"
+    }
+  ],
+  "agent_outputs": {
+    "A02": {
+      "run_id": "run-demo-001",
+      "product_id": "prod-demo-001",
+      "agent_id": "A02",
+      "input_version": 1,
+      "result_version": 1,
+      "status": "success",
+      "result": {
+        "source_version": 1,
+        "record_created": true
+      },
+      "evidence_ids": [],
+      "warnings": [
+        "본 결과는 합성 Mock 데이터 기반입니다."
+      ],
+      "errors": [],
+      "retry_count": 0,
+      "started_at": "2026-11-02T10:00:00+09:00",
+      "ended_at": "2026-11-02T10:00:08+09:00",
+      "data_type": "mock"
+    },
+    "B01": {
+      "run_id": "run-demo-001",
+      "product_id": "prod-demo-001",
+      "agent_id": "B01",
+      "input_version": 1,
+      "result_version": 1,
+      "status": "success",
+      "result": {
+        "features": [
+          {
+            "claim": "세척 가능한 소재 설명이 있음",
+            "evidence_ids": [
+              "ev-001"
+            ]
+          }
+        ],
+        "image_check": "원본 이미지 실제 확인 전"
+      },
+      "evidence_ids": [
+        "ev-001"
+      ],
+      "warnings": [
+        "본 결과는 합성 Mock 데이터 기반입니다."
+      ],
+      "errors": [],
+      "retry_count": 0,
+      "started_at": "2026-11-02T10:00:00+09:00",
+      "ended_at": "2026-11-02T10:00:08+09:00",
+      "data_type": "mock"
+    },
+    "B02": {
+      "run_id": "run-demo-001",
+      "product_id": "prod-demo-001",
+      "agent_id": "B02",
+      "input_version": 1,
+      "result_version": 1,
+      "status": "success",
+      "result": {
+        "positive_points": [
+          {
+            "claim": "세척 편리성 언급",
+            "evidence_ids": [
+              "ev-002"
+            ]
+          }
+        ],
+        "review_count": 2
+      },
+      "evidence_ids": [
+        "ev-002"
+      ],
+      "warnings": [
+        "본 결과는 합성 Mock 데이터 기반입니다."
+      ],
+      "errors": [],
+      "retry_count": 0,
+      "started_at": "2026-11-02T10:00:00+09:00",
+      "ended_at": "2026-11-02T10:00:08+09:00",
+      "data_type": "mock"
+    },
+    "B04": {
+      "run_id": "run-demo-001",
+      "product_id": "prod-demo-001",
+      "agent_id": "B04",
+      "input_version": 1,
+      "result_version": 1,
+      "status": "success",
+      "result": {
+        "size_info": {
+          "dimensions": {
+            "length": 800,
+            "width": 600,
+            "height": 100,
+            "unit": "mm"
+          },
+          "evidence_ids": [
+            "ev-003"
+          ]
+        },
+        "suitability": "needs_review",
+        "reason": "권장 체중 정보 누락"
+      },
+      "evidence_ids": [
+        "ev-003"
+      ],
+      "warnings": [
+        "본 결과는 합성 Mock 데이터 기반입니다."
+      ],
+      "errors": [],
+      "retry_count": 0,
+      "started_at": "2026-11-02T10:00:00+09:00",
+      "ended_at": "2026-11-02T10:00:08+09:00",
+      "data_type": "mock"
+    }
+  },
+  "errors": [],
+  "approval": {
+    "status": "not_requested",
+    "target_version": null,
+    "approver": null,
+    "approved_at": null,
+    "reason": null
+  }
+}
