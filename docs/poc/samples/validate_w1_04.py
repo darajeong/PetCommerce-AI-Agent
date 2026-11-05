@@ -17,6 +17,7 @@ import re
 from pathlib import Path
 
 SAMPLE_PATH = Path(__file__).resolve().parent / "W1-04_SAMPLE_PRODUCT.json"
+PARTIAL_SAMPLE_PATH = Path(__file__).resolve().parent / "W1-04_SAMPLE_PRODUCT_PARTIAL.json"
 RUN_STATUSES = {
     "pending", "running", "success", "partial_success", "failed",
     "needs_review", "approval_pending", "approved", "rejected", "on_hold",
@@ -62,6 +63,39 @@ def read_path(root: object, path: str) -> object:
             require(number < len(current), f"배열 범위를 벗어난 경로: {path}")
             current = current[number]
     return current
+
+
+# 값이 비어 있어도 되는 키(정책 URL·확인일은 '아직 확인 전'을 뜻하므로 누락 사유 대상이 아님)
+IGNORE_EMPTY_KEYS = {"usage_policy_url", "usage_checked_at"}
+# 입력이 통째로 없을 때 Agent가 가질 수 있는 상태(성공으로 확정하지 않는다)
+NOT_SUCCESS_STATUSES = {"partial_success", "needs_review", "on_hold", "failed"}
+
+
+def collect_empty_paths(node: object, path: str) -> list:
+    """null·빈 문자열·빈 배열·빈 객체인 JSON 경로를 모은다."""
+    if isinstance(node, dict):
+        if not node:
+            return [path]
+        found = []
+        for key, value in node.items():
+            if key in IGNORE_EMPTY_KEYS:
+                continue
+            found += collect_empty_paths(value, f"{path}.{key}")
+        return found
+    if isinstance(node, list):
+        if not node:
+            return [path]
+        found = []
+        for index, value in enumerate(node):
+            found += collect_empty_paths(value, f"{path}[{index}]")
+        return found
+    return [path] if node is None or node == "" else []
+
+
+def is_covered(path: str, missing_paths: set) -> bool:
+    """빈 값의 경로가 missing_fields의 같은 경로 또는 상위 경로로 기록돼 있는지."""
+    return any(path == m or path.startswith(m + ".") or path.startswith(m + "[")
+               for m in missing_paths)
 
 
 def check_claim_evidence(
@@ -121,18 +155,23 @@ def validate(sample: dict) -> None:
     # A02 결과에서 B01·B02·B04가 별도의 필드명 변경 없이 직접 읽을 수 있어야 함.
     images, description = product["images"], product["description"]  # B01
     reviews = product["reviews"]  # B02 + B04
-    require(isinstance(images, list) and bool(images), "B01: images가 비어 있거나 배열 아님")
-    require(isinstance(description, str) and bool(description.strip()), "B01: description 누락")
-    require(isinstance(reviews, list) and bool(reviews), "B02: reviews가 비어 있거나 배열 아님")
+    # 계약: 키는 항상 있어야 하고(필수 키), 값은 null·[]일 수 있다.
+    # 값이 비어 있으면 아래 '누락 사유 검사'에서 missing_fields 기록을 요구한다.
+    require(isinstance(images, list), "B01: images는 배열이어야 합니다(비어 있으면 missing_fields에 기록)")
+    require(description is None or isinstance(description, str),
+            "B01: description은 문자열 또는 null이어야 합니다")
+    require(isinstance(reviews, list), "B02: reviews는 배열이어야 합니다(비어 있으면 missing_fields에 기록)")
     for i, review in enumerate(reviews):
-        require(isinstance(review["text"], str) and bool(review["text"].strip()),
-                f"B02: reviews[{i}].text 오류")
-        require("rating" in review, f"B02: reviews[{i}].rating 누락")
+        require(isinstance(review["text"], (str, type(None))), f"B02: reviews[{i}].text 타입 오류")
+        require("rating" in review, f"B02: reviews[{i}].rating 키 누락")
     for name in ("dimensions", "weight", "material", "reviews"):
         require(name in product, f"B04: product.{name} 키 누락")
-    require(isinstance(product["dimensions"], dict), "B04: dimensions는 object여야 합니다")
-    require(isinstance(product["weight"], dict), "B04: weight는 object여야 합니다")
-    require(isinstance(product["material"], list), "B04: material은 배열이어야 합니다")
+    require(product["dimensions"] is None or isinstance(product["dimensions"], dict),
+            "B04: dimensions는 object 또는 null이어야 합니다")
+    require(product["weight"] is None or isinstance(product["weight"], dict),
+            "B04: weight는 object 또는 null이어야 합니다")
+    require(product["material"] is None or isinstance(product["material"], list),
+            "B04: material은 배열 또는 null이어야 합니다")
 
     for kind, items in (("images", images), ("reviews", reviews)):
         for i, item in enumerate(items):
@@ -172,9 +211,13 @@ def validate(sample: dict) -> None:
     # 문서 3장의 B01·B02·B04 번역·정규화 입력 경로를 실제 데이터로 검증.
     nd = sample.get("normalized_data")
     require(isinstance(nd, dict), "normalized_data 객체 누락")
-    require(isinstance(nd.get("translated_description"), str) and
-            bool(nd["translated_description"].strip()),
-            "B01: normalized_data.translated_description 누락")
+    if description is None or description == "":
+        require(nd.get("translated_description") is None,
+                "B01: 원본 description이 비어 있는데 번역문이 있습니다(null이어야 합니다)")
+    else:
+        require(isinstance(nd.get("translated_description"), str) and
+                bool(nd["translated_description"].strip()),
+                "B01: normalized_data.translated_description 누락")
     tr = nd.get("translated_reviews")
     require(isinstance(tr, list), "B02: normalized_data.translated_reviews 배열 누락")
     original_review_ids = {r["review_id"] for r in reviews}
@@ -186,26 +229,38 @@ def validate(sample: dict) -> None:
                 f"B02: translated_reviews[{i}].translated_text 오류")
     dims = nd.get("normalized_dimensions")
     weight = nd.get("normalized_weight")
-    require(isinstance(dims, dict) and dims.get("unit") == "cm" and
-            all(k in dims and (dims[k] is None or type(dims[k]) in (int, float))
-                for k in ("length", "width", "height")),
-            "B04: normalized_data.normalized_dimensions 오류")
-    require(isinstance(weight, dict) and weight.get("unit") == "kg" and
-            "value" in weight and (weight["value"] is None or type(weight["value"]) in (int, float)),
-            "B04: normalized_data.normalized_weight 오류")
+    if product["dimensions"] is None:
+        require(dims is None, "B04: 원본 dimensions가 null이면 normalized_dimensions도 null이어야 합니다")
+    else:
+        require(isinstance(dims, dict) and dims.get("unit") == "cm" and
+                all(k in dims and (dims[k] is None or type(dims[k]) in (int, float))
+                    for k in ("length", "width", "height")),
+                "B04: normalized_data.normalized_dimensions 오류")
+    if product["weight"] is None:
+        require(weight is None, "B04: 원본 weight가 null이면 normalized_weight도 null이어야 합니다")
+    else:
+        require(isinstance(weight, dict) and weight.get("unit") == "kg" and
+                "value" in weight and (weight["value"] is None or type(weight["value"]) in (int, float)),
+                "B04: normalized_data.normalized_weight 오류")
     by_field = {entry.get("field_path"): entry for entry in nd.get("conversions", [])}
-    for src, dst_value, dst_unit in [
-        ("product.dimensions.length", dims["length"], "cm"),
-        ("product.dimensions.width", dims["width"], "cm"),
-        ("product.dimensions.height", dims["height"], "cm"),
-        ("product.weight.value", weight["value"], "kg"),
-    ]:
+    pairs = []
+    if dims is not None:
+        pairs += [("product.dimensions.length", dims["length"], "cm"),
+                  ("product.dimensions.width", dims["width"], "cm"),
+                  ("product.dimensions.height", dims["height"], "cm")]
+    if weight is not None:
+        pairs.append(("product.weight.value", weight["value"], "kg"))
+    for src, dst_value, dst_unit in pairs:
+        src_value = read_path(sample, src)
+        if src_value is None:
+            require(dst_value is None, f"B04: {src}가 null인데 정규화 값이 있습니다(값을 만들어 내면 안 됩니다)")
+            continue
         if dst_value is None:
             continue
         entry = by_field.get(src)
         require(isinstance(entry, dict) and entry.get("normalized_value") == dst_value
                 and entry.get("normalized_unit") == dst_unit
-                and entry.get("original_value") == read_path(sample, src),
+                and entry.get("original_value") == src_value,
                 f"B04: conversions[{src}] 원본·정규화 연결 누락 또는 값 불일치")
 
 
@@ -227,6 +282,12 @@ def validate(sample: dict) -> None:
                 f"missing_fields.{field_path}: 누락 사유 코드가 잘못되었습니다")
         require(isinstance(entry["next_action"], str) and bool(entry["next_action"].strip()),
                 f"missing_fields.{field_path}: 다음 조치 누락")
+
+    # 누락 사유 검사: product 안의 빈 값(null·""·[]·{})은 모두 missing_fields에 기록돼 있어야 한다.
+    missing_paths = {entry["field_path"] for entry in missing_fields}
+    for empty_path in collect_empty_paths(product, "product"):
+        require(is_covered(empty_path, missing_paths),
+                f"누락 사유 없는 빈 값: {empty_path} (missing_fields에 기록해야 합니다)")
 
     # 근거 ID, 근거 원본 ID, 근거 대상 경로 검사.
     evidence = sample["evidence"]
@@ -285,15 +346,35 @@ def validate(sample: dict) -> None:
     # 필수 결과의 핵심 필드 검사: 빈 결과 혹은 근거 없는 B04 판정을 방지.
     for agent_id in ("A02", "B01", "B02", "B04"):
         require(agent_id in outputs, f"필수 샘플 Agent 누락: {agent_id}")
-    require(bool(outputs["B01"]["result"].get("features")), "B01: features 누락")
-    require(bool(outputs["B02"]["result"].get("positive_points")), "B02: positive_points 누락")
-    b04 = outputs["B04"]["result"]
-    require(isinstance(b04.get("size_info"), dict), "B04: size_info 누락")
-    require(bool(b04.get("suitability")), "B04: suitability 누락")
-    require(bool(b04.get("reason")), "B04: reason 누락")
-    if b04["suitability"] == "needs_review":
-        require(any(entry["field_path"] == "product.recommended_pet_weight_max"
-                    for entry in missing_fields), "B04: 정보 부족 판정의 누락 근거가 없습니다")
+    blocked = {
+        "B01": [p for p, empty in (("product.images", not images),
+                                   ("product.description", not description)) if empty],
+        "B02": [p for p, empty in (("product.reviews", not reviews),) if empty],
+        "B04": [p for p, empty in (("product.dimensions", product["dimensions"] is None),
+                                   ("product.weight", product["weight"] is None)) if empty],
+    }
+    for agent_id, missing_inputs in blocked.items():
+        output = outputs[agent_id]
+        if missing_inputs:
+            # 입력이 없으면 추측으로 채우지 않고 성공이 아닌 상태와 사유를 남긴다.
+            require(output["status"] in NOT_SUCCESS_STATUSES,
+                    f"{agent_id}: 입력 누락({', '.join(missing_inputs)})인데 status가 "
+                    f"{output['status']}입니다 (성공으로 확정할 수 없음)")
+            reason = output["result"].get("reason")
+            require(isinstance(reason, str) and bool(reason.strip()),
+                    f"{agent_id}: 입력 누락 시 result.reason(사유)이 필요합니다")
+    if not blocked["B01"]:
+        require(bool(outputs["B01"]["result"].get("features")), "B01: features 누락")
+    if not blocked["B02"]:
+        require(bool(outputs["B02"]["result"].get("positive_points")), "B02: positive_points 누락")
+    if not blocked["B04"]:
+        b04 = outputs["B04"]["result"]
+        require(isinstance(b04.get("size_info"), dict), "B04: size_info 누락")
+        require(bool(b04.get("suitability")), "B04: suitability 누락")
+        require(bool(b04.get("reason")), "B04: reason 누락")
+        if b04["suitability"] == "needs_review":
+            require(any(entry["field_path"] == "product.recommended_pet_weight_max"
+                        for entry in missing_fields), "B04: 정보 부족 판정의 누락 근거가 없습니다")
 
     approval = sample["approval"]
     require(approval["status"] in APPROVAL_STATUSES, "approval.status: 정의되지 않은 승인 상태")
@@ -344,6 +425,66 @@ def run_self_tests(sample: dict) -> int:
     return count
 
 
+def run_partial_tests(partial: dict, base: dict) -> int:
+    """부분 수집 계약 검사: 누락 사유가 기록된 빈 값은 허용하고, 사유 없는 빈 값·성공 확정은 거부한다.
+
+    음성 테스트는 '거부되었는가'뿐 아니라 '의도한 이유로 거부되었는가'(메시지 포함 여부)도 확인한다.
+    """
+    def drop_missing(path):
+        def mutate(s):
+            s["missing_fields"][:] = [m for m in s["missing_fields"] if m["field_path"] != path]
+        return mutate
+
+    def set_status(agent, status):
+        return lambda s: s["agent_outputs"][agent].__setitem__("status", status)
+
+    # (설명, 기준 샘플, 변형, 거부 메시지에 포함돼야 하는 문구)
+    negatives = [
+        ("누락 사유 없는 빈 이미지", partial, drop_missing("product.images"), "누락 사유 없는 빈 값: product.images"),
+        ("누락 사유 없는 빈 리뷰", partial, drop_missing("product.reviews"), "누락 사유 없는 빈 값: product.reviews"),
+        ("누락 사유 없는 null 크기", partial, drop_missing("product.dimensions"), "누락 사유 없는 빈 값: product.dimensions"),
+        ("누락 사유 없는 null 무게", partial, drop_missing("product.weight"), "누락 사유 없는 빈 값: product.weight"),
+        ("누락 사유 없는 null 평점(스칼라)", base,
+         lambda s: s["product"].__setitem__("rating", None), "누락 사유 없는 빈 값: product.rating"),
+        ("이미지 없는데 B01 성공", partial, set_status("B01", "success"), "B01: 입력 누락"),
+        ("리뷰 없는데 B02 성공", partial, set_status("B02", "success"), "B02: 입력 누락"),
+        ("크기·무게 없는데 B04 성공", partial, set_status("B04", "success"), "B04: 입력 누락"),
+        ("입력 누락 Agent의 사유 비어 있음", partial,
+         lambda s: s["agent_outputs"]["B02"]["result"].__setitem__("reason", ""), "result.reason"),
+        ("원본 null인데 정규화 크기를 만들어 냄", partial,
+         lambda s: s["normalized_data"].__setitem__(
+             "normalized_dimensions", {"length": 1, "width": 1, "height": 1, "unit": "cm"}), "null이어야"),
+        ("값이 있는데 누락으로 기록", partial,
+         lambda s: s["missing_fields"].append(
+             {"field_path": "product.description", "reason": "source_missing", "next_action": "확인"}),
+         "값이 있는데 누락"),
+        ("누락 사유 코드 오류", partial,
+         lambda s: s["missing_fields"][-1].__setitem__("reason", "unknown"), "누락 사유 코드"),
+    ]
+    count = 0
+    for label, origin, mutation, expected in negatives:
+        broken = copy.deepcopy(origin)
+        mutation(broken)
+        try:
+            validate(broken)
+        except (ValueError, KeyError, TypeError, IndexError) as exc:
+            if expected not in str(exc):
+                raise ValueError(f"FAIL(다른 이유로 거부): {label} → {exc}") from exc
+            print(f"PASS(부분 수집 오류 검출): {label} → {exc}")
+            count += 1
+        else:
+            raise ValueError(f"FAIL(오류 미검출): {label}")
+
+    # 허용되어야 하는 경우: 누락 사유가 기록된 빈 값
+    allowed = copy.deepcopy(base)
+    allowed["product"]["rating"] = None
+    allowed["missing_fields"].append(
+        {"field_path": "product.rating", "reason": "source_missing", "next_action": "평점 수동 확인"})
+    validate(allowed)
+    print("PASS(허용 확인): 누락 사유가 기록된 null 평점은 통과")
+    return count
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="W1-04 합성 Mock 계약 검사")
     parser.add_argument("--self-test", action="store_true", help="고의 오류 주입 검증까지 실행")
@@ -352,9 +493,17 @@ def main() -> None:
     sample = json.loads(args.sample.read_text(encoding="utf-8"))
     validate(sample)
     print("PASS: W1-04 샘플 구조 / A03 번역·정규화 경로 / 이미지·리뷰 사용 권한 / 근거·상태·버전 검증")
+    partial = None
+    if args.sample == SAMPLE_PATH:
+        partial = json.loads(PARTIAL_SAMPLE_PATH.read_text(encoding="utf-8"))
+        validate(partial)
+        print("PASS: 부분 수집 샘플(누락 사유 기록, 이미지·리뷰·규격 누락) 구조·상태 검증")
     if args.self_test:
         count = run_self_tests(sample)
         print(f"PASS: 의도적 오류 {count}종 모두 검출")
+        if partial is not None:
+            partial_count = run_partial_tests(partial, sample)
+            print(f"PASS: 부분 수집 계약 오류 {partial_count}종 모두 검출 (총 {count + partial_count}종)")
     print("주의: 합성 Mock 데이터의 계약 검증이며 실제 Agent·API 실행이나 분석 내용의 진실성 검증은 아닙니다.")
 
 

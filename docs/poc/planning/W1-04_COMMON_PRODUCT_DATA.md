@@ -54,7 +54,7 @@
 | `product.images[]` | object[] | 예 | 이미지별 ID·번호·URL·용도별 권한·출처 |
 | `product.reviews[]` | object[] | 예 | 리뷰별 ID·원문·평점·용도별 권한·출처 |
 
-\* **필수**는 JSON **키가 존재해야 한다는 뜻**이다. 원본에서 값을 얻지 못하면 `null` 또는 `[]`로 두고 `missing_fields`에 구체적인 누락 경로와 사유를 남긴다. 무조건 실제 값이 있어야 PoC가 성공한다는 뜻은 아니다.
+\* **필수**는 JSON **키가 존재해야 한다는 뜻**이다. 원본에서 값을 얻지 못하면 `null` 또는 `[]`로 두고 `missing_fields`에 구체적인 누락 경로와 사유를 남긴다. 무조건 실제 값이 있어야 PoC가 성공한다는 뜻은 아니다. 빈 값(`null`·`[]`·빈 문자열·빈 객체)은 같은 경로 또는 상위 경로가 `missing_fields`에 기록돼 있어야 하며, 기록이 없으면 검증 오류다. 단 `usage_policy_url`·`usage_checked_at`의 null은 "확인 전"을 뜻하므로 대상이 아니다.
 
 **이미지 항목:** `image_id:string`, `image_no:integer`, `image_role:enum(main,detail,other)`, `url:string`, `source_url:string`, `rights_status:enum(usable,needs_review,prohibited)`, `usage:object`, `usage_policy_url:string|null`, `usage_checked_at:ISO 8601 string|null`, `data_type:enum(actual,test,mock)`를 요구한다. `image_role`은 대표·상세·기타 이미지를 구분한다.
 
@@ -80,7 +80,7 @@
 | C02 | `product`, `normalized_data`, `agent_outputs.B01/B02/B04/B05` | 상세페이지·주의사항 | `agent_outputs.C02` |
 | E04 | `run`, `agent_outputs`, `approval`, `errors` | 실행 상태·승인·오류 관리 | 실행 이력 |
 
-**검증 조건:** A02가 만든 원본 `product`를 다른 키 이름으로 복사·재가공하지 않고 위 경로로 읽을 수 있어야 한다. A03가 만드는 번역·정규화 결과는 `normalized_data`의 정의된 경로로 읽는다. 누락 시 Agent는 추측으로 채우지 않고 누락 사유를 참조해 `needs_review` 또는 `partial_success`를 반환한다.
+**검증 조건:** A02가 만든 원본 `product`를 다른 키 이름으로 복사·재가공하지 않고 위 경로로 읽을 수 있어야 한다. A03가 만드는 번역·정규화 결과는 `normalized_data`의 정의된 경로로 읽는다. 누락 시 Agent는 추측으로 채우지 않고 누락 사유를 참조해 `needs_review` 또는 `partial_success`를 반환한다. 입력이 통째로 없으면 `on_hold`도 가능하며, 어떤 경우에도 `success`로 확정하지 않고 `result.reason`에 사유를 남긴다. 원본 값이 `null`이면 정규화 값도 `null`이어야 한다.
 
 **선행 데이터 조건:** B01·B02·B04는 A03의 관련 번역·정규화 결과를 읽고 `product` 원본은 근거·변환 전후 비교에 사용한다. A03 결과가 없거나 필수 변환이 실패한 경우 원본만으로 정상 판정을 확정하지 않는다.
 
@@ -130,12 +130,14 @@
 ## 7. PoC 예시와 검증 방법
 
 - JSON 예시: [`samples/W1-04_SAMPLE_PRODUCT.json`](../samples/W1-04_SAMPLE_PRODUCT.json)
+- 부분 수집 샘플: [`samples/W1-04_SAMPLE_PRODUCT_PARTIAL.json`](../samples/W1-04_SAMPLE_PRODUCT_PARTIAL.json) — 이미지·리뷰·크기·무게가 비어 있고 `missing_fields`에 사유가 기록된 유효한 입력이다(Agent 상태 `needs_review`·`on_hold`).
 - 검증 스크립트: [`samples/validate_w1_04.py`](../samples/validate_w1_04.py) — Python 표준 라이브러리만 사용한다.
 - 테스트 실행(프로젝트 루트): `python docs/poc/samples/validate_w1_04.py`
 - 의도적 오류 검출 실행: `python docs/poc/samples/validate_w1_04.py --self-test`
 - A02의 `agent_outputs.A02.result`는 원본 저장 여부와 버전 기록용 메타데이터다. 실제 상품 원본은 `product`에 저장하므로 A02의 `evidence_ids`는 빈 배열일 수 있다.
-- 합성 Mock JSON에서 A02 → B01·B02·B04 데이터 필드 호환성과 근거·상태·버전 구조를 점검했으며, 의도적 오류 **18종**이 검출되는 것을 확인했다. 수정 후 로컬 실행 로그를 PR 증빙으로 첨부한다.
+- 합성 Mock JSON에서 A02 → B01·B02·B04 데이터 필드 호환성과 근거·상태·버전 구조를 점검했으며, 의도적 오류 **30종**(기존 18종 + 부분 수집 계약 12종)이 검출되고, 부분 수집 샘플과 누락 사유가 기록된 빈 값이 통과하는 것을 확인했다. 수정 후 로컬 실행 로그를 PR 증빙으로 첨부한다.
 - 알려진 한계: `normalized_data.conversions[]`의 원본·변환 메타데이터는 기본적인 경로·값·단위 대응을 검사하나 변환의 의미·환율 진실성까지 보장하지 않는다. W2 A03 또는 v0.2에서 보강한다.
+- 부분 수집 샘플 검증은 A02·B01·B02·B04 결과 봉투가 모두 있는 파일 기준이다. A02·A03 단계 파일 전용 검사 모드는 v0.2에서 추가한다.
 - B05·C02 샘플 데이터와 연계 검증은 v0.2 또는 해당 Agent PoC에서 추가한다.
 - 주의: 이 검증은 **샘플 데이터 형식과 참조 연결**만 확인한다. 실제 상품 3건, 원본 권한 및 Agent의 실제 처리 품질 검증은 W2~W5 작업이다.
 
@@ -152,4 +154,4 @@
 - [x] 검토 담당 A 리뷰 완료 (수정 요청 반영)
 - [ ] 튜터님 확인
 
-**판정:** 리뷰 반영 완료(Mock 샘플 구조 및 의도적 오류 18종 검출 통과, 튜터님 확인 대기). W1-08 공통 실행 환경과 W2 A01-01 상품 검색 결과에서 필요해지는 필드가 있으면 근거와 함께 v0.2로 변경한다.
+**판정:** 리뷰 반영 완료(Mock 샘플 구조 및 의도적 오류 30종 검출 통과, 튜터님 확인 대기). W1-08 공통 실행 환경과 W2 A01-01 상품 검색 결과에서 필요해지는 필드가 있으면 근거와 함께 v0.2로 변경한다.
