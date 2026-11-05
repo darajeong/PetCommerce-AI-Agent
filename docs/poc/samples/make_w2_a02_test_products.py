@@ -1,6 +1,8 @@
 """W2 A02/A03 대체 경로용 합성 테스트 상품 3건을 W1-04 v0.1 구조로 만든다.
 
 실제 상품·판매자·리뷰가 아니며 모든 값은 data_type "test" 이다.
+대체 경로·개발용이며 A02·A03·B02 PoC 판정(실제 상품 3건)을 대체하지 않는다.
+사용 제한과 검증 범위는 W2-A02_TEST_PRODUCTS_README.md 참고.
 """
 import json
 import sys
