@@ -32,7 +32,25 @@ robots.txt의 Allow는 약관상 수집·저장·상업적 이용 권한을 의�
 
 **자동 검색 예외 철회 (2026-11-05, 튜터 검토 반영):** 2026-11-03 팀 결정(박진·조정민)은 PoC 내부 검증 목적에 한해 접근 제한을 넘지 않는 범위의 자동 검색을 허용했다. 요청 수 제한과 팀 합의는 플랫폼의 허가가 아니므로 이 예외는 W2부터 적용하지 않는다. W2에서는 세 플랫폼에 스크립트·브라우저 자동화·AI 검색 도구·AI 브라우징으로 접근하지 않는다. 데이터는 사람의 직접 열람·입력(1.1절), 승인된 공식 API 범위, 합성 테스트 데이터로만 확보한다. 플랫폼의 승인 증빙이나 명시적 허용 근거를 얻으면 다시 판정한다.
 
-**자동 검색 기능 (2026-11-06 팀 확정):** 자동 상품 검색은 제품의 필수 기능이다. 공식 API가 있으면 공식 API로 구현·검증한다. API 승인 전에는 Mock 검색 결과로 Agent 로직을 검증한다. 확인 대상은 3~5절의 타오바오·Alibaba.com·1688 Open Platform이고, AliExpress 제휴 API(상품 검색)는 제공 범위와 승인 조건을 추가로 확인한다.
+**자동 검색 기능 (2026-11-06 팀 확정):** 자동 상품 검색은 제품의 필수 기능이다. 공식 API가 있으면 공식 API로 구현·검증한다. API 승인 전에는 Mock 검색 결과로 Agent 로직을 검증한다. 타오바오는 일반 상품 검색 API가 없고(3.1절), Alibaba.com·1688은 일반 개발자용 검색 API를 확인하지 못했다(4.1·5.1절).
+
+**자동 검색 공식 API: CJdropshipping (2026-11-06 팀 확정):** 공식 문서로 키워드 상품 검색이 확인된 API다. 계정 가입 후 API 키로 사용한다. 받을 수 있는 정보는 아래와 같다 (공식 API 문서 기준, 확인일 2026-11-06).
+
+| 정보 | 제공 | API·필드 |
+|---|---|---|
+| 상품 검색 | 키워드·가격 범위·카테고리 | Product List V2 (`keyWord`) |
+| 상품명 | 영문·중문 | `nameen`, `name` |
+| 가격·통화 | USD, 할인가·도매가·옵션별 가격 | `sellprice`, `discountPrice`, `wholesalePrice` |
+| 옵션 | 옵션별 SKU·가격·이미지·재고 | `stanProducts[]`, Variant API |
+| 크기·무게·소재 | 옵션별 가로·세로·높이(mm), 사이즈표(cm·inch), 무게(g), 소재 | Variant API, Size Chart, `weight`, `materialen` |
+| 상품 설명 | 제공 | `description` |
+| 이미지 | 대표·상세·실사·옵션별 | `bigimg`, `newImgList`, `filmImages` |
+| 판매량·평점 | 최근 90일 판매량, 평점, 리뷰 수 | `soldOut`, `score`, `commentCount` |
+| 리뷰 원문 | 본문·별점·날짜·리뷰 이미지 (페이지당 20개) | Product Reviews API |
+| 공급처·재고 | 공급사명·링크, 국가·창고별 재고 | `supplierNameEn`, Inventory API |
+| 권장 체중 | 전용 필드 없음 | 설명·사이즈표에서 확인, 없으면 누락 사유 기록 |
+
+API로 받을 수 있다는 것과 사용 권한은 별개다. 이미지·리뷰·설명 원문의 `usage`는 CJ 이용약관을 확인하기 전까지 `needs_review`로 두고 1.1절 기준을 적용한다. AliExpress 제휴 API는 공식 문서를 확인하지 못해 후보로만 둔다.
 
 **철회 전 실행 이력 (A01-01 기록):** 2026-11-03 자동 요청 3회, 2026-11-05 AI 검색 도구로 Alibaba.com 공개 목록 3개·상품 링크 6개 조회. 로그인·우회는 없었고 저장한 값은 URL·표시 가격·상품명이다. 이미지·리뷰 원문·HTML 본문은 저장하지 않았다. 이후 작업은 이 URL을 사람이 직접 열어 확인한 값만 쓴다.
 
@@ -552,6 +570,8 @@ Open Platform 개발자 협약의 데이터 제한:
 | 1688 | 阿里巴巴开放平台合作伙伴开发协议 (2025 V1) | https://terms.alicdn.com/legal-agreement/terms/suit_bu1_b2b/suit_bu1_b2b202002111645_28701.html | 2025-11-07 | 2026-11-02 |
 | 1688 | Terms of Use 2024 (영문, §3.2 체계적 수집 금지) | https://terms.alicdn.com/legal-agreement/terms/common_platform_service/20240913201059451/20240913201059451_1_0_24980.html | 2024-09-25 시행 | 2026-11-02 |
 | 1688 | 1688网站法律声明 | https://terms.alicdn.com/legal-agreement/terms/suit_bu1_b2b/suit_bu1_b2b201802011532_36855.html | 2026-01-16 시행 | 2026-11-02 |
+| CJdropshipping | API 2.0 Product·Variant·Inventory·Reviews·Video | https://developers.cjdropshipping.com/en/api/api2/api/product.html | — | 2026-11-06 |
+| CJdropshipping | Products Synchronization 가이드 | https://developers.cjdropshipping.cn/en/api/start/Products-Synchronization-Processing.html | — | 2026-11-06 |
 | 네이버 | 스마트스토어 개인 판매자 가입 안내 | **공식 문서 미발견** | — | |
 | 네이버 | 커머스 API 센터 FAQ | https://apicenter.commerce.naver.com/ko/basic/faq | — | **내용 미확인** (브라우저 직접 확인 필요) |
 | 네이버 | 광고주센터 회원가입·계정 수 제한 | **공식 문서 미발견** | — | |
@@ -597,7 +617,10 @@ Open Platform 개발자 협약의 데이터 제한:
 | W2 착수 필수 | **확정 (2026-11-06):** W2 데이터 방식은 사실 값을 사람이 직접 입력하고, 이미지·리뷰·설명 원문은 합성 테스트 데이터 | 팀 | 1.1절, W1-04 `usage` | 완료 |
 | W2 착수 필수 | **확정 (2026-11-06):** 합성 테스트 데이터 담당 A (PR #10, 3건) | A | 8.1절 | 완료 |
 | W2 착수 필수 | **확정 (2026-11-06):** 사실 값은 실제, 이미지·리뷰는 합성인 구성을 필수 PoC "실제 상품 3개"로 인정하고, 결과 한계에 명시 | 팀 | W1-02 | 완료 |
-| 후속 확인 | 자동 검색용 공식 API 신청 가능 여부·조건 확인 (Alibaba.com·1688·타오바오 Open Platform, AliExpress 제휴 API) | D | 1·3~5절 | W3 시작 전 |
+| 후속 확인 | CJdropshipping 이용약관에서 이미지·리뷰·설명 원문의 저장·AI 입력·표시·재사용 허용 여부 확인 | D | 1절 | API 데이터 사용 전 |
+| 후속 확인 | CJdropshipping 계정 가입 명의와 API 키 관리 담당 결정 | 팀 | 1절 | API 사용 전 |
+| 후속 확인 | CJdropshipping API 호출 한도 확인 (일반 사용자 1,000회/일은 구버전 List API 기준) | D | 1절 | API 사용 전 |
+| 후속 확인 | AliExpress 제휴 API 공식 문서·승인 조건 확인 (보조 후보) | D | 1절 | W3 시작 전 |
 | 후속 확인 | 외부 AI API 학습 미사용 설정 확인 (보안 조치, 권한 대체 아님) | A03-01·B01·B02 주 담당 | 8.1절 | 각 작업 착수 시 |
 | 후속 확인 | 네이버 검색광고 문서 3건 직접 확인: API 신청 조건, 키 발급, 대용량 보고서 (후보 https://ads.naver.com/help/faq/302) | D | 6.5절 | E02-01 착수 전 |
 | 후속 확인 | 국내 채널 계정 명의 결정 | 팀 | 6.2·6.3절 | D01-02 착수 전 (W4) |
