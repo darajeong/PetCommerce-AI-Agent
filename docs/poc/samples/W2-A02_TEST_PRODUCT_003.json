@@ -1,0 +1,800 @@
+{
+  "schema_version": "0.1",
+  "product_id": "prod-test-003",
+  "category_id": "pet_toy",
+  "run": {
+    "run_id": "run-test-003",
+    "job_id": null,
+    "status": "success",
+    "started_at": "2026-11-05T15:00:00+09:00",
+    "ended_at": "2026-11-05T15:00:00+09:00"
+  },
+  "input_version": 1,
+  "source_version": 1,
+  "product": {
+    "source_url": "https://example.com/test-products/003",
+    "platform": "test_catalog",
+    "collection_method": "mock",
+    "collected_at": "2026-11-05T15:00:00+09:00",
+    "original_name": "TEST Tough Rubber Chew Bone for Large Breeds",
+    "description": "TEST DATA. Chew bone toy for large dogs. Length 7.5 in. Natural rubber. Weight 280 g.",
+    "description_id": "desc-test-003",
+    "original_price": {
+      "amount": 2.3,
+      "currency": "USD"
+    },
+    "options": [
+      {
+        "option_id": "opt-003-01",
+        "name": "color",
+        "value": "orange",
+        "data_type": "test",
+        "source_url": "https://example.com/test-products/003"
+      }
+    ],
+    "dimensions": {
+      "length": 7.5,
+      "width": null,
+      "height": null,
+      "unit": "in"
+    },
+    "weight": {
+      "value": 280,
+      "unit": "g"
+    },
+    "material": [
+      "natural rubber"
+    ],
+    "recommended_pet_weight_max": null,
+    "sales_count": null,
+    "rating": 4.1,
+    "shipping": {
+      "method": "standard",
+      "fee": 1.5,
+      "currency": "USD"
+    },
+    "supplier": {
+      "supplier_id": "sup-test-003",
+      "name": "TEST Supplier 003",
+      "source_url": "https://example.com/test-products/003",
+      "data_type": "test"
+    },
+    "images": [
+      {
+        "image_id": "img-003-01",
+        "image_no": 1,
+        "image_role": "main",
+        "url": "https://example.com/test-images/003-1.jpg",
+        "source_url": "https://example.com/test-products/003",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "image_id": "img-003-02",
+        "image_no": 2,
+        "image_role": "detail",
+        "url": "https://example.com/test-images/003-2.jpg",
+        "source_url": "https://example.com/test-products/003",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "image_id": "img-003-03",
+        "image_no": 3,
+        "image_role": "detail",
+        "url": "https://example.com/test-images/003-3.jpg",
+        "source_url": "https://example.com/test-products/003",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "image_id": "img-003-04",
+        "image_no": 4,
+        "image_role": "detail",
+        "url": "https://example.com/test-images/003-4.jpg",
+        "source_url": "https://example.com/test-products/003",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "image_id": "img-003-05",
+        "image_no": 5,
+        "image_role": "detail",
+        "url": "https://example.com/test-images/003-5.jpg",
+        "source_url": "https://example.com/test-products/003",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      }
+    ],
+    "reviews": [
+      {
+        "review_id": "review-003-01",
+        "text": "Lasted three weeks with my lab.",
+        "rating": 4,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-02",
+        "text": "Pieces broke off within a day.",
+        "rating": 1,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-03",
+        "text": "My dog loves the texture.",
+        "rating": 5,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-04",
+        "text": "Not indestructible as the title says.",
+        "rating": 2,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-05",
+        "text": "Good size for a big mouth.",
+        "rating": 4,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-06",
+        "text": "Strong rubber smell.",
+        "rating": 3,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-07",
+        "text": "Easy to clean with water.",
+        "rating": 4,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-08",
+        "text": "Small pieces came off, be careful.",
+        "rating": 2,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-09",
+        "text": "Keeps my dog busy for hours.",
+        "rating": 5,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-10",
+        "text": "Too hard for an older dog.",
+        "rating": 3,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-11",
+        "text": "Color faded quickly.",
+        "rating": 3,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-12",
+        "text": "Floats in water, fun at the lake.",
+        "rating": 4,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-13",
+        "text": "Chewed through in two days.",
+        "rating": 1,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-14",
+        "text": "Cheap and works okay.",
+        "rating": 3,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-15",
+        "text": "Bigger than I thought.",
+        "rating": 4,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-16",
+        "text": "Safe so far for my husky.",
+        "rating": 4,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-17",
+        "text": "Bits broke off and I threw it away.",
+        "rating": 1,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-18",
+        "text": "Good for teething.",
+        "rating": 4,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-19",
+        "text": "Shipping was fast.",
+        "rating": 4,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-003-20",
+        "text": "Average quality.",
+        "rating": 3,
+        "source_url": "https://example.com/test-products/003",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      }
+    ]
+  },
+  "field_meta": {
+    "product.original_name": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.original_name",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.description": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "desc-test-003",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.description_id": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "desc-test-003",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.original_price.amount": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.original_price.amount",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.original_price.currency": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.original_price.currency",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.weight.value": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.weight.value",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.weight.unit": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.weight.unit",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.material": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.material",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.recommended_pet_weight_max": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.recommended_pet_weight_max",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.sales_count": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.sales_count",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.rating": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.rating",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.shipping.method": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.shipping.method",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.shipping.fee": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.shipping.fee",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.supplier.name": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.supplier.name",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.dimensions.length": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.dimensions.length",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.dimensions.width": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.dimensions.width",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.dimensions.height": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.dimensions.height",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.dimensions.unit": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.dimensions.unit",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.options[0].value": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/003",
+      "source_id": "product.options[0].value",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    }
+  },
+  "missing_fields": [
+    {
+      "field_path": "product.dimensions.width",
+      "reason": "source_missing",
+      "next_action": "길이만 표기됨. 공급처 문의 필요"
+    },
+    {
+      "field_path": "product.dimensions.height",
+      "reason": "source_missing",
+      "next_action": "길이만 표기됨. 공급처 문의 필요"
+    },
+    {
+      "field_path": "product.recommended_pet_weight_max",
+      "reason": "source_missing",
+      "next_action": "공급처에 최대 권장 체중 확인"
+    },
+    {
+      "field_path": "product.sales_count",
+      "reason": "source_missing",
+      "next_action": "원본에 판매량 표시 없음"
+    }
+  ],
+  "normalized_data": {
+    "translated_name": "대형견용 튼튼한 고무 씹는 뼈 (테스트)",
+    "translated_description": "테스트 데이터. 대형견용 씹는 뼈 장난감. 길이 7.5인치. 천연 고무. 무게 280g.",
+    "translated_reviews": [
+      {
+        "review_id": "review-003-01",
+        "translated_text": "래브라도와 3주 버텼어요."
+      },
+      {
+        "review_id": "review-003-02",
+        "translated_text": "하루 만에 조각이 떨어져 나갔어요."
+      },
+      {
+        "review_id": "review-003-03",
+        "translated_text": "강아지가 질감을 좋아해요."
+      },
+      {
+        "review_id": "review-003-04",
+        "translated_text": "제목처럼 부서지지 않는 건 아니에요."
+      },
+      {
+        "review_id": "review-003-05",
+        "translated_text": "입이 큰 강아지에게 적당한 크기예요."
+      },
+      {
+        "review_id": "review-003-06",
+        "translated_text": "고무 냄새가 강해요."
+      },
+      {
+        "review_id": "review-003-07",
+        "translated_text": "물로 씻기 쉬워요."
+      },
+      {
+        "review_id": "review-003-08",
+        "translated_text": "작은 조각이 떨어지니 조심하세요."
+      },
+      {
+        "review_id": "review-003-09",
+        "translated_text": "강아지가 몇 시간씩 가지고 놀아요."
+      },
+      {
+        "review_id": "review-003-10",
+        "translated_text": "노견에게는 너무 딱딱해요."
+      },
+      {
+        "review_id": "review-003-11",
+        "translated_text": "색이 금방 바랬어요."
+      },
+      {
+        "review_id": "review-003-12",
+        "translated_text": "물에 떠서 호수에서 재밌어요."
+      },
+      {
+        "review_id": "review-003-13",
+        "translated_text": "이틀 만에 다 씹어 버렸어요."
+      },
+      {
+        "review_id": "review-003-14",
+        "translated_text": "싸고 그럭저럭 괜찮아요."
+      },
+      {
+        "review_id": "review-003-15",
+        "translated_text": "생각보다 커요."
+      },
+      {
+        "review_id": "review-003-16",
+        "translated_text": "허스키에게 아직까지는 안전해요."
+      },
+      {
+        "review_id": "review-003-17",
+        "translated_text": "조각이 떨어져서 버렸어요."
+      },
+      {
+        "review_id": "review-003-18",
+        "translated_text": "이갈이할 때 좋아요."
+      },
+      {
+        "review_id": "review-003-19",
+        "translated_text": "배송이 빨랐어요."
+      },
+      {
+        "review_id": "review-003-20",
+        "translated_text": "품질은 보통이에요."
+      }
+    ],
+    "conversions": [
+      {
+        "field_path": "product.original_price.amount",
+        "original_value": 2.3,
+        "original_unit": "USD",
+        "normalized_value": 3220.0,
+        "normalized_unit": "KRW",
+        "conversion_rate": 1400.0,
+        "rate_source": "테스트용 고정 환율(실제 환율 아님)",
+        "converted_at": "2026-11-05T15:00:00+09:00",
+        "data_type": "test"
+      },
+      {
+        "field_path": "product.dimensions.length",
+        "original_value": 7.5,
+        "original_unit": "in",
+        "normalized_value": 19.05,
+        "normalized_unit": "cm",
+        "conversion_rate": 2.54,
+        "rate_source": "길이 단위 변환",
+        "converted_at": "2026-11-05T15:00:00+09:00",
+        "data_type": "test"
+      },
+      {
+        "field_path": "product.weight.value",
+        "original_value": 280,
+        "original_unit": "g",
+        "normalized_value": 0.28,
+        "normalized_unit": "kg",
+        "conversion_rate": 0.001,
+        "rate_source": "무게 단위 변환",
+        "converted_at": "2026-11-05T15:00:00+09:00",
+        "data_type": "test"
+      }
+    ],
+    "normalized_dimensions": {
+      "unit": "cm",
+      "length": 19.05,
+      "width": null,
+      "height": null
+    },
+    "normalized_weight": {
+      "value": 0.28,
+      "unit": "kg"
+    }
+  },
+  "evidence": [],
+  "agent_outputs": {
+    "A02": {
+      "run_id": "run-test-003",
+      "product_id": "prod-test-003",
+      "agent_id": "A02",
+      "input_version": 1,
+      "result_version": 1,
+      "status": "success",
+      "result": {
+        "source_version": 1,
+        "record_created": true
+      },
+      "evidence_ids": [],
+      "warnings": [
+        "본 결과는 합성 테스트 데이터 기반입니다(실제 상품 아님)."
+      ],
+      "errors": [],
+      "retry_count": 0,
+      "started_at": "2026-11-05T15:00:00+09:00",
+      "ended_at": "2026-11-05T15:00:00+09:00",
+      "data_type": "test"
+    },
+    "A03": {
+      "run_id": "run-test-003",
+      "product_id": "prod-test-003",
+      "agent_id": "A03",
+      "input_version": 1,
+      "result_version": 1,
+      "status": "success",
+      "result": {
+        "normalized_data_ref": {
+          "source_version": 1,
+          "result_version": 1
+        },
+        "translated_review_count": 20,
+        "conversion_count": 3
+      },
+      "evidence_ids": [],
+      "warnings": [
+        "본 결과는 합성 테스트 데이터 기반입니다(실제 상품 아님).",
+        "환율은 테스트용 고정값으로 실제 가격 결정에 사용하지 않는다.",
+        "크기 일부가 원본에 없어 정규화 크기에 null이 포함된다."
+      ],
+      "errors": [],
+      "retry_count": 0,
+      "started_at": "2026-11-05T15:00:00+09:00",
+      "ended_at": "2026-11-05T15:00:00+09:00",
+      "data_type": "test"
+    }
+  },
+  "errors": [],
+  "approval": {
+    "status": "not_requested",
+    "target_version": null,
+    "approver": null,
+    "approved_at": null,
+    "reason": null
+  }
+}
