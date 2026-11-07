@@ -1,0 +1,673 @@
+{
+  "schema_version": "0.1",
+  "product_id": "prod-w2-09",
+  "category_id": "pet_toy",
+  "run": {
+    "run_id": "run-prod-w2-09-a02",
+    "job_id": null,
+    "status": "partial_success",
+    "started_at": "2026-11-05T00:00:00+09:00",
+    "ended_at": "2026-11-05T00:00:00+09:00"
+  },
+  "input_version": 1,
+  "source_version": 1,
+  "product": {
+    "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
+    "platform": "alibaba",
+    "collection_method": "manual",
+    "collected_at": "2026-11-05T00:00:00+09:00",
+    "original_name": "Long-Lasting Interactive Dog Toy Ball Freeze Treats Toy Eco-Friendly Food Grade Silicone Dog Chew Lick Toys for Large Dogs",
+    "description": "TEST DATA (synthetic). Silicone treat ball for large dogs. Fill with food and freeze. Textured surface for licking.",
+    "description_id": "desc-prod-w2-09",
+    "original_price": {
+      "amount": 2535.0,
+      "currency": "KRW"
+    },
+    "options": [],
+    "dimensions": null,
+    "weight": null,
+    "material": null,
+    "recommended_pet_weight_max": null,
+    "sales_count": 1157,
+    "rating": 5.0,
+    "shipping": {
+      "method": null,
+      "fee": null,
+      "currency": null
+    },
+    "supplier": {
+      "supplier_id": "sup-prod-w2-09",
+      "name": null,
+      "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
+      "data_type": "actual"
+    },
+    "images": [
+      {
+        "image_id": "img-09-01",
+        "image_no": 1,
+        "image_role": "main",
+        "url": "https://example.com/synthetic-images/prod-w2-09-1.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "image_id": "img-09-02",
+        "image_no": 2,
+        "image_role": "detail",
+        "url": "https://example.com/synthetic-images/prod-w2-09-2.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "image_id": "img-09-03",
+        "image_no": 3,
+        "image_role": "detail",
+        "url": "https://example.com/synthetic-images/prod-w2-09-3.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "image_id": "img-09-04",
+        "image_no": 4,
+        "image_role": "detail",
+        "url": "https://example.com/synthetic-images/prod-w2-09-4.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "image_id": "img-09-05",
+        "image_no": 5,
+        "image_role": "detail",
+        "url": "https://example.com/synthetic-images/prod-w2-09-5.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      }
+    ],
+    "reviews": [
+      {
+        "review_id": "review-09-01",
+        "text": "Keeps my husky busy for 30 minutes.",
+        "rating": 5,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-02",
+        "text": "Torn after one day of chewing.",
+        "rating": 1,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-03",
+        "text": "Easy to fill and freeze.",
+        "rating": 5,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-04",
+        "text": "Not for strong chewers.",
+        "rating": 2,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-05",
+        "text": "Good size for a large mouth.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-06",
+        "text": "Dishwasher safe, very handy.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-07",
+        "text": "Hard to clean the inside.",
+        "rating": 3,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-08",
+        "text": "Small pieces came off when chewed.",
+        "rating": 2,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-09",
+        "text": "Slows down my dog's eating.",
+        "rating": 5,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-10",
+        "text": "Silicone smell at first.",
+        "rating": 3,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-11",
+        "text": "Color faded after washing.",
+        "rating": 3,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-12",
+        "text": "Great on hot days with frozen yogurt.",
+        "rating": 5,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-13",
+        "text": "Torn in two days by my shepherd.",
+        "rating": 1,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-14",
+        "text": "Cheap and works well.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-15",
+        "text": "Bigger than I expected.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-16",
+        "text": "Safe so far for my retriever.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-17",
+        "text": "Pieces broke off, threw it away.",
+        "rating": 1,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-18",
+        "text": "Good for anxious dogs.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-19",
+        "text": "Shipping was fast.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      },
+      {
+        "review_id": "review-09-20",
+        "text": "Average quality.",
+        "rating": 3,
+        "source_url": "https://example.com/synthetic/prod-w2-09",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+      }
+    ]
+  },
+  "field_meta": {
+    "product.original_name": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
+      "source_id": "product.original_name",
+      "collected_at": "2026-11-05T00:00:00+09:00"
+    },
+    "product.original_price.amount": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
+      "source_id": "product.original_price.amount",
+      "collected_at": "2026-11-05T00:00:00+09:00"
+    },
+    "product.original_price.currency": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
+      "source_id": "product.original_price.currency",
+      "collected_at": "2026-11-05T00:00:00+09:00"
+    },
+    "product.sales_count": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
+      "source_id": "product.sales_count",
+      "collected_at": "2026-11-05T00:00:00+09:00"
+    },
+    "product.rating": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
+      "source_id": "product.rating",
+      "collected_at": "2026-11-05T00:00:00+09:00"
+    },
+    "product.material": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
+      "source_id": "product.material",
+      "collected_at": "2026-11-05T00:00:00+09:00"
+    },
+    "product.supplier.name": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
+      "source_id": "product.supplier.name",
+      "collected_at": "2026-11-05T00:00:00+09:00"
+    },
+    "product.description": {
+      "data_type": "test",
+      "source_url": "https://example.com/synthetic/prod-w2-09",
+      "source_id": "desc-prod-w2-09",
+      "collected_at": "2026-11-05T00:00:00+09:00"
+    },
+    "product.description_id": {
+      "data_type": "test",
+      "source_url": "https://example.com/synthetic/prod-w2-09",
+      "source_id": "desc-prod-w2-09",
+      "collected_at": "2026-11-05T00:00:00+09:00"
+    }
+  },
+  "missing_fields": [
+    {
+      "field_path": "product.material",
+      "reason": "manual_review_required",
+      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
+    },
+    {
+      "field_path": "product.dimensions",
+      "reason": "manual_review_required",
+      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
+    },
+    {
+      "field_path": "product.weight",
+      "reason": "manual_review_required",
+      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
+    },
+    {
+      "field_path": "product.recommended_pet_weight_max",
+      "reason": "manual_review_required",
+      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
+    },
+    {
+      "field_path": "product.shipping.method",
+      "reason": "manual_review_required",
+      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
+    },
+    {
+      "field_path": "product.shipping.fee",
+      "reason": "manual_review_required",
+      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
+    },
+    {
+      "field_path": "product.supplier.name",
+      "reason": "manual_review_required",
+      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
+    },
+    {
+      "field_path": "product.options",
+      "reason": "manual_review_required",
+      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
+    }
+  ],
+  "normalized_data": {
+    "translated_name": null,
+    "translated_description": "테스트 데이터(합성). 대형견용 실리콘 간식 공. 음식을 채워 얼려서 사용. 핥기용 요철 표면.",
+    "translated_reviews": [
+      {
+        "review_id": "review-09-01",
+        "translated_text": "허스키가 30분 동안 집중해요."
+      },
+      {
+        "review_id": "review-09-02",
+        "translated_text": "하루 씹고 찢어졌어요."
+      },
+      {
+        "review_id": "review-09-03",
+        "translated_text": "채워서 얼리기 쉬워요."
+      },
+      {
+        "review_id": "review-09-04",
+        "translated_text": "세게 씹는 강아지용은 아니에요."
+      },
+      {
+        "review_id": "review-09-05",
+        "translated_text": "입이 큰 강아지에게 맞는 크기예요."
+      },
+      {
+        "review_id": "review-09-06",
+        "translated_text": "식기세척기 사용 가능해서 편해요."
+      },
+      {
+        "review_id": "review-09-07",
+        "translated_text": "안쪽 세척이 어려워요."
+      },
+      {
+        "review_id": "review-09-08",
+        "translated_text": "씹으니 작은 조각이 떨어졌어요."
+      },
+      {
+        "review_id": "review-09-09",
+        "translated_text": "강아지가 천천히 먹게 돼요."
+      },
+      {
+        "review_id": "review-09-10",
+        "translated_text": "처음에 실리콘 냄새가 나요."
+      },
+      {
+        "review_id": "review-09-11",
+        "translated_text": "세척 후 색이 바랬어요."
+      },
+      {
+        "review_id": "review-09-12",
+        "translated_text": "더운 날 얼린 요거트로 좋아요."
+      },
+      {
+        "review_id": "review-09-13",
+        "translated_text": "셰퍼드가 이틀 만에 찢었어요."
+      },
+      {
+        "review_id": "review-09-14",
+        "translated_text": "싸고 잘 작동해요."
+      },
+      {
+        "review_id": "review-09-15",
+        "translated_text": "생각보다 커요."
+      },
+      {
+        "review_id": "review-09-16",
+        "translated_text": "리트리버에게 아직은 안전해요."
+      },
+      {
+        "review_id": "review-09-17",
+        "translated_text": "조각이 떨어져서 버렸어요."
+      },
+      {
+        "review_id": "review-09-18",
+        "translated_text": "불안해하는 강아지에게 좋아요."
+      },
+      {
+        "review_id": "review-09-19",
+        "translated_text": "배송이 빨랐어요."
+      },
+      {
+        "review_id": "review-09-20",
+        "translated_text": "품질은 보통이에요."
+      }
+    ]
+  },
+  "evidence": [],
+  "agent_outputs": {
+    "A02": {
+      "run_id": "run-prod-w2-09-a02",
+      "product_id": "prod-w2-09",
+      "agent_id": "A02",
+      "input_version": 1,
+      "result_version": 1,
+      "status": "partial_success",
+      "result": {
+        "source_version": 1,
+        "record_created": true,
+        "pending_manual_fields": 8
+      },
+      "evidence_ids": [],
+      "warnings": [
+        "사실 값은 사람이 직접 확인한 실제 값, 이미지·리뷰·설명은 합성 테스트 데이터다 (W1-07 1.1절, 2026-11-06 팀 확정).",
+        "가격은 최저가(2535)만 저장했다. 범위 2535~5069 KRW, 조건: MOQ 200개. 한국 접속 시 자동 환산 표시",
+        "실제 상품 리뷰 수는 13개이며 리뷰 원문은 저장하지 않았다."
+      ],
+      "errors": [],
+      "retry_count": 0,
+      "started_at": "2026-11-05T00:00:00+09:00",
+      "ended_at": "2026-11-05T00:00:00+09:00",
+      "data_type": "actual"
+    }
+  },
+  "errors": [],
+  "approval": {
+    "status": "not_requested",
+    "target_version": null,
+    "approver": null,
+    "approved_at": null,
+    "reason": null
+  }
+}
