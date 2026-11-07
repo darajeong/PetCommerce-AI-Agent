@@ -11,8 +11,12 @@ from pathlib import Path
 OUT = Path(sys.argv[1])
 AT = "2026-11-05T15:00:00+09:00"
 RATE_USD_KRW = 1400.0  # 테스트용 고정 환율 (실제 환율 아님)
-NEEDS_REVIEW_USAGE = {"store": "needs_review", "ai_input": "needs_review",
-                      "display": "needs_review", "resale": "needs_review"}
+# 팀이 직접 만든 합성 자료라 저장·AI 입력·표시는 허용한다 (W1-07 1.1절: needs_review 자료는
+# AI 입력 금지 → 합성 데이터가 needs_review면 대체 경로로 쓸 수 없음).
+# 가짜 리뷰·이미지를 실제 판매 콘텐츠에 쓰면 안 되므로 재사용은 금지한다.
+SYNTHETIC_USAGE = {"store": "allowed", "ai_input": "allowed",
+                   "display": "allowed", "resale": "prohibited"}
+USAGE_POLICY = "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md"
 
 PRODUCTS = [
     {
@@ -158,14 +162,14 @@ def build(p):
             "image_id": f"img-{p['no']}-{i+1:02d}", "image_no": i + 1,
             "image_role": "main" if i == 0 else "detail",
             "url": f"https://example.com/test-images/{p['no']}-{i+1}.jpg",
-            "source_url": url, "rights_status": "needs_review", "data_type": "test",
-            "usage": dict(NEEDS_REVIEW_USAGE), "usage_policy_url": None, "usage_checked_at": None,
+            "source_url": url, "rights_status": "prohibited", "data_type": "test",
+            "usage": dict(SYNTHETIC_USAGE), "usage_policy_url": USAGE_POLICY, "usage_checked_at": AT,
         })
     for i, (text, _, rating) in enumerate(p["reviews"]):
         product["reviews"].append({
             "review_id": f"review-{p['no']}-{i+1:02d}", "text": text, "rating": rating,
-            "source_url": url, "data_type": "test", "rights_status": "needs_review",
-            "usage": dict(NEEDS_REVIEW_USAGE), "usage_policy_url": None, "usage_checked_at": None,
+            "source_url": url, "data_type": "test", "rights_status": "prohibited",
+            "usage": dict(SYNTHETIC_USAGE), "usage_policy_url": USAGE_POLICY, "usage_checked_at": AT,
         })
 
     field_meta = {}

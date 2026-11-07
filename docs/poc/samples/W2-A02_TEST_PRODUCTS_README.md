@@ -10,6 +10,20 @@
 - B02 반복 불만(버클 파손, 충전재 꺼짐, 조각 떨어짐 등)은 의도적으로 넣은 값이라 정답이 정해져 있다. 분석 품질 평가에 쓰려면 이 점을 기록에 함께 적는다.
 - 환율은 테스트용 고정값(1 USD = 1,400 KRW)이며 실제 가격 결정에 쓰지 않는다.
 
+## 사용 권한 (`usage`)
+
+이 파일의 이미지·리뷰는 팀이 직접 만든 합성 자료다. W1-07 1.1절은 `usage`가 `allowed`일 때만 저장·AI 입력·표시를 허용하므로, 합성 자료가 `needs_review`이면 대체 경로(A03 번역, B01·B02 분석)로 쓸 수 없다. 그래서 아래처럼 정했다.
+
+| 용도 | 값 | 이유 |
+|---|---|---|
+| `usage.store` 저장 | `allowed` | 팀 자체 작성 자료 |
+| `usage.ai_input` AI 입력 | `allowed` | 팀 자체 작성 자료 |
+| `usage.display` 표시 | `allowed` | 팀 자체 작성 자료 (테스트 데이터임을 함께 표시) |
+| `usage.resale` 판매 콘텐츠 재사용 | `prohibited` | 가짜 리뷰·이미지를 실제 상품 판매 콘텐츠에 쓰면 안 됨 |
+
+- `rights_status`는 W1-04 요약 규칙(하나라도 `prohibited`면 `prohibited`)에 따라 `prohibited`다. 각 행위는 `rights_status`가 아니라 해당 `usage` 키로 판단한다.
+- `usage_policy_url`은 이 README, `usage_checked_at`은 생성 시각이다.
+
 ## 상태값
 
 - `run.status`와 A02·A03의 `status`는 `success`로 두었다. 일부 원본 필드가 `null`이고 `missing_fields`에 사유가 있어도, **해당 단계의 처리 자체는 끝났다는 의미**로 썼다.

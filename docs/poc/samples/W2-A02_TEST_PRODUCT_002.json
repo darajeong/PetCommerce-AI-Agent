@@ -74,16 +74,16 @@
         "image_role": "main",
         "url": "https://example.com/test-images/002-1.jpg",
         "source_url": "https://example.com/test-products/002",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "data_type": "test",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "image_id": "img-002-02",
@@ -91,16 +91,16 @@
         "image_role": "detail",
         "url": "https://example.com/test-images/002-2.jpg",
         "source_url": "https://example.com/test-products/002",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "data_type": "test",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "image_id": "img-002-03",
@@ -108,16 +108,16 @@
         "image_role": "detail",
         "url": "https://example.com/test-images/002-3.jpg",
         "source_url": "https://example.com/test-products/002",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "data_type": "test",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "image_id": "img-002-04",
@@ -125,16 +125,16 @@
         "image_role": "detail",
         "url": "https://example.com/test-images/002-4.jpg",
         "source_url": "https://example.com/test-products/002",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "data_type": "test",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "image_id": "img-002-05",
@@ -142,16 +142,16 @@
         "image_role": "detail",
         "url": "https://example.com/test-images/002-5.jpg",
         "source_url": "https://example.com/test-products/002",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "data_type": "test",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       }
     ],
     "reviews": [
@@ -161,15 +161,15 @@
         "rating": 5,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-02",
@@ -177,15 +177,15 @@
         "rating": 2,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-03",
@@ -193,15 +193,15 @@
         "rating": 5,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-04",
@@ -209,15 +209,15 @@
         "rating": 2,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-05",
@@ -225,15 +225,15 @@
         "rating": 5,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-06",
@@ -241,15 +241,15 @@
         "rating": 3,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-07",
@@ -257,15 +257,15 @@
         "rating": 4,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-08",
@@ -273,15 +273,15 @@
         "rating": 2,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-09",
@@ -289,15 +289,15 @@
         "rating": 4,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-10",
@@ -305,15 +305,15 @@
         "rating": 2,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-11",
@@ -321,15 +321,15 @@
         "rating": 5,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-12",
@@ -337,15 +337,15 @@
         "rating": 3,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-13",
@@ -353,15 +353,15 @@
         "rating": 3,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-14",
@@ -369,15 +369,15 @@
         "rating": 4,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-15",
@@ -385,15 +385,15 @@
         "rating": 4,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-16",
@@ -401,15 +401,15 @@
         "rating": 3,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-17",
@@ -417,15 +417,15 @@
         "rating": 2,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-18",
@@ -433,15 +433,15 @@
         "rating": 4,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-19",
@@ -449,15 +449,15 @@
         "rating": 4,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       },
       {
         "review_id": "review-002-20",
@@ -465,15 +465,15 @@
         "rating": 5,
         "source_url": "https://example.com/test-products/002",
         "data_type": "test",
-        "rights_status": "needs_review",
+        "rights_status": "prohibited",
         "usage": {
-          "store": "needs_review",
-          "ai_input": "needs_review",
-          "display": "needs_review",
-          "resale": "needs_review"
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
         },
-        "usage_policy_url": null,
-        "usage_checked_at": null
+        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
       }
     ]
   },
