@@ -1,0 +1,30 @@
+key,"설명 (사람이 상품 페이지를 직접 열어 보이는 값만 적는다. 없으면 '없음', 아직 안 봤으면 빈칸)",prod-w2-01 (A01-02 하네스 1번),prod-w2-07 (A01-02 방석 7번),prod-w2-09 (A01-02 장난감 9번)
+category_id,상품 유형 코드,pet_harness,pet_bedding,pet_toy
+source_url,상품 페이지 URL,https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html,https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html,https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html
+platform,플랫폼,alibaba,alibaba,alibaba
+original_name,상품명 (페이지 영문 제목 그대로),Adjustable Dog Lift Harness Dog Sling for Large Dogs,Wholesale Washable Dog Beds for Large Dogs Mattress Comfortable and Warming Rectangle,Long-Lasting Interactive Dog Toy Ball Freeze Treats Toy Eco-Friendly Food Grade Silicone Dog Chew Lick Toys for Large Dogs
+price_min,최저 가격 (숫자만),3699,10150,2535
+price_max,최고 가격 (숫자만),4384,11657,5069
+currency,가격 통화 (페이지에 보이는 통화),KRW,KRW,KRW
+price_note,가격 조건 (구간가·할인·MOQ 등),100개 이상 구간가. 한국 접속 시 자동 환산 표시,10% 할인가 (정가 ₩11274-12958). 한국 접속 시 자동 환산 표시,MOQ 200개. 한국 접속 시 자동 환산 표시
+options,옵션 (이름=값; 이름=값),,,
+length,길이 (숫자),,,
+width,폭 (숫자),,,
+height,높이 (숫자),,,
+dim_unit,크기 단위 (mm·cm·in),,,
+weight,무게 (숫자),,,
+weight_unit,무게 단위 (g·kg·lb),,,
+material,소재 (여러 개면 ;로 구분),,,
+pet_weight_max,권장 최대 체중 (숫자),,,
+pet_weight_unit,권장 체중 단위 (kg·lb),,,
+sales_count,판매량 (숫자),7,없음,1157
+rating,상품 평점 (숫자),5.0,없음,5.0
+review_count,상품 리뷰 수 (숫자),13,0,13
+shipping_method,배송 방법,,,
+shipping_fee,배송비 (숫자),,,
+shipping_currency,배송비 통화,,,
+supplier_name,공급처(판매자) 이름,,,
+large_dog_label,상세 페이지에 대형견 표기가 있는가 (예·아니오),,,
+product_use,용도 (예: 산책용 / 보행 보조용 슬링),,,
+collected_at,확인 일시 (2026-11-07 14:00),2026-11-05,2026-11-05,2026-11-05
+collector,확인한 사람,D (A01-02),D (A01-02),D (A01-02)
