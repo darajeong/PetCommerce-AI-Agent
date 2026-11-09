@@ -16,7 +16,7 @@ RATE_USD_KRW = 1400.0  # 테스트용 고정 환율 (실제 환율 아님)
 # 가짜 리뷰·이미지를 실제 판매 콘텐츠에 쓰면 안 되므로 재사용은 금지한다.
 SYNTHETIC_USAGE = {"store": "allowed", "ai_input": "allowed",
                    "display": "allowed", "resale": "prohibited"}
-USAGE_POLICY = "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md"
+USAGE_POLICY = "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md"
 
 PRODUCTS = [
     {
@@ -235,9 +235,9 @@ def build(p):
         "translated_reviews": [{"review_id": f"review-{p['no']}-{i+1:02d}", "translated_text": ko}
                                for i, (_, ko, _) in enumerate(p["reviews"])],
         "conversions": conversions,
-        "normalized_dimensions": norm_dims if norm_dims else
-            {"length": None, "width": None, "height": None, "unit": "cm"},
-        "normalized_weight": {"value": nw, "unit": "kg"},
+        # W1-04: 원본 dimensions·weight가 null이면 정규화 값도 null (값을 만들어 내지 않는다)
+        "normalized_dimensions": norm_dims if norm_dims else None,
+        "normalized_weight": {"value": nw, "unit": "kg"} if nw is not None else None,
     }
 
     def envelope(agent, result, warnings):
@@ -308,7 +308,7 @@ def check(doc):
         if c["conversion_rate"] and round(c["original_value"] * c["conversion_rate"], 3) != round(c["normalized_value"], 3):
             if c["normalized_unit"] != "KRW":
                 errs.append(f"변환 계산 불일치: {c['field_path']}")
-    nd = doc["normalized_data"]["normalized_dimensions"]
+    nd = doc["normalized_data"]["normalized_dimensions"] or {}
     for c in doc["normalized_data"]["conversions"]:
         if c["field_path"].startswith("product.dimensions."):
             k = c["field_path"].rsplit(".", 1)[1]
