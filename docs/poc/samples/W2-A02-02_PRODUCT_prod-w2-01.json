@@ -5,9 +5,9 @@
   "run": {
     "run_id": "run-prod-w2-01-a02",
     "job_id": null,
-    "status": "partial_success",
-    "started_at": "2026-11-05T00:00:00+09:00",
-    "ended_at": "2026-11-05T00:00:00+09:00"
+    "status": "success",
+    "started_at": "2026-11-09T07:36:00+09:00",
+    "ended_at": "2026-11-09T07:36:00+09:00"
   },
   "input_version": 1,
   "source_version": 1,
@@ -15,29 +15,48 @@
     "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
     "platform": "alibaba",
     "collection_method": "manual",
-    "collected_at": "2026-11-05T00:00:00+09:00",
+    "collected_at": "2026-11-09T07:36:00+09:00",
     "original_name": "Adjustable Dog Lift Harness Dog Sling for Large Dogs",
     "description": "TEST DATA (synthetic). Rear support lift sling for large dogs with weak hind legs. Padded belly panel, long carry handle, adjustable straps.",
     "description_id": "desc-prod-w2-01",
     "original_price": {
-      "amount": 3699.0,
+      "amount": 3735.0,
       "currency": "KRW"
     },
-    "options": [],
-    "dimensions": null,
-    "weight": null,
-    "material": null,
+    "options": [
+      {
+        "option_id": "opt-01-01",
+        "name": "색상",
+        "value": "1종",
+        "data_type": "actual",
+        "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html"
+      }
+    ],
+    "dimensions": {
+      "length": 20.0,
+      "width": 25.0,
+      "height": 15.0,
+      "unit": "cm"
+    },
+    "weight": {
+      "value": 1.5,
+      "unit": "kg"
+    },
+    "material": [
+      "폴리아미드",
+      "폴리에스터"
+    ],
     "recommended_pet_weight_max": null,
     "sales_count": 7,
     "rating": 5.0,
     "shipping": {
-      "method": null,
-      "fee": null,
-      "currency": null
+      "method": "Alibaba.com Logistics (무료 배송, 최대 27665 KRW까지)",
+      "fee": 0.0,
+      "currency": "KRW"
     },
     "supplier": {
       "supplier_id": "sup-prod-w2-01",
-      "name": null,
+      "name": "Chaozhou Chaoan Ikitchen Stainless Steel Co., Ltd.",
       "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
       "data_type": "actual"
     },
@@ -57,7 +76,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "image_id": "img-01-02",
@@ -74,7 +93,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "image_id": "img-01-03",
@@ -91,7 +110,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "image_id": "img-01-04",
@@ -108,7 +127,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "image_id": "img-01-05",
@@ -125,7 +144,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       }
     ],
     "reviews": [
@@ -143,7 +162,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-02",
@@ -159,7 +178,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-03",
@@ -175,7 +194,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-04",
@@ -191,7 +210,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-05",
@@ -207,7 +226,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-06",
@@ -223,7 +242,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-07",
@@ -239,7 +258,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-08",
@@ -255,7 +274,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-09",
@@ -271,7 +290,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-10",
@@ -287,7 +306,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-11",
@@ -303,7 +322,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-12",
@@ -319,7 +338,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-13",
@@ -335,7 +354,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-14",
@@ -351,7 +370,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-15",
@@ -367,7 +386,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-16",
@@ -383,7 +402,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-17",
@@ -399,7 +418,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-18",
@@ -415,7 +434,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-19",
@@ -431,7 +450,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       },
       {
         "review_id": "review-01-20",
@@ -447,7 +466,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
       }
     ]
   },
@@ -456,97 +475,62 @@
       "data_type": "actual",
       "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
       "source_id": "product.original_name",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T07:36:00+09:00"
     },
     "product.original_price.amount": {
       "data_type": "actual",
       "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
       "source_id": "product.original_price.amount",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T07:36:00+09:00"
     },
     "product.original_price.currency": {
       "data_type": "actual",
       "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
       "source_id": "product.original_price.currency",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T07:36:00+09:00"
     },
     "product.sales_count": {
       "data_type": "actual",
       "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
       "source_id": "product.sales_count",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T07:36:00+09:00"
     },
     "product.rating": {
       "data_type": "actual",
       "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
       "source_id": "product.rating",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T07:36:00+09:00"
     },
     "product.material": {
       "data_type": "actual",
       "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
       "source_id": "product.material",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T07:36:00+09:00"
     },
     "product.supplier.name": {
       "data_type": "actual",
       "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
       "source_id": "product.supplier.name",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T07:36:00+09:00"
     },
     "product.description": {
       "data_type": "test",
       "source_url": "https://example.com/synthetic/prod-w2-01",
       "source_id": "desc-prod-w2-01",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T07:36:00+09:00"
     },
     "product.description_id": {
       "data_type": "test",
       "source_url": "https://example.com/synthetic/prod-w2-01",
       "source_id": "desc-prod-w2-01",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T07:36:00+09:00"
     }
   },
   "missing_fields": [
     {
-      "field_path": "product.material",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
-    },
-    {
-      "field_path": "product.dimensions",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
-    },
-    {
-      "field_path": "product.weight",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
-    },
-    {
       "field_path": "product.recommended_pet_weight_max",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
-    },
-    {
-      "field_path": "product.shipping.method",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
-    },
-    {
-      "field_path": "product.shipping.fee",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
-    },
-    {
-      "field_path": "product.supplier.name",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
-    },
-    {
-      "field_path": "product.options",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
+      "reason": "source_missing",
+      "next_action": "원본에 표시 없음"
     }
   ],
   "normalized_data": {
@@ -643,22 +627,24 @@
       "agent_id": "A02",
       "input_version": 1,
       "result_version": 1,
-      "status": "partial_success",
+      "status": "success",
       "result": {
         "source_version": 1,
         "record_created": true,
-        "pending_manual_fields": 8
+        "pending_manual_fields": 0
       },
       "evidence_ids": [],
       "warnings": [
         "사실 값은 사람이 직접 확인한 실제 값, 이미지·리뷰·설명은 합성 테스트 데이터다 (W1-07 1.1절, 2026-11-06 팀 확정).",
-        "가격은 최저가(3699)만 저장했다. 범위 3699~4384 KRW, 조건: 100개 이상 구간가. 한국 접속 시 자동 환산 표시",
-        "실제 상품 리뷰 수는 13개이며 리뷰 원문은 저장하지 않았다."
+        "가격은 최저가(3735)만 저장했다. 범위 3735~4427 KRW, 조건: 구간가 100개 4427 / 800-4999개 4289 / 5000-9999개 4012 / 10000개 이상 3735, MOQ 100개, 샘플 5533. 11/5 기록(3699~4384)과 환산 차이. 크기·무게는 포장 기준(하나의 패키지 크기·단일 총중량)",
+        "실제 상품 리뷰 수는 13개이며 리뷰 원문은 저장하지 않았다.",
+        "용도: 보행 보조용 슬링 (리프트·재활 하네스)",
+        "상세 페이지 대형견 표기: 예"
       ],
       "errors": [],
       "retry_count": 0,
-      "started_at": "2026-11-05T00:00:00+09:00",
-      "ended_at": "2026-11-05T00:00:00+09:00",
+      "started_at": "2026-11-09T07:36:00+09:00",
+      "ended_at": "2026-11-09T07:36:00+09:00",
       "data_type": "actual"
     }
   },

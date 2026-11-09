@@ -5,9 +5,9 @@
   "run": {
     "run_id": "run-prod-w2-09-a02",
     "job_id": null,
-    "status": "partial_success",
-    "started_at": "2026-11-05T00:00:00+09:00",
-    "ended_at": "2026-11-05T00:00:00+09:00"
+    "status": "success",
+    "started_at": "2026-11-09T08:04:00+09:00",
+    "ended_at": "2026-11-09T08:04:00+09:00"
   },
   "input_version": 1,
   "source_version": 1,
@@ -15,7 +15,7 @@
     "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
     "platform": "alibaba",
     "collection_method": "manual",
-    "collected_at": "2026-11-05T00:00:00+09:00",
+    "collected_at": "2026-11-09T08:04:00+09:00",
     "original_name": "Long-Lasting Interactive Dog Toy Ball Freeze Treats Toy Eco-Friendly Food Grade Silicone Dog Chew Lick Toys for Large Dogs",
     "description": "TEST DATA (synthetic). Silicone treat ball for large dogs. Fill with food and freeze. Textured surface for licking.",
     "description_id": "desc-prod-w2-09",
@@ -23,21 +23,39 @@
       "amount": 2535.0,
       "currency": "KRW"
     },
-    "options": [],
-    "dimensions": null,
-    "weight": null,
-    "material": null,
+    "options": [
+      {
+        "option_id": "opt-09-01",
+        "name": "색상",
+        "value": "녹색, 노란색",
+        "data_type": "actual",
+        "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html"
+      }
+    ],
+    "dimensions": {
+      "length": 10.0,
+      "width": 10.0,
+      "height": 9.0,
+      "unit": "cm"
+    },
+    "weight": {
+      "value": 0.35,
+      "unit": "kg"
+    },
+    "material": [
+      "식품 등급 실리콘"
+    ],
     "recommended_pet_weight_max": null,
     "sales_count": 1157,
     "rating": 5.0,
     "shipping": {
-      "method": null,
-      "fee": null,
-      "currency": null
+      "method": "Alibaba.com Logistics 스탠더드 (200개당, 11/18~12/22 도착)",
+      "fee": 220322.0,
+      "currency": "KRW"
     },
     "supplier": {
       "supplier_id": "sup-prod-w2-09",
-      "name": null,
+      "name": "Dongguan Wellfine Silicone Products Co., Ltd.",
       "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
       "data_type": "actual"
     },
@@ -57,7 +75,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "image_id": "img-09-02",
@@ -74,7 +92,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "image_id": "img-09-03",
@@ -91,7 +109,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "image_id": "img-09-04",
@@ -108,7 +126,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "image_id": "img-09-05",
@@ -125,7 +143,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       }
     ],
     "reviews": [
@@ -143,7 +161,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-02",
@@ -159,7 +177,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-03",
@@ -175,7 +193,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-04",
@@ -191,7 +209,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-05",
@@ -207,7 +225,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-06",
@@ -223,7 +241,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-07",
@@ -239,7 +257,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-08",
@@ -255,7 +273,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-09",
@@ -271,7 +289,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-10",
@@ -287,7 +305,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-11",
@@ -303,7 +321,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-12",
@@ -319,7 +337,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-13",
@@ -335,7 +353,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-14",
@@ -351,7 +369,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-15",
@@ -367,7 +385,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-16",
@@ -383,7 +401,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-17",
@@ -399,7 +417,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-18",
@@ -415,7 +433,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-19",
@@ -431,7 +449,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       },
       {
         "review_id": "review-09-20",
@@ -447,7 +465,7 @@
           "resale": "prohibited"
         },
         "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
-        "usage_checked_at": "2026-11-05T00:00:00+09:00"
+        "usage_checked_at": "2026-11-09T08:04:00+09:00"
       }
     ]
   },
@@ -456,97 +474,62 @@
       "data_type": "actual",
       "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
       "source_id": "product.original_name",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T08:04:00+09:00"
     },
     "product.original_price.amount": {
       "data_type": "actual",
       "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
       "source_id": "product.original_price.amount",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T08:04:00+09:00"
     },
     "product.original_price.currency": {
       "data_type": "actual",
       "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
       "source_id": "product.original_price.currency",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T08:04:00+09:00"
     },
     "product.sales_count": {
       "data_type": "actual",
       "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
       "source_id": "product.sales_count",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T08:04:00+09:00"
     },
     "product.rating": {
       "data_type": "actual",
       "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
       "source_id": "product.rating",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T08:04:00+09:00"
     },
     "product.material": {
       "data_type": "actual",
       "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
       "source_id": "product.material",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T08:04:00+09:00"
     },
     "product.supplier.name": {
       "data_type": "actual",
       "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
       "source_id": "product.supplier.name",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T08:04:00+09:00"
     },
     "product.description": {
       "data_type": "test",
       "source_url": "https://example.com/synthetic/prod-w2-09",
       "source_id": "desc-prod-w2-09",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T08:04:00+09:00"
     },
     "product.description_id": {
       "data_type": "test",
       "source_url": "https://example.com/synthetic/prod-w2-09",
       "source_id": "desc-prod-w2-09",
-      "collected_at": "2026-11-05T00:00:00+09:00"
+      "collected_at": "2026-11-09T08:04:00+09:00"
     }
   },
   "missing_fields": [
     {
-      "field_path": "product.material",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
-    },
-    {
-      "field_path": "product.dimensions",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
-    },
-    {
-      "field_path": "product.weight",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
-    },
-    {
       "field_path": "product.recommended_pet_weight_max",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
-    },
-    {
-      "field_path": "product.shipping.method",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
-    },
-    {
-      "field_path": "product.shipping.fee",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
-    },
-    {
-      "field_path": "product.supplier.name",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
-    },
-    {
-      "field_path": "product.options",
-      "reason": "manual_review_required",
-      "next_action": "사람이 상품 페이지에서 확인 후 입력표에 기록"
+      "reason": "source_missing",
+      "next_action": "원본에 표시 없음"
     }
   ],
   "normalized_data": {
@@ -643,22 +626,23 @@
       "agent_id": "A02",
       "input_version": 1,
       "result_version": 1,
-      "status": "partial_success",
+      "status": "success",
       "result": {
         "source_version": 1,
         "record_created": true,
-        "pending_manual_fields": 8
+        "pending_manual_fields": 0
       },
       "evidence_ids": [],
       "warnings": [
         "사실 값은 사람이 직접 확인한 실제 값, 이미지·리뷰·설명은 합성 테스트 데이터다 (W1-07 1.1절, 2026-11-06 팀 확정).",
-        "가격은 최저가(2535)만 저장했다. 범위 2535~5069 KRW, 조건: MOQ 200개. 한국 접속 시 자동 환산 표시",
-        "실제 상품 리뷰 수는 13개이며 리뷰 원문은 저장하지 않았다."
+        "가격은 최저가(2535)만 저장했다. 범위 2535~5069 KRW, 조건: MOQ 200개. 가격은 11/5 D(A01-02) 기록 그대로 (11/9 재확인 못 함). 크기·무게는 포장 기준(하나의 패키지 크기·단일 총중량)",
+        "실제 상품 리뷰 수는 13개이며 리뷰 원문은 저장하지 않았다.",
+        "상세 페이지 대형견 표기: 예 (상품명 for Large Dogs, 속성 적용 대상은 개·작은 동물)"
       ],
       "errors": [],
       "retry_count": 0,
-      "started_at": "2026-11-05T00:00:00+09:00",
-      "ended_at": "2026-11-05T00:00:00+09:00",
+      "started_at": "2026-11-09T08:04:00+09:00",
+      "ended_at": "2026-11-09T08:04:00+09:00",
       "data_type": "actual"
     }
   },

@@ -3,28 +3,28 @@ category_id,상품 유형 코드,pet_harness,pet_bedding,pet_toy
 source_url,상품 페이지 URL,https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html,https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html,https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html
 platform,플랫폼,alibaba,alibaba,alibaba
 original_name,상품명 (페이지 영문 제목 그대로),Adjustable Dog Lift Harness Dog Sling for Large Dogs,Wholesale Washable Dog Beds for Large Dogs Mattress Comfortable and Warming Rectangle,Long-Lasting Interactive Dog Toy Ball Freeze Treats Toy Eco-Friendly Food Grade Silicone Dog Chew Lick Toys for Large Dogs
-price_min,최저 가격 (숫자만),3699,10150,2535
-price_max,최고 가격 (숫자만),4384,11657,5069
+price_min,최저 가격 (숫자만),3735,10250,2535
+price_max,최고 가격 (숫자만),4427,11772,5069
 currency,가격 통화 (페이지에 보이는 통화),KRW,KRW,KRW
-price_note,가격 조건 (구간가·할인·MOQ 등),100개 이상 구간가. 한국 접속 시 자동 환산 표시,10% 할인가 (정가 ₩11274-12958). 한국 접속 시 자동 환산 표시,MOQ 200개. 한국 접속 시 자동 환산 표시
-options,옵션 (이름=값; 이름=값),,,
-length,길이 (숫자),,,
-width,폭 (숫자),,,
-height,높이 (숫자),,,
-dim_unit,크기 단위 (mm·cm·in),,,
-weight,무게 (숫자),,,
-weight_unit,무게 단위 (g·kg·lb),,,
-material,소재 (여러 개면 ;로 구분),,,
-pet_weight_max,권장 최대 체중 (숫자),,,
+price_note,가격 조건 (구간가·할인·MOQ 등),"구간가 100개 4427 / 800-4999개 4289 / 5000-9999개 4012 / 10000개 이상 3735, MOQ 100개, 샘플 5533. 11/5 기록(3699~4384)과 환산 차이. 크기·무게는 포장 기준(하나의 패키지 크기·단일 총중량)","10% 할인가 (정가 11385-13086, 할인 12/31 종료), 최소 10개. 크기는 L 사이즈 상품 치수, 무게는 포장 총중량(포장 18x10x5cm)",MOQ 200개. 가격은 11/5 D(A01-02) 기록 그대로 (11/9 재확인 못 함). 크기·무게는 포장 기준(하나의 패키지 크기·단일 총중량)
+options,옵션 (이름=값; 이름=값),색상=1종,"색상=회색, 갈색; 크기=M 54*43*18/13cm, L 67*50*18/13cm","색상=녹색, 노란색"
+length,길이 (숫자),20,67,10
+width,폭 (숫자),25,50,10
+height,높이 (숫자),15,18,9
+dim_unit,크기 단위 (mm·cm·in),cm,cm,cm
+weight,무게 (숫자),1.5,0.8,0.35
+weight_unit,무게 단위 (g·kg·lb),kg,kg,kg
+material,소재 (여러 개면 ;로 구분),폴리아미드;폴리에스터,벨벳,식품 등급 실리콘
+pet_weight_max,권장 최대 체중 (숫자),없음,없음,없음
 pet_weight_unit,권장 체중 단위 (kg·lb),,,
 sales_count,판매량 (숫자),7,없음,1157
 rating,상품 평점 (숫자),5.0,없음,5.0
 review_count,상품 리뷰 수 (숫자),13,0,13
-shipping_method,배송 방법,,,
-shipping_fee,배송비 (숫자),,,
-shipping_currency,배송비 통화,,,
-supplier_name,공급처(판매자) 이름,,,
-large_dog_label,상세 페이지에 대형견 표기가 있는가 (예·아니오),,,
-product_use,용도 (예: 산책용 / 보행 보조용 슬링),,,
-collected_at,확인 일시 (2026-11-07 14:00),2026-11-05,2026-11-05,2026-11-05
-collector,확인한 사람,D (A01-02),D (A01-02),D (A01-02)
+shipping_method,배송 방법,"Alibaba.com Logistics (무료 배송, 최대 27665 KRW까지)","Alibaba.com Logistics 스탠더드 (10개당, 11/19~12/21 도착)","Alibaba.com Logistics 스탠더드 (200개당, 11/18~12/22 도착)"
+shipping_fee,배송비 (숫자),0,10624,220322
+shipping_currency,배송비 통화,KRW,KRW,KRW
+supplier_name,공급처(판매자) 이름,"Chaozhou Chaoan Ikitchen Stainless Steel Co., Ltd.","Dalian Usmile Pet Technology Co., Ltd.","Dongguan Wellfine Silicone Products Co., Ltd."
+large_dog_label,상세 페이지에 대형견 표기가 있는가 (예·아니오),예,예,"예 (상품명 for Large Dogs, 속성 적용 대상은 개·작은 동물)"
+product_use,용도 (예: 산책용 / 보행 보조용 슬링),보행 보조용 슬링 (리프트·재활 하네스),,
+collected_at,확인 일시 (2026-11-07 14:00),2026-11-09 07:36,2026-11-09 07:59,2026-11-09 08:04
+collector,확인한 사람,A 형준 (휴대폰 직접 확인),A 형준 (휴대폰 직접 확인),A 형준 (휴대폰 직접 확인)
