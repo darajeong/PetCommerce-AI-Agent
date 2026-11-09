@@ -20,7 +20,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-USAGE_POLICY = "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md"
+USAGE_POLICY = "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md"
 SYNTHETIC_USAGE = {"store": "allowed", "ai_input": "allowed", "display": "allowed", "resale": "prohibited"}
 
 # 합성 콘텐츠: 실제 상품 페이지의 설명·리뷰를 옮긴 것이 아니라 상품 유형에 맞춰 팀이 새로 쓴 문장이다.
@@ -130,11 +130,15 @@ def read_facts(path: Path) -> dict[str, dict[str, str]]:
     return facts
 
 
+def _ts(raw: str) -> str:
+    at = (raw or "2026-11-05").replace(" ", "T")
+    at = at if "T" in at else at + "T00:00"
+    return at if "+" in at else at + ":00+09:00"
+
+
 def build(pid: str, f: dict[str, str]) -> dict:
     url = f["source_url"]
-    at = (f.get("collected_at") or "2026-11-05").replace(" ", "T")
-    at = at if "T" in at else at + "T00:00"
-    at = at if "+" in at else at + ":00+09:00"
+    at = _ts(f.get("collected_at"))
     missing: list[dict] = []
     field_meta: dict[str, dict] = {}
 
@@ -217,8 +221,15 @@ def build(pid: str, f: dict[str, str]) -> dict:
         "supplier": {"supplier_id": f"sup-{pid}", "name": supplier_name, "source_url": url, "data_type": "actual"},
         "images": images, "reviews": reviews,
     }
-    for _, path in FACT_FIELDS:
-        field_meta[path] = {"data_type": "actual", "source_url": url, "source_id": path, "collected_at": at}
+    # 입력표 collected_at_overrides: 다른 시각에 확인한 값 (예: "price_min=2026-11-05; sales_count=2026-11-05")
+    overrides = {}
+    for pair in (f.get("collected_at_overrides") or "").split(";"):
+        if "=" in pair:
+            k, v = (x.strip() for x in pair.split("=", 1))
+            overrides[k] = _ts(v)
+    for key, path in FACT_FIELDS:
+        field_meta[path] = {"data_type": "actual", "source_url": url, "source_id": path,
+                            "collected_at": overrides.get(key, at)}
     for k in ("description", "description_id"):
         field_meta[f"product.{k}"] = {"data_type": "test", "source_url": syn_url,
                                       "source_id": f"desc-{pid}", "collected_at": at}
@@ -228,6 +239,13 @@ def build(pid: str, f: dict[str, str]) -> dict:
         warnings.append(f"가격은 최저가({f['price_min']})만 저장했다. 범위 {f['price_min']}~{f['price_max']} {currency}, 조건: {f.get('price_note') or '없음'}")
     if f.get("review_count"):
         warnings.append(f"실제 상품 리뷰 수는 {f['review_count']}개이며 리뷰 원문은 저장하지 않았다.")
+    if f.get("size_note"):
+        warnings.append(f"크기 기준: {f['size_note']}")
+    if f.get("package_size") or f.get("package_weight"):
+        warnings.append(f"포장 정보(상품 치수·무게 아님, W1-04 v0.2 package_dimensions 제안): "
+                        f"크기 {f.get('package_size') or '없음'}, 총중량 {f.get('package_weight') or '없음'}")
+    if f.get("collected_at_overrides"):
+        warnings.append(f"확인 시각이 다른 값: {f['collected_at_overrides']}")
     if f.get("product_use"):
         warnings.append(f"용도: {f['product_use']}")
     if f.get("large_dog_label"):

@@ -45,10 +45,7 @@
       "height": 18.0,
       "unit": "cm"
     },
-    "weight": {
-      "value": 0.8,
-      "unit": "kg"
-    },
+    "weight": null,
     "material": [
       "벨벳"
     ],
@@ -81,7 +78,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -98,7 +95,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -115,7 +112,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -132,7 +129,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -149,7 +146,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       }
     ],
@@ -167,7 +164,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -183,7 +180,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -199,7 +196,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -215,7 +212,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -231,7 +228,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -247,7 +244,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -263,7 +260,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -279,7 +276,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -295,7 +292,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -311,7 +308,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -327,7 +324,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -343,7 +340,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -359,7 +356,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -375,7 +372,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -391,7 +388,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -407,7 +404,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -423,7 +420,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -439,7 +436,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -455,7 +452,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       },
       {
@@ -471,7 +468,7 @@
           "display": "allowed",
           "resale": "prohibited"
         },
-        "usage_policy_url": "docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
         "usage_checked_at": "2026-11-09T07:59:00+09:00"
       }
     ]
@@ -540,6 +537,11 @@
     },
     {
       "field_path": "product.rating",
+      "reason": "source_missing",
+      "next_action": "원본에 표시 없음"
+    },
+    {
+      "field_path": "product.weight",
       "reason": "source_missing",
       "next_action": "원본에 표시 없음"
     },
@@ -652,8 +654,10 @@
       "evidence_ids": [],
       "warnings": [
         "사실 값은 사람이 직접 확인한 실제 값, 이미지·리뷰·설명은 합성 테스트 데이터다 (W1-07 1.1절, 2026-11-06 팀 확정).",
-        "가격은 최저가(10250)만 저장했다. 범위 10250~11772 KRW, 조건: 10% 할인가 (정가 11385-13086, 할인 12/31 종료), 최소 10개. 크기는 L 사이즈 상품 치수, 무게는 포장 총중량(포장 18x10x5cm)",
+        "가격은 최저가(10250)만 저장했다. 범위 10250~11772 KRW, 조건: 10% 할인가 (정가 11385-13086, 할인 12/31 종료), 최소 10개",
         "실제 상품 리뷰 수는 0개이며 리뷰 원문은 저장하지 않았다.",
+        "크기 기준: L 사이즈 상품 치수 (M 54*43*18/13cm, 높이 18/13은 옆/앞)",
+        "포장 정보(상품 치수·무게 아님, W1-04 v0.2 package_dimensions 제안): 크기 18x10x5 cm, 총중량 0.8 kg",
         "상세 페이지 대형견 표기: 예"
       ],
       "errors": [],

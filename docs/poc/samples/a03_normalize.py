@@ -22,17 +22,17 @@ from pathlib import Path
 
 LENGTH_TO_CM = {"mm": 0.1, "cm": 1.0, "m": 100.0, "in": 2.54, "inch": 2.54}
 WEIGHT_TO_KG = {"g": 0.001, "kg": 1.0, "lb": 0.45359237, "lbs": 0.45359237, "oz": 0.028349523125}
-MATERIALS = {  # 팀 공통 소재 목록(제안) ← 원문 표기
-    "nylon": ["nylon"],
-    "polyester": ["polyester", "poly", "oxford", "oxford cloth"],
-    "cotton": ["cotton"],
-    "mesh": ["mesh", "air mesh"],
-    "natural_rubber": ["natural rubber", "rubber"],
-    "silicone": ["silicone", "food grade silicone"],
+MATERIALS = {  # 팀 공통 소재 목록(제안) ← 원문 표기 (영문·한국어 페이지 표기)
+    "nylon": ["nylon", "polyamide", "나일론", "폴리아미드"],
+    "polyester": ["polyester", "poly", "oxford", "oxford cloth", "폴리에스터", "폴리에스테르", "옥스포드"],
+    "cotton": ["cotton", "면", "코튼"],
+    "mesh": ["mesh", "air mesh", "메쉬", "메시", "에어메쉬"],
+    "natural_rubber": ["natural rubber", "rubber", "천연고무", "고무"],
+    "silicone": ["silicone", "food grade silicone", "실리콘", "식품 등급 실리콘", "식품등급 실리콘"],
     "eva": ["eva"],
     "tpr": ["tpr"],
-    "plush": ["plush", "faux fur", "fleece"],
-    "memory_foam": ["memory foam", "foam"],
+    "plush": ["plush", "faux fur", "fleece", "플러시", "인조 모피", "플리스"],
+    "memory_foam": ["memory foam", "foam", "메모리폼", "메모리 폼", "폼"],
 }
 
 
@@ -86,7 +86,8 @@ def normalize(doc: dict, rates: dict[str, float], rate_source: str | None, at: s
                      "동일 단위 보존" if f == 1 else "길이 단위 변환", dt)
             else:
                 skip(f"product.dimensions.{k}", v, f"알 수 없는 길이 단위: {unit or '미표기'}")
-    nd["normalized_dimensions"] = norm_dims
+    # W1-04 B04: 원본 dimensions가 null이면 정규화 값도 null (값을 만들어 내지 않는다)
+    nd["normalized_dimensions"] = norm_dims if isinstance(dims, dict) else None
 
     # 무게
     w = p.get("weight")
@@ -100,7 +101,7 @@ def normalize(doc: dict, rates: dict[str, float], rate_source: str | None, at: s
                  "동일 단위 보존" if f == 1 else "무게 단위 변환", dt)
         else:
             skip("product.weight.value", w["value"], f"알 수 없는 무게 단위: {unit or '미표기'}")
-    nd["normalized_weight"] = norm_w
+    nd["normalized_weight"] = norm_w if isinstance(w, dict) else None
 
     # 권장 체중 (v0.1: number, v0.2 제안: {value, unit})
     pw = p.get("recommended_pet_weight_max")
@@ -129,6 +130,7 @@ def normalize(doc: dict, rates: dict[str, float], rate_source: str | None, at: s
             norm_mat.append({"original": m, "normalized": hit, "confidence": "medium"})
         else:
             norm_mat.append({"original": m, "normalized": "other", "confidence": "low"})
+            skip("product.material", m, "팀 공통 소재 목록에 없는 소재라 other로 표시 (추정 매핑하지 않음)")
     nd["normalized_material"] = norm_mat
 
     # 중복 (원본은 지우지 않고 표시만)
@@ -190,9 +192,10 @@ def self_test() -> int:
         nd = res["normalized_data"]
         check(f"{n} 원본 product 불변", res["product"] == doc["product"])
         check(f"{n} 번역 보존", nd["translated_reviews"] == expect["translated_reviews"])
-        want = {k: (v if v is None or k == "unit" else _round(v)) for k, v in expect["normalized_dimensions"].items()}
+        exp_dims = expect["normalized_dimensions"]
+        want = None if exp_dims is None else {k: (v if v is None or k == "unit" else _round(v)) for k, v in exp_dims.items()}
         check(f"{n} 크기 일치", nd["normalized_dimensions"] == want)
-        check(f"{n} 무게 일치", nd["normalized_weight"]["value"] == _round(expect["normalized_weight"]["value"]))
+        check(f"{n} 무게 일치", (nd["normalized_weight"] or {}).get("value") == (None if expect["normalized_weight"] is None else _round(expect["normalized_weight"]["value"])))
         price = next(c for c in nd["conversions"] if c["field_path"] == "product.original_price.amount")
         check(f"{n} 가격 KRW", price["normalized_value"] == round(doc["product"]["original_price"]["amount"] * 1400))
         has_pw = doc["product"]["recommended_pet_weight_max"] is not None
@@ -215,6 +218,13 @@ def self_test() -> int:
     check("소재 동의어·기타", [m["normalized"] for m in nd["normalized_material"]] == ["polyester", "other"])
     check("중복 이미지·리뷰 표시", {d["type"] for d in nd["duplicates"]} == {"image_url", "review_text"})
     check("부분 성공 상태", res["agent_outputs"]["A03"]["status"] == "partial_success")
+    check("목록 밖 소재는 unconverted에 사유", any(u["field_path"] == "product.material" and u["original_value"] == "Bamboo" for u in nd["unconverted"]))
+    kor = normalize({"product_id": "k", "run": {"run_id": "r"}, "product": {
+        "original_price": None, "dimensions": None, "weight": None, "recommended_pet_weight_max": None,
+        "material": ["폴리에스터", "식품 등급 실리콘", "폴리아미드", "벨벳"], "images": [], "reviews": []}}, rates, None, at)
+    knd = kor["normalized_data"]
+    check("한국어 소재 동의어", [m["normalized"] for m in knd["normalized_material"]] == ["polyester", "silicone", "nylon", "other"])
+    check("원본 크기·무게 null이면 정규화 값도 null", knd["normalized_dimensions"] is None and knd["normalized_weight"] is None)
     print("결과:", "PASS" if not fails else f"FAIL {fails}건")
     return 1 if fails else 0
 

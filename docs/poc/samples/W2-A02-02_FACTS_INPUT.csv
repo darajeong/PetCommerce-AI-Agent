@@ -6,14 +6,14 @@ original_name,상품명 (페이지 영문 제목 그대로),Adjustable Dog Lift 
 price_min,최저 가격 (숫자만),3735,10250,2535
 price_max,최고 가격 (숫자만),4427,11772,5069
 currency,가격 통화 (페이지에 보이는 통화),KRW,KRW,KRW
-price_note,가격 조건 (구간가·할인·MOQ 등),"구간가 100개 4427 / 800-4999개 4289 / 5000-9999개 4012 / 10000개 이상 3735, MOQ 100개, 샘플 5533. 11/5 기록(3699~4384)과 환산 차이. 크기·무게는 포장 기준(하나의 패키지 크기·단일 총중량)","10% 할인가 (정가 11385-13086, 할인 12/31 종료), 최소 10개. 크기는 L 사이즈 상품 치수, 무게는 포장 총중량(포장 18x10x5cm)",MOQ 200개. 가격은 11/5 D(A01-02) 기록 그대로 (11/9 재확인 못 함). 크기·무게는 포장 기준(하나의 패키지 크기·단일 총중량)
+price_note,가격 조건 (구간가·할인·MOQ 등),"구간가 100개 4427 / 800-4999개 4289 / 5000-9999개 4012 / 10000개 이상 3735, MOQ 100개, 샘플 5533. 11/5 기록(3699~4384)과 환산 차이","10% 할인가 (정가 11385-13086, 할인 12/31 종료), 최소 10개",MOQ 200개. 가격·판매량은 11/5 D(A01-02) 기록 그대로 (11/9 재확인 못 함)
 options,옵션 (이름=값; 이름=값),색상=1종,"색상=회색, 갈색; 크기=M 54*43*18/13cm, L 67*50*18/13cm","색상=녹색, 노란색"
-length,길이 (숫자),20,67,10
-width,폭 (숫자),25,50,10
-height,높이 (숫자),15,18,9
-dim_unit,크기 단위 (mm·cm·in),cm,cm,cm
-weight,무게 (숫자),1.5,0.8,0.35
-weight_unit,무게 단위 (g·kg·lb),kg,kg,kg
+length,길이 (숫자),없음,67,없음
+width,폭 (숫자),없음,50,없음
+height,높이 (숫자),없음,18,없음
+dim_unit,크기 단위 (mm·cm·in),,cm,
+weight,무게 (숫자),없음,없음,없음
+weight_unit,무게 단위 (g·kg·lb),,,
 material,소재 (여러 개면 ;로 구분),폴리아미드;폴리에스터,벨벳,식품 등급 실리콘
 pet_weight_max,권장 최대 체중 (숫자),없음,없음,없음
 pet_weight_unit,권장 체중 단위 (kg·lb),,,
@@ -26,5 +26,9 @@ shipping_currency,배송비 통화,KRW,KRW,KRW
 supplier_name,공급처(판매자) 이름,"Chaozhou Chaoan Ikitchen Stainless Steel Co., Ltd.","Dalian Usmile Pet Technology Co., Ltd.","Dongguan Wellfine Silicone Products Co., Ltd."
 large_dog_label,상세 페이지에 대형견 표기가 있는가 (예·아니오),예,예,"예 (상품명 for Large Dogs, 속성 적용 대상은 개·작은 동물)"
 product_use,용도 (예: 산책용 / 보행 보조용 슬링),보행 보조용 슬링 (리프트·재활 하네스),,
+size_note,크기 기준 메모,상품 치수 미표시,"L 사이즈 상품 치수 (M 54*43*18/13cm, 높이 18/13은 옆/앞)",상품 치수 미표시 (옵션 사진에 80mm 표기가 있으나 흐려 미입력)
+package_size,"포장 크기 (하나의 패키지 크기, 상품 치수 아님)",20x25x15 cm,18x10x5 cm,10x10x9 cm
+package_weight,포장 총중량 (단일 총중량),1.5 kg,0.8 kg,0.35 kg
+collected_at_overrides,확인 시각이 collected_at과 다른 값 (key=일시; ...),,,price_min=2026-11-05; price_max=2026-11-05; currency=2026-11-05; sales_count=2026-11-05
 collected_at,확인 일시 (2026-11-07 14:00),2026-11-09 07:36,2026-11-09 07:59,2026-11-09 08:04
 collector,확인한 사람,A 형준 (휴대폰 직접 확인),A 형준 (휴대폰 직접 확인),A 형준 (휴대폰 직접 확인)
