@@ -1,0 +1,825 @@
+{
+  "schema_version": "0.1",
+  "product_id": "prod-test-002",
+  "category_id": "pet_bedding",
+  "run": {
+    "run_id": "run-test-002",
+    "job_id": null,
+    "status": "success",
+    "started_at": "2026-11-05T15:00:00+09:00",
+    "ended_at": "2026-11-05T15:00:00+09:00"
+  },
+  "input_version": 1,
+  "source_version": 1,
+  "product": {
+    "source_url": "https://example.com/test-products/002",
+    "platform": "test_catalog",
+    "collection_method": "mock",
+    "collected_at": "2026-11-05T15:00:00+09:00",
+    "original_name": "TEST Washable Rectangle Dog Bed Mattress Large",
+    "description": "TEST DATA. Rectangle dog bed for large dogs. Size 1100 x 800 x 120 mm. Removable washable cover. Polyester filling. Weight 3.2 kg.",
+    "description_id": "desc-test-002",
+    "original_price": {
+      "amount": 18.5,
+      "currency": "USD"
+    },
+    "options": [
+      {
+        "option_id": "opt-002-01",
+        "name": "size",
+        "value": "XL",
+        "data_type": "test",
+        "source_url": "https://example.com/test-products/002"
+      },
+      {
+        "option_id": "opt-002-02",
+        "name": "color",
+        "value": "gray",
+        "data_type": "test",
+        "source_url": "https://example.com/test-products/002"
+      }
+    ],
+    "dimensions": {
+      "length": 1100,
+      "width": 800,
+      "height": 120,
+      "unit": "mm"
+    },
+    "weight": {
+      "value": 3.2,
+      "unit": "kg"
+    },
+    "material": [
+      "polyester",
+      "cotton"
+    ],
+    "recommended_pet_weight_max": null,
+    "sales_count": 340,
+    "rating": 4.3,
+    "shipping": {
+      "method": "standard",
+      "fee": null,
+      "currency": "USD"
+    },
+    "supplier": {
+      "supplier_id": "sup-test-002",
+      "name": "TEST Supplier 002",
+      "source_url": "https://example.com/test-products/002",
+      "data_type": "test"
+    },
+    "images": [
+      {
+        "image_id": "img-002-01",
+        "image_no": 1,
+        "image_role": "main",
+        "url": "https://example.com/test-images/002-1.jpg",
+        "source_url": "https://example.com/test-products/002",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "image_id": "img-002-02",
+        "image_no": 2,
+        "image_role": "detail",
+        "url": "https://example.com/test-images/002-2.jpg",
+        "source_url": "https://example.com/test-products/002",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "image_id": "img-002-03",
+        "image_no": 3,
+        "image_role": "detail",
+        "url": "https://example.com/test-images/002-3.jpg",
+        "source_url": "https://example.com/test-products/002",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "image_id": "img-002-04",
+        "image_no": 4,
+        "image_role": "detail",
+        "url": "https://example.com/test-images/002-4.jpg",
+        "source_url": "https://example.com/test-products/002",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "image_id": "img-002-05",
+        "image_no": 5,
+        "image_role": "detail",
+        "url": "https://example.com/test-images/002-5.jpg",
+        "source_url": "https://example.com/test-products/002",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      }
+    ],
+    "reviews": [
+      {
+        "review_id": "review-002-01",
+        "text": "Big enough for my 40 kg shepherd.",
+        "rating": 5,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-02",
+        "text": "Filling went flat after a month.",
+        "rating": 2,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-03",
+        "text": "Cover washes well in the machine.",
+        "rating": 5,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-04",
+        "text": "Zipper broke when removing the cover.",
+        "rating": 2,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-05",
+        "text": "My dog sleeps on it every night.",
+        "rating": 5,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-06",
+        "text": "Thinner than I expected.",
+        "rating": 3,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-07",
+        "text": "No smell after unpacking.",
+        "rating": 4,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-08",
+        "text": "Edges lost shape quickly.",
+        "rating": 2,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-09",
+        "text": "Non-slip bottom works on tile.",
+        "rating": 4,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-10",
+        "text": "Got flat in the middle after weeks.",
+        "rating": 2,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-11",
+        "text": "Soft surface, dog loves it.",
+        "rating": 5,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-12",
+        "text": "Color slightly darker than photo.",
+        "rating": 3,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-13",
+        "text": "Shipping took three weeks.",
+        "rating": 3,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-14",
+        "text": "Good for old dogs with joint pain.",
+        "rating": 4,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-15",
+        "text": "Seams are well sewn.",
+        "rating": 4,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-16",
+        "text": "Hair sticks to the fabric.",
+        "rating": 3,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-17",
+        "text": "Zipper got stuck after washing.",
+        "rating": 2,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-18",
+        "text": "Fits in my car trunk too.",
+        "rating": 4,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-19",
+        "text": "Reasonable price for the size.",
+        "rating": 4,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      },
+      {
+        "review_id": "review-002-20",
+        "text": "Would recommend for large breeds.",
+        "rating": 5,
+        "source_url": "https://example.com/test-products/002",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-05T15:00:00+09:00"
+      }
+    ]
+  },
+  "field_meta": {
+    "product.original_name": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.original_name",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.description": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "desc-test-002",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.description_id": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "desc-test-002",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.original_price.amount": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.original_price.amount",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.original_price.currency": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.original_price.currency",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.weight.value": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.weight.value",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.weight.unit": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.weight.unit",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.material": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.material",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.recommended_pet_weight_max": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.recommended_pet_weight_max",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.sales_count": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.sales_count",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.rating": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.rating",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.shipping.method": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.shipping.method",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.shipping.fee": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.shipping.fee",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.supplier.name": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.supplier.name",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.dimensions.length": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.dimensions.length",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.dimensions.width": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.dimensions.width",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.dimensions.height": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.dimensions.height",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.dimensions.unit": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.dimensions.unit",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.options[0].value": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.options[0].value",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    },
+    "product.options[1].value": {
+      "data_type": "test",
+      "source_url": "https://example.com/test-products/002",
+      "source_id": "product.options[1].value",
+      "collected_at": "2026-11-05T15:00:00+09:00"
+    }
+  },
+  "missing_fields": [
+    {
+      "field_path": "product.recommended_pet_weight_max",
+      "reason": "source_missing",
+      "next_action": "공급처에 최대 권장 체중 확인"
+    },
+    {
+      "field_path": "product.shipping.fee",
+      "reason": "manual_review_required",
+      "next_action": "배송비는 수량·지역별로 달라 수동 확인"
+    }
+  ],
+  "normalized_data": {
+    "translated_name": "세탁 가능한 대형견 직사각형 매트리스 (테스트)",
+    "translated_description": "테스트 데이터. 대형견용 직사각형 침대. 크기 1100 x 800 x 120mm. 분리 세탁 가능한 커버. 폴리에스터 충전재. 무게 3.2kg.",
+    "translated_reviews": [
+      {
+        "review_id": "review-002-01",
+        "translated_text": "40kg 셰퍼드에게 충분히 커요."
+      },
+      {
+        "review_id": "review-002-02",
+        "translated_text": "한 달 만에 충전재가 납작해졌어요."
+      },
+      {
+        "review_id": "review-002-03",
+        "translated_text": "커버가 세탁기로 잘 빨려요."
+      },
+      {
+        "review_id": "review-002-04",
+        "translated_text": "커버를 벗기다 지퍼가 고장 났어요."
+      },
+      {
+        "review_id": "review-002-05",
+        "translated_text": "강아지가 매일 밤 여기서 자요."
+      },
+      {
+        "review_id": "review-002-06",
+        "translated_text": "생각보다 얇아요."
+      },
+      {
+        "review_id": "review-002-07",
+        "translated_text": "포장을 풀었을 때 냄새가 없어요."
+      },
+      {
+        "review_id": "review-002-08",
+        "translated_text": "가장자리가 금방 모양이 망가졌어요."
+      },
+      {
+        "review_id": "review-002-09",
+        "translated_text": "미끄럼 방지 바닥이 타일에서 잘 돼요."
+      },
+      {
+        "review_id": "review-002-10",
+        "translated_text": "몇 주 지나니 가운데가 꺼졌어요."
+      },
+      {
+        "review_id": "review-002-11",
+        "translated_text": "표면이 부드러워서 강아지가 좋아해요."
+      },
+      {
+        "review_id": "review-002-12",
+        "translated_text": "사진보다 색이 조금 어두워요."
+      },
+      {
+        "review_id": "review-002-13",
+        "translated_text": "배송에 3주 걸렸어요."
+      },
+      {
+        "review_id": "review-002-14",
+        "translated_text": "관절이 안 좋은 노견에게 좋아요."
+      },
+      {
+        "review_id": "review-002-15",
+        "translated_text": "이음새 바느질이 잘 돼 있어요."
+      },
+      {
+        "review_id": "review-002-16",
+        "translated_text": "털이 천에 잘 붙어요."
+      },
+      {
+        "review_id": "review-002-17",
+        "translated_text": "세탁 후 지퍼가 걸려요."
+      },
+      {
+        "review_id": "review-002-18",
+        "translated_text": "차 트렁크에도 들어가요."
+      },
+      {
+        "review_id": "review-002-19",
+        "translated_text": "크기에 비해 가격이 적당해요."
+      },
+      {
+        "review_id": "review-002-20",
+        "translated_text": "대형견에게 추천해요."
+      }
+    ],
+    "conversions": [
+      {
+        "field_path": "product.original_price.amount",
+        "original_value": 18.5,
+        "original_unit": "USD",
+        "normalized_value": 25900.0,
+        "normalized_unit": "KRW",
+        "conversion_rate": 1400.0,
+        "rate_source": "테스트용 고정 환율(실제 환율 아님)",
+        "converted_at": "2026-11-05T15:00:00+09:00",
+        "data_type": "test"
+      },
+      {
+        "field_path": "product.dimensions.length",
+        "original_value": 1100,
+        "original_unit": "mm",
+        "normalized_value": 110.0,
+        "normalized_unit": "cm",
+        "conversion_rate": 0.1,
+        "rate_source": "길이 단위 변환",
+        "converted_at": "2026-11-05T15:00:00+09:00",
+        "data_type": "test"
+      },
+      {
+        "field_path": "product.dimensions.width",
+        "original_value": 800,
+        "original_unit": "mm",
+        "normalized_value": 80.0,
+        "normalized_unit": "cm",
+        "conversion_rate": 0.1,
+        "rate_source": "길이 단위 변환",
+        "converted_at": "2026-11-05T15:00:00+09:00",
+        "data_type": "test"
+      },
+      {
+        "field_path": "product.dimensions.height",
+        "original_value": 120,
+        "original_unit": "mm",
+        "normalized_value": 12.0,
+        "normalized_unit": "cm",
+        "conversion_rate": 0.1,
+        "rate_source": "길이 단위 변환",
+        "converted_at": "2026-11-05T15:00:00+09:00",
+        "data_type": "test"
+      },
+      {
+        "field_path": "product.weight.value",
+        "original_value": 3.2,
+        "original_unit": "kg",
+        "normalized_value": 3.2,
+        "normalized_unit": "kg",
+        "conversion_rate": 1.0,
+        "rate_source": "동일 단위 보존",
+        "converted_at": "2026-11-05T15:00:00+09:00",
+        "data_type": "test"
+      }
+    ],
+    "normalized_dimensions": {
+      "unit": "cm",
+      "length": 110.0,
+      "width": 80.0,
+      "height": 12.0
+    },
+    "normalized_weight": {
+      "value": 3.2,
+      "unit": "kg"
+    }
+  },
+  "evidence": [],
+  "agent_outputs": {
+    "A02": {
+      "run_id": "run-test-002",
+      "product_id": "prod-test-002",
+      "agent_id": "A02",
+      "input_version": 1,
+      "result_version": 1,
+      "status": "success",
+      "result": {
+        "source_version": 1,
+        "record_created": true
+      },
+      "evidence_ids": [],
+      "warnings": [
+        "본 결과는 합성 테스트 데이터 기반입니다(실제 상품 아님)."
+      ],
+      "errors": [],
+      "retry_count": 0,
+      "started_at": "2026-11-05T15:00:00+09:00",
+      "ended_at": "2026-11-05T15:00:00+09:00",
+      "data_type": "test"
+    },
+    "A03": {
+      "run_id": "run-test-002",
+      "product_id": "prod-test-002",
+      "agent_id": "A03",
+      "input_version": 1,
+      "result_version": 1,
+      "status": "success",
+      "result": {
+        "normalized_data_ref": {
+          "source_version": 1,
+          "result_version": 1
+        },
+        "translated_review_count": 20,
+        "conversion_count": 5
+      },
+      "evidence_ids": [],
+      "warnings": [
+        "본 결과는 합성 테스트 데이터 기반입니다(실제 상품 아님).",
+        "환율은 테스트용 고정값으로 실제 가격 결정에 사용하지 않는다."
+      ],
+      "errors": [],
+      "retry_count": 0,
+      "started_at": "2026-11-05T15:00:00+09:00",
+      "ended_at": "2026-11-05T15:00:00+09:00",
+      "data_type": "test"
+    }
+  },
+  "errors": [],
+  "approval": {
+    "status": "not_requested",
+    "target_version": null,
+    "approver": null,
+    "approved_at": null,
+    "reason": null
+  }
+}
