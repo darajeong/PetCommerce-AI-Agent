@@ -117,7 +117,8 @@ def run_batch(facts: dict[str, dict[str, str]], out_dir: Path | None, log_path: 
     products = log["products"]
     log.update(ended_at=now(), completed=True,
                by_status={s: sum(p["final_status"] == s for p in products) for s in ("success", "partial_success", "failed")},
-               totals={k: sum(p["counts"][k] for p in products) for k in COUNT_KEYS})
+               totals={k: sum(p["counts"][k] for p in products) for k in COUNT_KEYS},
+               warnings_count=sum(len(p["warnings"]) for p in products))  # 0이 아니면 저장 안 된 결과 있음
     log_path.write_text(dump(log), encoding="utf-8")
     # 파일에 실제로 남은 상품 수 (메모리 값이 아니라 다시 읽은 값)
     saved = json.loads(log_path.read_text(encoding="utf-8"))["products"]
@@ -218,9 +219,11 @@ def self_test() -> int:
             out.mkdir()
             old = out / "W2-A02-02_PRODUCT_prod-w2-01.json"
             old.write_text("{}\n", encoding="utf-8")
-            p = {x["product_id"]: x for x in batch(tmp, out_dir=out)["products"]}
+            log = batch(tmp, out_dir=out)
+            p = {x["product_id"]: x for x in log["products"]}
             check("덮어쓰기 방지: 기존 파일 유지·경고 기록", old.read_text(encoding="utf-8") == "{}\n"
                   and p["prod-w2-01"]["warnings"] and "docs/poc/samples/W2-A02-02_PRODUCT_prod-w2-01.json" not in p["prod-w2-01"]["outputs"])
+            check("덮어쓰기 방지: 배치 warnings_count 1", log["warnings_count"] == 1)
             batch(tmp, out_dir=out, overwrite=True)
             check("--overwrite: 갱신됨", old.read_text(encoding="utf-8") != "{}\n")
         finally:
@@ -242,8 +245,8 @@ def main() -> int:
     log = run_batch(a02_build_product.read_facts(a.facts), a.out_dir, a.log, a.overwrite)
     for p in log["products"]:
         print(f"{p['product_id']}: {p['final_status']} {p['counts']}" + (f" 경고 {p['warnings']}" if p["warnings"] else ""))
-    print(f"합계 {log['totals']}, 최종 상태 저장(파일 기준) {log['final_status_saved']}/{log['product_count']}")
-    return 0
+    print(f"합계 {log['totals']}, 최종 상태 저장(파일 기준) {log['final_status_saved']}/{log['product_count']}, 경고 {log['warnings_count']}")
+    return 2 if log["warnings_count"] else 0  # 경고(미저장 결과) 있으면 정상 종료로 보이지 않게
 
 
 if __name__ == "__main__":

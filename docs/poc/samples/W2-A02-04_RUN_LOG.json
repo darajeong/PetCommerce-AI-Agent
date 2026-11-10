@@ -1,8 +1,8 @@
 {
-  "run_id": "run-a02-04-20261110T150603",
+  "run_id": "run-a02-04-20261110T165638",
   "task": "A02-04",
-  "started_at": "2026-11-10T15:06:03+09:00",
-  "ended_at": "2026-11-10T15:06:03+09:00",
+  "started_at": "2026-11-10T16:56:38+09:00",
+  "ended_at": "2026-11-10T16:56:38+09:00",
   "completed": true,
   "product_count": 3,
   "max_retry": 1,
@@ -11,8 +11,8 @@
     {
       "product_id": "prod-w2-01",
       "final_status": "success",
-      "started_at": "2026-11-10T15:06:03+09:00",
-      "ended_at": "2026-11-10T15:06:03+09:00",
+      "started_at": "2026-11-10T16:56:38+09:00",
+      "ended_at": "2026-11-10T16:56:38+09:00",
       "counts": {
         "wait": 0,
         "retry": 0,
@@ -68,8 +68,8 @@
     {
       "product_id": "prod-w2-07",
       "final_status": "partial_success",
-      "started_at": "2026-11-10T15:06:03+09:00",
-      "ended_at": "2026-11-10T15:06:03+09:00",
+      "started_at": "2026-11-10T16:56:38+09:00",
+      "ended_at": "2026-11-10T16:56:38+09:00",
       "counts": {
         "wait": 0,
         "retry": 0,
@@ -119,8 +119,8 @@
     {
       "product_id": "prod-w2-09",
       "final_status": "success",
-      "started_at": "2026-11-10T15:06:03+09:00",
-      "ended_at": "2026-11-10T15:06:03+09:00",
+      "started_at": "2026-11-10T16:56:38+09:00",
+      "ended_at": "2026-11-10T16:56:38+09:00",
       "counts": {
         "wait": 0,
         "retry": 0,
@@ -179,5 +179,6 @@
     "block": 4,
     "manual_switch": 3
   },
+  "warnings_count": 0,
   "final_status_saved": 3
 }
