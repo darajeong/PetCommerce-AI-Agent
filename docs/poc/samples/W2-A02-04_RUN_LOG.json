@@ -1,29 +1,18 @@
 {
-  "run_id": "run-a02-04-20261110T140142",
+  "run_id": "run-a02-04-20261110T150603",
   "task": "A02-04",
-  "started_at": "2026-11-10T14:01:42+09:00",
-  "ended_at": "2026-11-10T14:01:42+09:00",
+  "started_at": "2026-11-10T15:06:03+09:00",
+  "ended_at": "2026-11-10T15:06:03+09:00",
+  "completed": true,
   "product_count": 3,
-  "final_status_saved": 3,
-  "by_status": {
-    "success": 2,
-    "partial_success": 1,
-    "failed": 0
-  },
-  "totals": {
-    "wait": 0,
-    "retry": 0,
-    "block": 4,
-    "manual_switch": 3
-  },
   "max_retry": 1,
   "wait_policy": "네트워크 요청 없음(입력표·로컬 처리만). 대기 발생 0",
   "products": [
     {
       "product_id": "prod-w2-01",
       "final_status": "success",
-      "started_at": "2026-11-10T14:01:42+09:00",
-      "ended_at": "2026-11-10T14:01:42+09:00",
+      "started_at": "2026-11-10T15:06:03+09:00",
+      "ended_at": "2026-11-10T15:06:03+09:00",
       "counts": {
         "wait": 0,
         "retry": 0,
@@ -73,13 +62,14 @@
       "outputs": [
         "docs/poc/samples/W2-A02-02_PRODUCT_prod-w2-01.json",
         "docs/poc/samples/W2-A03-02_RESULT_w2-01.json"
-      ]
+      ],
+      "warnings": []
     },
     {
       "product_id": "prod-w2-07",
       "final_status": "partial_success",
-      "started_at": "2026-11-10T14:01:42+09:00",
-      "ended_at": "2026-11-10T14:01:42+09:00",
+      "started_at": "2026-11-10T15:06:03+09:00",
+      "ended_at": "2026-11-10T15:06:03+09:00",
       "counts": {
         "wait": 0,
         "retry": 0,
@@ -123,13 +113,14 @@
       "outputs": [
         "docs/poc/samples/W2-A02-02_PRODUCT_prod-w2-07.json",
         "docs/poc/samples/W2-A03-02_RESULT_w2-07.json"
-      ]
+      ],
+      "warnings": []
     },
     {
       "product_id": "prod-w2-09",
       "final_status": "success",
-      "started_at": "2026-11-10T14:01:42+09:00",
-      "ended_at": "2026-11-10T14:01:42+09:00",
+      "started_at": "2026-11-10T15:06:03+09:00",
+      "ended_at": "2026-11-10T15:06:03+09:00",
       "counts": {
         "wait": 0,
         "retry": 0,
@@ -173,7 +164,20 @@
       "outputs": [
         "docs/poc/samples/W2-A02-02_PRODUCT_prod-w2-09.json",
         "docs/poc/samples/W2-A03-02_RESULT_w2-09.json"
-      ]
+      ],
+      "warnings": []
     }
-  ]
+  ],
+  "by_status": {
+    "success": 2,
+    "partial_success": 1,
+    "failed": 0
+  },
+  "totals": {
+    "wait": 0,
+    "retry": 0,
+    "block": 4,
+    "manual_switch": 3
+  },
+  "final_status_saved": 3
 }
