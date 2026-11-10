@@ -1,0 +1,663 @@
+{
+  "schema_version": "0.1",
+  "product_id": "prod-w2-01",
+  "category_id": "pet_harness",
+  "run": {
+    "run_id": "run-prod-w2-01-a02",
+    "job_id": null,
+    "status": "success",
+    "started_at": "2026-11-09T07:36:00+09:00",
+    "ended_at": "2026-11-09T07:36:00+09:00"
+  },
+  "input_version": 1,
+  "source_version": 1,
+  "product": {
+    "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
+    "platform": "alibaba",
+    "collection_method": "manual",
+    "collected_at": "2026-11-09T07:36:00+09:00",
+    "original_name": "Adjustable Dog Lift Harness Dog Sling for Large Dogs",
+    "description": "TEST DATA (synthetic). Rear support lift sling for large dogs with weak hind legs. Padded belly panel, long carry handle, adjustable straps.",
+    "description_id": "desc-prod-w2-01",
+    "original_price": {
+      "amount": 3735.0,
+      "currency": "KRW"
+    },
+    "options": [
+      {
+        "option_id": "opt-01-01",
+        "name": "색상",
+        "value": "1종",
+        "data_type": "actual",
+        "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html"
+      }
+    ],
+    "dimensions": null,
+    "weight": null,
+    "material": [
+      "폴리아미드",
+      "폴리에스터"
+    ],
+    "recommended_pet_weight_max": null,
+    "sales_count": 7,
+    "rating": 5.0,
+    "shipping": {
+      "method": "Alibaba.com Logistics (무료 배송, 최대 27665 KRW까지)",
+      "fee": 0.0,
+      "currency": "KRW"
+    },
+    "supplier": {
+      "supplier_id": "sup-prod-w2-01",
+      "name": "Chaozhou Chaoan Ikitchen Stainless Steel Co., Ltd.",
+      "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
+      "data_type": "actual"
+    },
+    "images": [
+      {
+        "image_id": "img-01-01",
+        "image_no": 1,
+        "image_role": "main",
+        "url": "https://example.com/synthetic-images/prod-w2-01-1.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "image_id": "img-01-02",
+        "image_no": 2,
+        "image_role": "detail",
+        "url": "https://example.com/synthetic-images/prod-w2-01-2.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "image_id": "img-01-03",
+        "image_no": 3,
+        "image_role": "detail",
+        "url": "https://example.com/synthetic-images/prod-w2-01-3.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "image_id": "img-01-04",
+        "image_no": 4,
+        "image_role": "detail",
+        "url": "https://example.com/synthetic-images/prod-w2-01-4.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "image_id": "img-01-05",
+        "image_no": 5,
+        "image_role": "detail",
+        "url": "https://example.com/synthetic-images/prod-w2-01-5.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      }
+    ],
+    "reviews": [
+      {
+        "review_id": "review-01-01",
+        "text": "Helps my old lab climb the stairs.",
+        "rating": 5,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-02",
+        "text": "Handle is too short for a tall person.",
+        "rating": 3,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-03",
+        "text": "Padding is soft on the belly.",
+        "rating": 5,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-04",
+        "text": "Strap slipped off during a walk.",
+        "rating": 2,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-05",
+        "text": "Good after my dog's knee surgery.",
+        "rating": 5,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-06",
+        "text": "Too narrow for a 45 kg dog.",
+        "rating": 2,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-07",
+        "text": "Easy to put on while the dog stands.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-08",
+        "text": "Velcro wore out in a month.",
+        "rating": 2,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-09",
+        "text": "Saves my back when lifting.",
+        "rating": 5,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-10",
+        "text": "Strap slips when the dog turns.",
+        "rating": 2,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-11",
+        "text": "Washes fine by hand.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-12",
+        "text": "Smaller than the size chart.",
+        "rating": 3,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-13",
+        "text": "Stitching on the handle is strong.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-14",
+        "text": "My dog walks longer with it.",
+        "rating": 5,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-15",
+        "text": "Not for daily walking, only support.",
+        "rating": 3,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-16",
+        "text": "Velcro catches dog hair.",
+        "rating": 3,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-17",
+        "text": "Good price for rehab use.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-18",
+        "text": "Arrived quickly.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-19",
+        "text": "Velcro stopped holding after washing.",
+        "rating": 2,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      },
+      {
+        "review_id": "review-01-20",
+        "text": "Would buy a bigger size next time.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-01",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:36:00+09:00"
+      }
+    ]
+  },
+  "field_meta": {
+    "product.original_name": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
+      "source_id": "product.original_name",
+      "collected_at": "2026-11-09T07:36:00+09:00"
+    },
+    "product.original_price.amount": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
+      "source_id": "product.original_price.amount",
+      "collected_at": "2026-11-09T07:36:00+09:00"
+    },
+    "product.original_price.currency": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
+      "source_id": "product.original_price.currency",
+      "collected_at": "2026-11-09T07:36:00+09:00"
+    },
+    "product.sales_count": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
+      "source_id": "product.sales_count",
+      "collected_at": "2026-11-09T07:36:00+09:00"
+    },
+    "product.rating": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
+      "source_id": "product.rating",
+      "collected_at": "2026-11-09T07:36:00+09:00"
+    },
+    "product.material": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
+      "source_id": "product.material",
+      "collected_at": "2026-11-09T07:36:00+09:00"
+    },
+    "product.supplier.name": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
+      "source_id": "product.supplier.name",
+      "collected_at": "2026-11-09T07:36:00+09:00"
+    },
+    "product.description": {
+      "data_type": "test",
+      "source_url": "https://example.com/synthetic/prod-w2-01",
+      "source_id": "desc-prod-w2-01",
+      "collected_at": "2026-11-09T07:36:00+09:00"
+    },
+    "product.description_id": {
+      "data_type": "test",
+      "source_url": "https://example.com/synthetic/prod-w2-01",
+      "source_id": "desc-prod-w2-01",
+      "collected_at": "2026-11-09T07:36:00+09:00"
+    }
+  },
+  "missing_fields": [
+    {
+      "field_path": "product.dimensions",
+      "reason": "source_missing",
+      "next_action": "원본에 표시 없음"
+    },
+    {
+      "field_path": "product.weight",
+      "reason": "source_missing",
+      "next_action": "원본에 표시 없음"
+    },
+    {
+      "field_path": "product.recommended_pet_weight_max",
+      "reason": "source_missing",
+      "next_action": "원본에 표시 없음"
+    }
+  ],
+  "normalized_data": {
+    "translated_name": null,
+    "translated_description": "테스트 데이터(합성). 뒷다리가 약한 대형견용 후방 보조 리프트 슬링. 패딩 복부 패널, 긴 손잡이, 조절 가능한 끈.",
+    "translated_reviews": [
+      {
+        "review_id": "review-01-01",
+        "translated_text": "노견 래브라도가 계단 오를 때 도움이 돼요."
+      },
+      {
+        "review_id": "review-01-02",
+        "translated_text": "키 큰 사람에게는 손잡이가 너무 짧아요."
+      },
+      {
+        "review_id": "review-01-03",
+        "translated_text": "배 부분 패딩이 부드러워요."
+      },
+      {
+        "review_id": "review-01-04",
+        "translated_text": "산책 중에 끈이 빠졌어요."
+      },
+      {
+        "review_id": "review-01-05",
+        "translated_text": "강아지 무릎 수술 후에 좋아요."
+      },
+      {
+        "review_id": "review-01-06",
+        "translated_text": "45kg 강아지에게는 폭이 좁아요."
+      },
+      {
+        "review_id": "review-01-07",
+        "translated_text": "강아지가 서 있을 때 착용시키기 쉬워요."
+      },
+      {
+        "review_id": "review-01-08",
+        "translated_text": "한 달 만에 벨크로가 약해졌어요."
+      },
+      {
+        "review_id": "review-01-09",
+        "translated_text": "들어 올릴 때 허리가 덜 아파요."
+      },
+      {
+        "review_id": "review-01-10",
+        "translated_text": "강아지가 방향을 틀 때 끈이 미끄러져요."
+      },
+      {
+        "review_id": "review-01-11",
+        "translated_text": "손세탁해도 괜찮아요."
+      },
+      {
+        "review_id": "review-01-12",
+        "translated_text": "사이즈표보다 작아요."
+      },
+      {
+        "review_id": "review-01-13",
+        "translated_text": "손잡이 박음질이 튼튼해요."
+      },
+      {
+        "review_id": "review-01-14",
+        "translated_text": "이걸로 강아지가 더 오래 걸어요."
+      },
+      {
+        "review_id": "review-01-15",
+        "translated_text": "일상 산책용이 아니라 보조용이에요."
+      },
+      {
+        "review_id": "review-01-16",
+        "translated_text": "벨크로에 털이 붙어요."
+      },
+      {
+        "review_id": "review-01-17",
+        "translated_text": "재활용으로 가격이 괜찮아요."
+      },
+      {
+        "review_id": "review-01-18",
+        "translated_text": "빨리 도착했어요."
+      },
+      {
+        "review_id": "review-01-19",
+        "translated_text": "세탁 후 벨크로가 잘 안 붙어요."
+      },
+      {
+        "review_id": "review-01-20",
+        "translated_text": "다음엔 더 큰 사이즈로 살 거예요."
+      }
+    ]
+  },
+  "evidence": [],
+  "agent_outputs": {
+    "A02": {
+      "run_id": "run-prod-w2-01-a02",
+      "product_id": "prod-w2-01",
+      "agent_id": "A02",
+      "input_version": 1,
+      "result_version": 1,
+      "status": "success",
+      "result": {
+        "source_version": 1,
+        "record_created": true,
+        "pending_manual_fields": 0
+      },
+      "evidence_ids": [],
+      "warnings": [
+        "사실 값은 사람이 직접 확인한 실제 값, 이미지·리뷰·설명은 합성 테스트 데이터다 (W1-07 1.1절, 2026-11-06 팀 확정).",
+        "가격은 최저가(3735)만 저장했다. 범위 3735~4427 KRW, 조건: 구간가 100개 4427 / 800-4999개 4289 / 5000-9999개 4012 / 10000개 이상 3735, MOQ 100개, 샘플 5533. 11/5 기록(3699~4384)과 환산 차이",
+        "실제 상품 리뷰 수는 13개이며 리뷰 원문은 저장하지 않았다.",
+        "크기 기준: 상품 치수 미표시",
+        "포장 정보(상품 치수·무게 아님, W1-04 v0.2 package_dimensions 제안): 크기 20x25x15 cm, 총중량 1.5 kg",
+        "용도: 보행 보조용 슬링 (리프트·재활 하네스)",
+        "상세 페이지 대형견 표기: 예"
+      ],
+      "errors": [],
+      "retry_count": 0,
+      "started_at": "2026-11-09T07:36:00+09:00",
+      "ended_at": "2026-11-09T07:36:00+09:00",
+      "data_type": "actual"
+    }
+  },
+  "errors": [],
+  "approval": {
+    "status": "not_requested",
+    "target_version": null,
+    "approver": null,
+    "approved_at": null,
+    "reason": null
+  }
+}

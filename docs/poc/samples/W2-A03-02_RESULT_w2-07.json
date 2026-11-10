@@ -1,0 +1,775 @@
+{
+  "schema_version": "0.1",
+  "product_id": "prod-w2-07",
+  "category_id": "pet_bedding",
+  "run": {
+    "run_id": "run-prod-w2-07-a02",
+    "job_id": null,
+    "status": "success",
+    "started_at": "2026-11-09T07:59:00+09:00",
+    "ended_at": "2026-11-09T07:59:00+09:00"
+  },
+  "input_version": 1,
+  "source_version": 1,
+  "product": {
+    "source_url": "https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html",
+    "platform": "alibaba",
+    "collection_method": "manual",
+    "collected_at": "2026-11-09T07:59:00+09:00",
+    "original_name": "Wholesale Washable Dog Beds for Large Dogs Mattress Comfortable and Warming Rectangle",
+    "description": "TEST DATA (synthetic). Rectangle bed for large dogs. Removable washable cover, non-slip bottom, fiber filling.",
+    "description_id": "desc-prod-w2-07",
+    "original_price": {
+      "amount": 10250.0,
+      "currency": "KRW"
+    },
+    "options": [
+      {
+        "option_id": "opt-07-01",
+        "name": "색상",
+        "value": "회색, 갈색",
+        "data_type": "actual",
+        "source_url": "https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html"
+      },
+      {
+        "option_id": "opt-07-02",
+        "name": "크기",
+        "value": "M 54*43*18/13cm, L 67*50*18/13cm",
+        "data_type": "actual",
+        "source_url": "https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html"
+      }
+    ],
+    "dimensions": {
+      "length": 67.0,
+      "width": 50.0,
+      "height": 18.0,
+      "unit": "cm"
+    },
+    "weight": null,
+    "material": [
+      "벨벳"
+    ],
+    "recommended_pet_weight_max": null,
+    "sales_count": null,
+    "rating": null,
+    "shipping": {
+      "method": "Alibaba.com Logistics 스탠더드 (10개당, 11/19~12/21 도착)",
+      "fee": 10624.0,
+      "currency": "KRW"
+    },
+    "supplier": {
+      "supplier_id": "sup-prod-w2-07",
+      "name": "Dalian Usmile Pet Technology Co., Ltd.",
+      "source_url": "https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html",
+      "data_type": "actual"
+    },
+    "images": [
+      {
+        "image_id": "img-07-01",
+        "image_no": 1,
+        "image_role": "main",
+        "url": "https://example.com/synthetic-images/prod-w2-07-1.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "image_id": "img-07-02",
+        "image_no": 2,
+        "image_role": "detail",
+        "url": "https://example.com/synthetic-images/prod-w2-07-2.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "image_id": "img-07-03",
+        "image_no": 3,
+        "image_role": "detail",
+        "url": "https://example.com/synthetic-images/prod-w2-07-3.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "image_id": "img-07-04",
+        "image_no": 4,
+        "image_role": "detail",
+        "url": "https://example.com/synthetic-images/prod-w2-07-4.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "image_id": "img-07-05",
+        "image_no": 5,
+        "image_role": "detail",
+        "url": "https://example.com/synthetic-images/prod-w2-07-5.jpg",
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "rights_status": "prohibited",
+        "data_type": "test",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      }
+    ],
+    "reviews": [
+      {
+        "review_id": "review-07-01",
+        "text": "Big enough for my 38 kg dog.",
+        "rating": 5,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-02",
+        "text": "Filling went flat in three weeks.",
+        "rating": 2,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-03",
+        "text": "Cover is easy to wash.",
+        "rating": 5,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-04",
+        "text": "Zipper broke on the first wash.",
+        "rating": 2,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-05",
+        "text": "My dog sleeps here all night.",
+        "rating": 5,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-06",
+        "text": "Thinner than expected.",
+        "rating": 3,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-07",
+        "text": "No smell when unpacked.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-08",
+        "text": "Middle sank after a month.",
+        "rating": 2,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-09",
+        "text": "Bottom does not slide on wood floor.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-10",
+        "text": "Flat in the middle quickly.",
+        "rating": 2,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-11",
+        "text": "Soft fabric, dog likes it.",
+        "rating": 5,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-12",
+        "text": "Color a bit different from photo.",
+        "rating": 3,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-13",
+        "text": "Took two weeks to arrive.",
+        "rating": 3,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-14",
+        "text": "Good for an older dog.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-15",
+        "text": "Seams look strong.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-16",
+        "text": "Dog hair sticks to the cover.",
+        "rating": 3,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-17",
+        "text": "Zipper got stuck after drying.",
+        "rating": 2,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-18",
+        "text": "Fits in a crate.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-19",
+        "text": "Fair price for the size.",
+        "rating": 4,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      },
+      {
+        "review_id": "review-07-20",
+        "text": "Would recommend for big dogs.",
+        "rating": 5,
+        "source_url": "https://example.com/synthetic/prod-w2-07",
+        "data_type": "test",
+        "rights_status": "prohibited",
+        "usage": {
+          "store": "allowed",
+          "ai_input": "allowed",
+          "display": "allowed",
+          "resale": "prohibited"
+        },
+        "usage_policy_url": "https://github.com/darajeong/PetCommerce-AI-Agent/blob/main/docs/poc/samples/W2-A02_TEST_PRODUCTS_README.md",
+        "usage_checked_at": "2026-11-09T07:59:00+09:00"
+      }
+    ]
+  },
+  "field_meta": {
+    "product.original_name": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html",
+      "source_id": "product.original_name",
+      "collected_at": "2026-11-09T07:59:00+09:00"
+    },
+    "product.original_price.amount": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html",
+      "source_id": "product.original_price.amount",
+      "collected_at": "2026-11-09T07:59:00+09:00"
+    },
+    "product.original_price.currency": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html",
+      "source_id": "product.original_price.currency",
+      "collected_at": "2026-11-09T07:59:00+09:00"
+    },
+    "product.sales_count": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html",
+      "source_id": "product.sales_count",
+      "collected_at": "2026-11-09T07:59:00+09:00"
+    },
+    "product.rating": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html",
+      "source_id": "product.rating",
+      "collected_at": "2026-11-09T07:59:00+09:00"
+    },
+    "product.material": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html",
+      "source_id": "product.material",
+      "collected_at": "2026-11-09T07:59:00+09:00"
+    },
+    "product.supplier.name": {
+      "data_type": "actual",
+      "source_url": "https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html",
+      "source_id": "product.supplier.name",
+      "collected_at": "2026-11-09T07:59:00+09:00"
+    },
+    "product.description": {
+      "data_type": "test",
+      "source_url": "https://example.com/synthetic/prod-w2-07",
+      "source_id": "desc-prod-w2-07",
+      "collected_at": "2026-11-09T07:59:00+09:00"
+    },
+    "product.description_id": {
+      "data_type": "test",
+      "source_url": "https://example.com/synthetic/prod-w2-07",
+      "source_id": "desc-prod-w2-07",
+      "collected_at": "2026-11-09T07:59:00+09:00"
+    }
+  },
+  "missing_fields": [
+    {
+      "field_path": "product.sales_count",
+      "reason": "source_missing",
+      "next_action": "원본에 표시 없음"
+    },
+    {
+      "field_path": "product.rating",
+      "reason": "source_missing",
+      "next_action": "원본에 표시 없음"
+    },
+    {
+      "field_path": "product.weight",
+      "reason": "source_missing",
+      "next_action": "원본에 표시 없음"
+    },
+    {
+      "field_path": "product.recommended_pet_weight_max",
+      "reason": "source_missing",
+      "next_action": "원본에 표시 없음"
+    }
+  ],
+  "normalized_data": {
+    "translated_name": null,
+    "translated_description": "테스트 데이터(합성). 대형견용 직사각형 침대. 분리 세탁 가능한 커버, 미끄럼 방지 바닥, 섬유 충전재.",
+    "translated_reviews": [
+      {
+        "review_id": "review-07-01",
+        "translated_text": "38kg 강아지에게 충분히 커요."
+      },
+      {
+        "review_id": "review-07-02",
+        "translated_text": "3주 만에 충전재가 납작해졌어요."
+      },
+      {
+        "review_id": "review-07-03",
+        "translated_text": "커버 세탁이 쉬워요."
+      },
+      {
+        "review_id": "review-07-04",
+        "translated_text": "첫 세탁 때 지퍼가 고장 났어요."
+      },
+      {
+        "review_id": "review-07-05",
+        "translated_text": "강아지가 밤새 여기서 자요."
+      },
+      {
+        "review_id": "review-07-06",
+        "translated_text": "생각보다 얇아요."
+      },
+      {
+        "review_id": "review-07-07",
+        "translated_text": "포장을 풀 때 냄새가 없어요."
+      },
+      {
+        "review_id": "review-07-08",
+        "translated_text": "한 달 지나니 가운데가 꺼졌어요."
+      },
+      {
+        "review_id": "review-07-09",
+        "translated_text": "마루에서 바닥이 미끄러지지 않아요."
+      },
+      {
+        "review_id": "review-07-10",
+        "translated_text": "가운데가 금방 납작해져요."
+      },
+      {
+        "review_id": "review-07-11",
+        "translated_text": "천이 부드러워서 강아지가 좋아해요."
+      },
+      {
+        "review_id": "review-07-12",
+        "translated_text": "사진과 색이 조금 달라요."
+      },
+      {
+        "review_id": "review-07-13",
+        "translated_text": "도착까지 2주 걸렸어요."
+      },
+      {
+        "review_id": "review-07-14",
+        "translated_text": "노견에게 좋아요."
+      },
+      {
+        "review_id": "review-07-15",
+        "translated_text": "이음새가 튼튼해 보여요."
+      },
+      {
+        "review_id": "review-07-16",
+        "translated_text": "커버에 털이 붙어요."
+      },
+      {
+        "review_id": "review-07-17",
+        "translated_text": "건조 후 지퍼가 걸려요."
+      },
+      {
+        "review_id": "review-07-18",
+        "translated_text": "켄넬 안에 들어가요."
+      },
+      {
+        "review_id": "review-07-19",
+        "translated_text": "크기 대비 가격이 적당해요."
+      },
+      {
+        "review_id": "review-07-20",
+        "translated_text": "대형견에게 추천해요."
+      }
+    ],
+    "normalized_dimensions": {
+      "length": 67.0,
+      "width": 50.0,
+      "height": 18.0,
+      "unit": "cm"
+    },
+    "normalized_weight": null,
+    "normalized_pet_weight_max": {
+      "value": null,
+      "unit": "kg"
+    },
+    "normalized_material": [
+      {
+        "original": "벨벳",
+        "normalized": "other",
+        "confidence": "low"
+      }
+    ],
+    "duplicates": [],
+    "conversions": [
+      {
+        "field_path": "product.original_price.amount",
+        "original_value": 10250.0,
+        "original_unit": "KRW",
+        "normalized_value": 10250.0,
+        "normalized_unit": "KRW",
+        "conversion_rate": 1,
+        "rate_source": "동일 통화 보존",
+        "converted_at": "2026-11-07T12:00:00+09:00",
+        "data_type": "actual"
+      },
+      {
+        "field_path": "product.dimensions.length",
+        "original_value": 67.0,
+        "original_unit": "cm",
+        "normalized_value": 67.0,
+        "normalized_unit": "cm",
+        "conversion_rate": 1.0,
+        "rate_source": "동일 단위 보존",
+        "converted_at": "2026-11-07T12:00:00+09:00",
+        "data_type": "actual"
+      },
+      {
+        "field_path": "product.dimensions.width",
+        "original_value": 50.0,
+        "original_unit": "cm",
+        "normalized_value": 50.0,
+        "normalized_unit": "cm",
+        "conversion_rate": 1.0,
+        "rate_source": "동일 단위 보존",
+        "converted_at": "2026-11-07T12:00:00+09:00",
+        "data_type": "actual"
+      },
+      {
+        "field_path": "product.dimensions.height",
+        "original_value": 18.0,
+        "original_unit": "cm",
+        "normalized_value": 18.0,
+        "normalized_unit": "cm",
+        "conversion_rate": 1.0,
+        "rate_source": "동일 단위 보존",
+        "converted_at": "2026-11-07T12:00:00+09:00",
+        "data_type": "actual"
+      }
+    ],
+    "unconverted": [
+      {
+        "field_path": "product.material",
+        "original_value": "벨벳",
+        "reason": "팀 공통 소재 목록에 없는 소재라 other로 표시 (추정 매핑하지 않음)"
+      }
+    ]
+  },
+  "evidence": [],
+  "agent_outputs": {
+    "A02": {
+      "run_id": "run-prod-w2-07-a02",
+      "product_id": "prod-w2-07",
+      "agent_id": "A02",
+      "input_version": 1,
+      "result_version": 1,
+      "status": "success",
+      "result": {
+        "source_version": 1,
+        "record_created": true,
+        "pending_manual_fields": 0
+      },
+      "evidence_ids": [],
+      "warnings": [
+        "사실 값은 사람이 직접 확인한 실제 값, 이미지·리뷰·설명은 합성 테스트 데이터다 (W1-07 1.1절, 2026-11-06 팀 확정).",
+        "가격은 최저가(10250)만 저장했다. 범위 10250~11772 KRW, 조건: 10% 할인가 (정가 11385-13086, 할인 12/31 종료), 최소 10개",
+        "실제 상품 리뷰 수는 0개이며 리뷰 원문은 저장하지 않았다.",
+        "크기 기준: L 사이즈 상품 치수 (M 54*43*18/13cm, 높이 18/13은 옆/앞)",
+        "포장 정보(상품 치수·무게 아님, W1-04 v0.2 package_dimensions 제안): 크기 18x10x5 cm, 총중량 0.8 kg",
+        "상세 페이지 대형견 표기: 예"
+      ],
+      "errors": [],
+      "retry_count": 0,
+      "started_at": "2026-11-09T07:59:00+09:00",
+      "ended_at": "2026-11-09T07:59:00+09:00",
+      "data_type": "actual"
+    },
+    "A03": {
+      "run_id": "run-prod-w2-07-a02",
+      "product_id": "prod-w2-07",
+      "agent_id": "A03",
+      "input_version": 1,
+      "result_version": 1,
+      "status": "partial_success",
+      "result": {
+        "normalized_data_ref": {
+          "source_version": 1
+        },
+        "conversion_count": 4,
+        "unconverted_count": 1,
+        "duplicate_groups": 0
+      },
+      "evidence_ids": [],
+      "warnings": [
+        "변환하지 못한 값 1건: normalized_data.unconverted 참고"
+      ],
+      "errors": [],
+      "retry_count": 0,
+      "started_at": "2026-11-07T12:00:00+09:00",
+      "ended_at": "2026-11-07T12:00:00+09:00",
+      "data_type": "actual"
+    }
+  },
+  "errors": [],
+  "approval": {
+    "status": "not_requested",
+    "target_version": null,
+    "approver": null,
+    "approved_at": null,
+    "reason": null
+  }
+}
