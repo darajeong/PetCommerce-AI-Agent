@@ -26,6 +26,7 @@ import a02_build_product
 import a03_normalize
 
 HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[2]
 KST = timezone(timedelta(hours=9))
 NORMALIZE_AT = "2026-11-07T12:00:00+09:00"  # PR #12 A03-02 결과와 같은 변환 시각
 MAX_RETRY = 1
@@ -46,6 +47,14 @@ COUNT_KEYS = ("wait", "retry", "block", "manual_switch")
 
 def now() -> str:
     return datetime.now(KST).isoformat(timespec="seconds")
+
+
+def rel(path: Path) -> str:
+    """실제 저장 경로. 저장소 안이면 저장소 기준 상대 경로."""
+    try:
+        return path.resolve().relative_to(ROOT).as_posix()
+    except ValueError:
+        return path.resolve().as_posix()
 
 
 def dump(doc: dict) -> str:
@@ -78,16 +87,19 @@ def run_product(pid: str, facts: dict[str, str], out_dir: Path | None, overwrite
             docs["result"] = step("normalize", lambda: a03_normalize.normalize(docs["product"], {}, None, NORMALIZE_AT))
 
         if out_dir is not None:
-            for key, name in (("product", f"W2-A02-02_PRODUCT_{pid}.json"),
-                              ("result", f"W2-A03-02_RESULT_{pid.replace('prod-', '')}.json")):
-                if docs.get(key) is None:
-                    continue
-                path, text = out_dir / name, dump(docs[key])
-                if path.exists() and path.read_text(encoding="utf-8") != text and not overwrite:
-                    warnings.append(f"{name}: 기존 파일과 내용이 달라 덮어쓰지 않음 (--overwrite로만 갱신)")
-                    continue
-                path.write_text(text, encoding="utf-8")
-                outputs.append(f"docs/poc/samples/{name}")
+            files = [(out_dir / name, dump(docs[key])) for key, name in
+                     (("product", f"W2-A02-02_PRODUCT_{pid}.json"),
+                      ("result", f"W2-A03-02_RESULT_{pid.replace('prod-', '')}.json")) if docs.get(key) is not None]
+            # 상품 JSON·정규화 결과는 짝으로 저장: 하나라도 기존과 다르면 둘 다 쓰지 않음
+            changed = [path.name for path, text in files
+                       if path.exists() and path.read_text(encoding="utf-8") != text]
+            if changed and not overwrite:
+                warnings += [f"{n}: 기존 파일과 내용이 달라 이 상품의 결과 파일을 모두 저장하지 않음 (--overwrite로만 갱신)"
+                             for n in changed]
+            else:
+                for path, text in files:
+                    path.write_text(text, encoding="utf-8")
+                    outputs.append(rel(path))
 
         if any(s["status"] == "failed" for s in steps):
             final = "failed"
@@ -222,7 +234,12 @@ def self_test() -> int:
             log = batch(tmp, out_dir=out)
             p = {x["product_id"]: x for x in log["products"]}
             check("덮어쓰기 방지: 기존 파일 유지·경고 기록", old.read_text(encoding="utf-8") == "{}\n"
-                  and p["prod-w2-01"]["warnings"] and "docs/poc/samples/W2-A02-02_PRODUCT_prod-w2-01.json" not in p["prod-w2-01"]["outputs"])
+                  and p["prod-w2-01"]["warnings"])
+            check("덮어쓰기 방지: 짝 파일(정규화 결과)도 저장 안 함",
+                  p["prod-w2-01"]["outputs"] == [] and not (out / "W2-A03-02_RESULT_w2-01.json").exists())
+            check("outputs: 실제 저장 경로 기록",
+                  p["prod-w2-07"]["outputs"] == [(out / "W2-A02-02_PRODUCT_prod-w2-07.json").resolve().as_posix(),
+                                                (out / "W2-A03-02_RESULT_w2-07.json").resolve().as_posix()])
             check("덮어쓰기 방지: 배치 warnings_count 1", log["warnings_count"] == 1)
             batch(tmp, out_dir=out, overwrite=True)
             check("--overwrite: 갱신됨", old.read_text(encoding="utf-8") != "{}\n")
@@ -246,7 +263,7 @@ def main() -> int:
     for p in log["products"]:
         print(f"{p['product_id']}: {p['final_status']} {p['counts']}" + (f" 경고 {p['warnings']}" if p["warnings"] else ""))
     print(f"합계 {log['totals']}, 최종 상태 저장(파일 기준) {log['final_status_saved']}/{log['product_count']}, 경고 {log['warnings_count']}")
-    return 2 if log["warnings_count"] else 0  # 경고(미저장 결과) 있으면 정상 종료로 보이지 않게
+    return 3 if log["warnings_count"] else 0  # 경고(미저장 결과). 2는 argparse 인자 오류라 피함
 
 
 if __name__ == "__main__":
