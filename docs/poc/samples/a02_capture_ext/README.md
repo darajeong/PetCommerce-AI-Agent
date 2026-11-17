@@ -1,0 +1,102 @@
+# A02 상세페이지 사실 값 추출 확장 프로그램 (PoC v0.1.0, 2026-11-17, A 형준)
+
+사람이 직접 연 알리바바 상품 상세페이지에서, 사람이 버튼을 눌렀을 때만 **사실 값**(상품명·가격·통화·수량별 구간가·MOQ·속성·옵션·공급처·판매량·평점·리뷰 수)과 **이미지 주소**를 JSON으로 저장한다. 저장본은 `a02_capture_to_facts.py`가 통화·가격 범위를 검사해 A02-02 입력표 형식으로 바꾸고, 그 뒤는 기존 `a02_build_product.py` → `a03_normalize.py`를 그대로 쓴다.
+
+```
+사람이 상세페이지 열기 → [사실 값 추출] → 사람이 대조·수정 → [JSON 저장]
+  → a02_capture_to_facts.py (통화·가격 검사, 사람 입력값 비교) → W2-A02-02_FACTS_CAPTURE.csv
+  → a02_build_product.py → a03_normalize.py
+```
+
+## 1. 이번 버전 범위와 W1-07
+
+2026-11-17 지시 메모(상세페이지 파싱을 확장 프로그램으로 브라우저 안에서, 통화 파싱, 가격 범위 검사, HTML·이미지 수집) 중 **W1-07 1.1절 범위 안에서 할 수 있는 부분만** 먼저 만들었다.
+
+| 항목 | 이 확장 프로그램 | 근거 |
+|---|---|---|
+| 페이지 열기·탐색 | 사람이 직접 연다. 확장은 페이지 이동·새 탭·검색 결과 순회를 하지 않는다 | W1-07 1.1절 (자동화가 페이지를 열거나 탐색하면 자동 수집) |
+| 실행 시점 | 사람이 버튼을 누를 때 한 번. 자동 실행 스크립트(content_scripts) 없음 | |
+| 저장하는 것 | 사실 값, 이미지 **주소**(`image_usage: needs_review`) | W1-07 1.1절 사용 범위, URL·ID 기록 |
+| 저장하지 않는 것 | HTML 본문, 상품 설명 원문, 리뷰 원문, 이미지 파일, 쿠키·계정 정보 | W1-07 1.1절, W1-06 v0.5 §3.5 (비공개 보관도 저장) |
+| 상품 수 | 팝업에서 `prod-w2-01`·`07`·`09` 셋만 고를 수 있다 | PoC 내부 검증 상품 3개 |
+| 페이지 데이터의 개인 정보 | `user`·`login`·`token`·`email`·`phone`·`address` 등이 들어간 키는 읽지 않는다 | |
+
+**팀 확인이 필요한 것**
+- W1-07 1.1절의 "수동" 정의는 "사람이 보고 입력·캡처"다. "사람이 연 페이지에서 버튼으로 추출하고 저장 전 사람이 대조"하는 이 방식을 1.1절에 넣을지 W1-07 담당(D)·튜터 확인이 필요하다.
+- 메모의 "HTML·이미지 다 긁어오기"는 W1-07 1.1절·W1-06 v0.5 §3.5와 충돌해 넣지 않았다. 튜터가 허용 범위(보관 위치, 상품 수, 레포 업로드 여부, AI 입력 여부)를 정해 주면 저장 옵션으로 추가한다. 로그인한 페이지의 HTML에는 계정 이름·세션 값이 섞일 수 있어 원본은 공개 레포에 올리지 않는다.
+
+## 2. 설치 (Chrome·Edge)
+
+1. `chrome://extensions` (Edge는 `edge://extensions`) → **개발자 모드** 켜기
+2. **압축해제된 확장 프로그램을 로드합니다** → `docs/poc/samples/a02_capture_ext` 폴더 선택
+3. 툴바 퍼즐 아이콘 → "PetCommerce A02 사실 값 추출" 고정
+
+권한은 `activeTab`(버튼을 누른 탭만), `scripting`(추출 함수 1회 실행), `downloads`(JSON 저장), `storage`(팝업을 닫았다 열어도 값 유지)뿐이다. 사이트 접근 권한(host_permissions)은 없다.
+
+## 3. 쓰는 법
+
+1. 알리바바에서 직접 검색해 상품 상세페이지(`/product-detail/`)를 연다. 로그인·통화 설정은 평소대로 둔다.
+2. 확장 아이콘 → 상품 ID 고르기 → **사실 값 추출**
+3. 팝업 값과 페이지를 대조해 틀린 칸을 고친다. 고친 칸은 저장본에 `edited_fields`, `source: human_edit`, `auto_value`(원래 추출값)로 남는다.
+   - 수량 구간: 한 줄에 `수량 | 가격` (예: `100 - 799 pieces | ₩4,427`)
+   - 속성: 한 줄에 `이름: 값`, 옵션: 한 줄에 `이름 = 값 / 값`
+4. **JSON 저장** → `다운로드/petcommerce_a02/prod-w2-0N_capture_YYYYMMDD-HHMM.json`
+5. 저장본을 `docs/poc/samples/a02_captures/`로 옮기고 변환한다.
+
+```bash
+python docs/poc/samples/a02_capture_to_facts.py docs/poc/samples/a02_captures/prod-w2-01_capture_20261117-1030.json
+```
+
+   - 가격이 USD 등이면 원화 상식선 검사용 환율을 같이 준다: `--rate USD:KRW=1400 --rate-source "출처·기준일"` (없으면 KRW 외에는 검사 생략, 추정하지 않음)
+   - 결과: `W2-A02-02_FACTS_CAPTURE.csv`(입력표 형식), `W2-A02-02_CAPTURE_CHECK.md`(가격 검사·빈칸·사람 입력값과 비교)
+6. W1-04 JSON 만들기. **`--out-dir`을 꼭 따로 준다** (기본값으로 돌리면 사람 입력 기준 `W2-A02-02_PRODUCT_*.json`을 덮어쓴다).
+
+```bash
+python docs/poc/samples/a02_build_product.py --facts docs/poc/samples/W2-A02-02_FACTS_CAPTURE.csv --out-dir docs/poc/samples/a02_captures
+```
+
+## 4. 추출 방식 (우선순위)
+
+1. **JSON-LD** (`schema.org/Product`): 상품명, 가격·통화, 평점, 이미지
+2. **페이지 데이터**: 페이지에 이미 들어 있는 객체(`window.detailData` 등)에서 구간가·MOQ·속성·옵션·공급처·통화를 이름·모양으로 찾는다
+3. **화면(DOM)**: `h1`, `price`가 들어간 요소, 수량 구간 라벨 옆 가격, `Min. order` 글자, 속성 블록·표, 공급처 링크, 갤러리 이미지
+
+값마다 "찾은 곳"이 팝업과 저장본(`fields.*.source`)에 남는다. **실제 알리바바 화면 구조로는 아직 검증 전이다.** 첫 실사용 뒤 팝업의 "찾은 방식"(`debug.page_data_roots`, 못 찾은 칸)을 보고 규칙을 맞춘다. AI가 알리바바 페이지를 직접 열지 않으므로(W1-07) 이 확인은 사람이 한다.
+
+## 5. 통화·가격 범위 검사 (`a02_price_parse.py`)
+
+| 검사 | 내용 | 결과 |
+|---|---|---|
+| 통화 판별 | 코드(USD·KRW…) → 고유 기호(US$·₩·€·元…) → 페이지 통화 설정 → 사이트 기본값 순, 근거를 `currency_basis`에 남김 | `$`·`¥`는 근거 없으면 통화 빈칸·`needs_review` |
+| 통화 충돌 | 한 글자에 통화가 둘, 구간마다 통화가 다름 | `error` |
+| 숫자 형식 | `1,234.56` / `1.234,56` / `4,427` / `3,80` / 전각 숫자 | 못 읽으면 `error` |
+| 범위 | 최소 > 0, 최소 ≤ 최대, 범위 기호 확인 | 뒤집힘·0 이하 `error` |
+| 소수 | KRW·JPY에 소수가 있음 | `needs_review` |
+| 수량 구간 | 순서, 겹침(`error`), 빈 수량(참고), `이상` 구간 뒤 구간(`error`) | |
+| 단가 흐름 | 수량이 늘었는데 단가가 오름 | `needs_review` |
+| MOQ | MOQ와 첫 구간 시작 수량이 다름 | `needs_review` |
+| 교차 확인 | 가격 글자 범위와 구간가 범위가 다름 | `needs_review` |
+| 상식선 | 원화 환산 100원 미만·1천만 원 초과, 최고/최저 20배 초과 (환율 입력 시만) | `needs_review` |
+
+`error`면 입력표의 가격 칸을 비워 사람 확인으로 넘기고, `needs_review`면 값은 넣되 보고서에 이유를 적는다.
+
+## 6. 시험
+
+```bash
+python docs/poc/samples/a02_price_parse.py --self-test
+```
+```bash
+python docs/poc/samples/a02_capture_to_facts.py --self-test
+```
+
+- 가격 파서 39/39, 변환 24/24 PASS (2026-11-17). 변환 시험은 출력 CSV를 `a02_build_product.py`가 다시 읽어 W1-04 JSON을 만드는 것까지 확인한다.
+- 추출 함수: 이 폴더에서 `python -m http.server 8765 --bind 127.0.0.1`을 띄우고 `http://127.0.0.1:8765/test/fixture_dom.html`, `test/fixture_page_data.html`을 열면 페이지 아래에 결과가 나온다 (각 14/14 PASS). 계정 정보·설명 원문이 결과에 없는지도 검사한다.
+- 팝업 화면: `test/popup_preview.html` (가짜 chrome API로 추출 → 수정 → 저장 흐름 확인).
+- `test/`의 시험 페이지와 `sample_capture_*.json`은 모두 지어낸 값(가짜 상품)이다. 실제 사이트 마크업을 옮긴 것이 아니다.
+
+## 7. 한계
+
+- 실제 알리바바 페이지에서는 아직 돌려 보지 않았다 (첫 실사용 = 형준님 확인).
+- 배송 방법·배송비, 대형견 표기, 용도는 추출하지 않는다. 입력표에서 사람이 채운다.
+- 판매량·평점·리뷰 수는 화면 글자 패턴으로 찾아 엉뚱한 숫자를 잡을 수 있다. 저장 전 대조 필수.
+- W1-04 `collection_method`(auto·manual·mock)에 "사람이 실행한 확장 추출"에 맞는 값이 없어 `a02_build_product.py`는 `manual`로 기록하고, 입력표 `collector`에 확장 버전을 적는다. W1-04 v0.2에서 값 추가를 검토할 수 있다(E).
