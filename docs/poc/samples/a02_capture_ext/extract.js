@@ -1,5 +1,5 @@
 /*
- * A02 상세페이지 사실 값 추출 함수 (a02_capture_ext v0.1.0, 2026-11-17)
+ * A02 상세페이지 사실 값 추출 함수 (a02_capture_ext v0.2.0, 2026-11-17)
  *
  * - 사람이 직접 연 상품 상세페이지에서, 사람이 확장 프로그램 버튼을 눌렀을 때 한 번만 실행된다.
  * - 네트워크 요청을 보내지 않고, 다른 페이지를 열거나 이동하지 않는다. 이미 화면에 그려진 DOM 과
@@ -12,7 +12,7 @@
  * 시험용 페이지(test/)에서는 pageUrlOverride 로 상품 URL 을 흉내 낸다.
  */
 function a02ExtractFacts(pageUrlOverride) {
-  const VERSION = '0.1.0';
+  const VERSION = '0.2.0';
   const MAX_ATTR = 60, MAX_IMG = 20, MAX_PRICE_TEXT = 20, MAX_NODES = 40000;
   const href = pageUrlOverride || location.href;
   const url = new URL(href);
@@ -37,8 +37,13 @@ function a02ExtractFacts(pageUrlOverride) {
     if (u.startsWith('//')) u = 'https:' + u;
     if (!/^https?:\/\//i.test(u)) return null;
     if (/sprite|icon|logo|avatar|flag|placeholder|loading/i.test(u)) return null;
+    if (/\/imgextra\/|-tps-\d+-\d+/i.test(u)) return null;   // 사이트 화면용 배너·아이콘 (상품 이미지 아님)
     return u.replace(/\?.*$/, '').replace(/_(\d+x\d+|Q\d+)[^/]*$/i, '');
   };
+  // 같은 이미지가 다른 CDN 주소로 두 번 나오는 경우(…/kf/파일명) 하나로 본다
+  const imgKey = (u) => { const m = u.match(/\/kf\/([^/?#]+)$/); return m ? 'kf:' + m[1] : u; };
+  // 제목 끝의 사이트 문구(" - Buy … on Alibaba.com") 제거
+  const stripTitle = (t) => (t == null ? t : clean(t).replace(/\s*[-|]\s*(Buy\b.*|.*on Alibaba\.com)$/i, ''));
 
   // ---------------------------------------------------------------- 1. JSON-LD (구조화 데이터)
   const ld = { name: null, prices: [], images: [], rating: null, reviewCount: null, brand: null };
@@ -67,7 +72,8 @@ function a02ExtractFacts(pageUrlOverride) {
 
   // ---------------------------------------------------------------- 2. 페이지에 이미 들어 있는 데이터
   const pd = { title: null, titleWeak: null, currency: {}, moq: null, supplier: null, sold: null, rating: null,
-               reviewCount: null, images: [], tiers: null, attrs: null, options: null };
+               reviewCount: null, images: [], tiers: null, attrs: { v: [], p: [] }, options: null };
+  const KNOWN_CUR = new RegExp('^(' + CODES + ')$');
   const isNum = (x) => (typeof x === 'number' && isFinite(x)) || (typeof x === 'string' && /^\d[\d,]*(\.\d+)?$/.test(x.trim()));
   const pick = (o, re) => Object.keys(o).find((k) => re.test(k));
 
@@ -76,14 +82,14 @@ function a02ExtractFacts(pageUrlOverride) {
       const t = clean(x);
       if (/^(subject|productTitle|productName)$/i.test(k) && t.length >= 8 && t.length <= 300 && !pd.title) pd.title = { v: t, p: path };
       else if (/^title$/i.test(k) && t.length >= 8 && t.length <= 300 && !pd.titleWeak) pd.titleWeak = { v: t, p: path };
-      if (/^(currency|currencyCode|currencyType|localCurrency|curr)$/i.test(k) && /^[A-Z]{3}$/.test(t)) pd.currency[t] = (pd.currency[t] || 0) + 1;
+      if (/currency|^curr$/i.test(k) && KNOWN_CUR.test(t)) { const c = t === 'RMB' ? 'CNY' : t; pd.currency[c] = (pd.currency[c] || 0) + 1; }
       if (/^(companyName|supplierName|sellerName|shopName|storeName)$/i.test(k) && t.length >= 2 && t.length <= 200 && !pd.supplier) pd.supplier = { v: t, p: path };
       if (/\.(jpe?g|png|webp)(\?|_|$)/i.test(t) && /^(https?:)?\/\//i.test(t) && /image|img|media|gallery|pic|photo/i.test(path) && pd.images.length < 60) pd.images.push(t);
     }
     if (isNum(x)) {
       const n = Number(String(x).replace(/,/g, ''));
       if (/^(moq|minOrder|minOrderQuantity|minimumOrderQuantity|minOrderQty)$/i.test(k) && pd.moq == null && n > 0) pd.moq = { v: n, p: path };
-      if (/^(soldCount|salesVolume|tradeCount|orderCount|sold|saleCount)$/i.test(k) && pd.sold == null) pd.sold = { v: n, p: path };
+      if (/^(soldCount|salesVolume|tradeCount|orderCount|sold|saleCount|soldQuantity|salesCount|totalSold)$/i.test(k) && pd.sold == null) pd.sold = { v: n, p: path };
       if (/^(averageStar|ratingValue|rating|productScore|reviewScore|avgStar)$/i.test(k) && pd.rating == null && n >= 0 && n <= 5) pd.rating = { v: n, p: path };
       if (/^(reviewCount|totalReviews|commentCount|reviewNum|reviewsCount)$/i.test(k) && pd.reviewCount == null) pd.reviewCount = { v: n, p: path };
     }
@@ -111,15 +117,20 @@ function a02ExtractFacts(pageUrlOverride) {
       });
       if (rows.every(Boolean)) pd.tiers = rows;
     }
-    // 속성 (이름·값 쌍)
-    if (!pd.attrs && arr.length >= 2) {
+    // 속성 (이름·값 쌍): 기본 속성·포장 정보처럼 여러 배열에 나뉘어 있으면 모두 모은다
+    if (pd.attrs.v.length < MAX_ATTR && arr.length >= 1 && !/sku|track|spm|abtest|i18n|lang/i.test(path)) {
       const PAIRS = [['attrName', 'attrValue'], ['propertyName', 'propertyValue'], ['name', 'value'], ['key', 'value'], ['label', 'value']];
       for (const [kn, kv] of PAIRS) {
-        if (kn === 'name' || kn === 'key' || kn === 'label') { if (!/propert|attr|spec|param/i.test(path)) continue; }
+        if (kn === 'name' || kn === 'key' || kn === 'label') { if (!/propert|attr|spec/i.test(path)) continue; }
         const rows = objs.filter((o) => typeof o[kn] === 'string' && (typeof o[kv] === 'string' || typeof o[kv] === 'number'))
           .map((o) => ({ name: clean(o[kn]), value: clean(o[kv]) }))
           .filter((r) => r.name.length >= 1 && r.name.length <= 40 && r.value.length >= 1 && r.value.length <= 120);
-        if (rows.length >= 2 && rows.length >= objs.length * 0.8) { pd.attrs = { v: rows.slice(0, MAX_ATTR), p: path }; break; }
+        if (rows.length && rows.length >= objs.length * 0.8 && (rows.length >= 2 || kn === 'attrName' || kn === 'propertyName')) {
+          const have = new Set(pd.attrs.v.map((r) => r.name));
+          const add = rows.filter((r) => !have.has(r.name));
+          if (add.length) { pd.attrs.v.push(...add.slice(0, MAX_ATTR - pd.attrs.v.length)); pd.attrs.p.push(path); }
+          break;
+        }
       }
     }
     // 옵션 (SKU)
@@ -233,16 +244,25 @@ function a02ExtractFacts(pageUrlOverride) {
     const el = document.querySelector('[class*="company-name" i],[class*="companyName" i],[class*="supplier-name" i],[class*="shop-name" i]');
     if (el && clean(el.innerText).length >= 2 && clean(el.innerText).length <= 200) domSupplier = clean(el.innerText);
   }
-  const soldM = bodyText.match(/([\d,]+)\s*(?:sold|판매됨|개 판매|건 판매)/i);
+  const soldM = bodyText.match(/([\d,]+)\s*(?:sold|판매됨|(?:개|건)\s*판매|판매(?!하))/i);
   const reviewM = bodyText.match(/([\d,]+)\s*(?:reviews?|리뷰|후기|상품평)/i);
-  const ratingM = bodyText.match(/(\d(?:\.\d)?)\s*\/\s*5(?!\d)/);
+  // "5.0 (13 리뷰)" 형태만 상품 평점으로 본다 ("4.9/5" 는 공급업체 스토어 평가일 수 있어 쓰지 않음)
+  const ratingM = bodyText.match(/(\d(?:\.\d)?)\s*\(\s*[\d,]+\s*(?:개\s*)?(?:리뷰|reviews?)\s*\)/i);
 
   let domCurrency = null;
+  const curOf = (t) => { const m = t.match(new RegExp('(?:^|[\\s\\-–/·|:])(' + CODES + ')$')); return m ? (m[1] === 'RMB' ? 'CNY' : m[1]) : null; };
   document.querySelectorAll('[class*="currency" i]').forEach((el) => {
     if (domCurrency) return;
     const m = clean(el.innerText).match(new RegExp('\\b(' + CODES + ')\\b'));
     if (m) domCurrency = m[1] === 'RMB' ? 'CNY' : m[1];
   });
+  if (!domCurrency) {   // 머리글의 언어·통화 표시 (예: "한국어-KRW", "English-USD")
+    for (const el of document.querySelectorAll('header *, [class*="header" i] *, [class*="lang" i], [class*="locale" i]')) {
+      if (el.children.length) continue;
+      const t = clean(el.textContent);
+      if (t && t.length <= 24 && (domCurrency = curOf(t))) break;
+    }
+  }
 
   const galleryImgs = [];
   document.querySelectorAll('[class*="gallery" i] img,[class*="main-image" i] img,[class*="slider" i] img,[class*="thumb" i] img,[class*="image-view" i] img,[class*="media" i] img').forEach((img) => {
@@ -253,8 +273,9 @@ function a02ExtractFacts(pageUrlOverride) {
   // ---------------------------------------------------------------- 4. 우선순위대로 고르기
   const first = (...cands) => cands.find((c) => c && c[0] != null && c[0] !== '') || [null, null];
   const pdCur = Object.entries(pd.currency).sort((a, b) => b[1] - a[1])[0];
-  const [nameV, nameS] = first([ld.name, 'jsonld'], pd.title && [pd.title.v, `page_data:${pd.title.p}`],
-    h1 && [clean(h1.innerText), 'dom:h1'], [ogTitle, 'dom:og:title'], pd.titleWeak && [pd.titleWeak.v, `page_data:${pd.titleWeak.p}`], [docTitle, 'dom:title']);
+  const [nameV, nameS] = first([stripTitle(ld.name), 'jsonld'], pd.title && [stripTitle(pd.title.v), `page_data:${pd.title.p}`],
+    h1 && [stripTitle(h1.innerText), 'dom:h1'], [stripTitle(ogTitle), 'dom:og:title'],
+    pd.titleWeak && [stripTitle(pd.titleWeak.v), `page_data:${pd.titleWeak.p}`], [docTitle, 'dom:title']);
   const [priceV, priceS] = first([ld.prices[0], 'jsonld'], [domPrices[0], 'dom:price']);
   const [moqV, moqS] = first(pd.moq && [String(pd.moq.v), `page_data:${pd.moq.p}`], moqM && [clean(moqM[0]), 'text']);
   const [supV, supS] = first(pd.supplier && [pd.supplier.v, `page_data:${pd.supplier.p}`], [domSupplier, 'dom:supplier']);
@@ -264,12 +285,21 @@ function a02ExtractFacts(pageUrlOverride) {
   const [curV, curS] = first(pdCur && [pdCur[0], 'page_data'], [domCurrency, 'dom:currency']);
 
   const imgs = [];
+  const imgSeen = new Set();
   [...ld.images, ...pd.images, meta('og:image'), ...galleryImgs].forEach((u) => {
     const n = normImg(u);
-    if (n && !imgs.includes(n) && imgs.length < MAX_IMG) imgs.push(n);
+    if (!n || imgSeen.has(imgKey(n)) || imgs.length >= MAX_IMG) return;
+    imgSeen.add(imgKey(n));
+    imgs.push(n);
   });
   const tiers = pd.tiers || (domTiers.length ? domTiers : []);
-  const attrs = pd.attrs ? pd.attrs.v : [...domAttrs].map(([name, value]) => ({ name, value }));
+  // 페이지 데이터 속성 + 화면 속성 블록(이름이 겹치지 않는 것만)
+  const attrs = [...pd.attrs.v];
+  for (const [name, value] of domAttrs) {
+    if (attrs.length < MAX_ATTR && !attrs.some((a) => a.name === name)) attrs.push({ name, value });
+  }
+  const attrSources = [...pd.attrs.p.map((p) => `page_data:${p}`),
+    ...(attrs.length > pd.attrs.v.length && attrSource ? [attrSource] : [])];
 
   const d = new Date();
   const pad = (n) => String(Math.abs(Math.trunc(n))).padStart(2, '0');
@@ -300,7 +330,7 @@ function a02ExtractFacts(pageUrlOverride) {
     price_tiers: tiers,
     price_texts: [...ld.prices, ...domPrices].slice(0, MAX_PRICE_TEXT),
     attributes: attrs,
-    attributes_source: pd.attrs ? `page_data:${pd.attrs.p}` : attrSource,
+    attributes_source: attrSources.length ? attrSources.join('; ') : null,
     options: pd.options ? pd.options.v : [],
     options_source: pd.options ? `page_data:${pd.options.p}` : null,
     image_urls: imgs,

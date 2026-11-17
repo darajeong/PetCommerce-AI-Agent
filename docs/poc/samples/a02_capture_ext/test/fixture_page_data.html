@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <title>TEST FIXTURE Silicone Treat Ball</title>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "Product", "name": "TEST FIXTURE Silicone Lick Treat Ball for Large Dogs",
+{"@context": "https://schema.org", "@type": "Product", "name": "TEST FIXTURE Silicone Lick Treat Ball for Large Dogs - Buy  Product on Alibaba.com",
  "image": ["https://img.example.com/fixture/ball-1.jpg"],
  "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "2.50", "highPrice": "3.80"}}
 </script>
@@ -26,8 +26,14 @@
           { attrName: 'Size', attrValue: '9 x 9 x 9 cm' },
           { attrName: 'Weight', attrValue: '180 g' }
         ],
-        sku: { skuAttrs: [{ name: 'Color', values: [{ name: 'Blue' }, { name: 'Orange' }] }] },
-        mediaItems: [{ imageUrl: '//img.example.com/fixture/ball-1.jpg' }, { imageUrl: '//img.example.com/fixture/ball-2.jpg_640x640.jpg' }]
+        packagingProperties: [
+          { attrName: '단일 패키지 크기', attrValue: '10X10X10 cm' },
+          { attrName: '단일 총 중량', attrValue: '0.200 kg' }
+        ],
+        sku: { skuAttrs: [{ name: 'Color', values: [{ name: 'Blue', value: 'sku-1' }, { name: 'Orange', value: 'sku-2' }] }] },
+        mediaItems: [{ imageUrl: '//img.example.com/fixture/ball-1.jpg' }, { imageUrl: '//img.example.com/fixture/ball-2.jpg_640x640.jpg' },
+                     { imageUrl: '//sc04.example-cdn.com/kf/Hfixture1.jpg' }, { imageUrl: '//s.example-cdn.com/@sc04/kf/Hfixture1.jpg' },
+                     { imageUrl: '//img.example-cdn.com/imgextra/i1/O1CN-fixture_!!600-2-tps-30-36.png' }]
       },
       seller: { companyName: 'Fixture Silicone Test Co., Ltd.' },
       user: { email: 'should-not-appear@example.com', loginId: 'fixture-secret-login' }
@@ -44,16 +50,18 @@
   const r = a02ExtractFacts('https://www.alibaba.com/product-detail/Test-Fixture-Treat-Ball_1000000000009.html');
   const f = r.fields;
   a02RenderChecks(r, [
-    ['상품명은 JSON-LD 우선', f.original_name.value === 'TEST FIXTURE Silicone Lick Treat Ball for Large Dogs' && f.original_name.source === 'jsonld'],
+    ['상품명은 JSON-LD 우선, 끝의 " - Buy … on Alibaba.com" 제거', f.original_name.value === 'TEST FIXTURE Silicone Lick Treat Ball for Large Dogs' && f.original_name.source === 'jsonld'],
     ['가격 글자 = JSON-LD 범위', f.price_text.value === 'USD 2.50 - 3.80'],
     ['수량 구간 3개 (페이지 데이터)', r.price_tiers.length === 3 && r.price_tiers[0].source.startsWith('page_data:')],
     ['max = -1 은 이상 구간', r.price_tiers[2].quantity_text === '>= 1000' && r.price_tiers[2].price_text === 'US$2.50'],
     ['MOQ 50', f.moq_text.value === '50'],
     ['공급처 (페이지 데이터)', f.supplier_name.value === 'Fixture Silicone Test Co., Ltd.'],
     ['통화 설정 USD', f.currency_setting.value === 'USD'],
-    ['속성 3개 (attrName·attrValue)', r.attributes.length === 3 && r.attributes[0].value === 'Food Grade Silicone'],
+    ['속성: 기본 3개 + 포장 2개 (배열 두 개 모음)', r.attributes.length === 5 && r.attributes[0].value === 'Food Grade Silicone'
+      && r.attributes[4].name === '단일 총 중량' && (r.attributes_source.match(/page_data:/g) || []).length === 2],
+    ['SKU 값은 속성으로 섞이지 않음', !r.attributes.some((a) => a.name === 'Blue')],
     ['옵션 Color = Blue / Orange', r.options.length === 1 && r.options[0].values.join('/') === 'Blue/Orange'],
-    ['이미지 2개 (중복 제거)', r.image_urls.length === 2],
+    ['이미지 3개 (같은 kf 파일 중복·화면용 아이콘 제외)', r.image_urls.length === 3 && !r.image_urls.some((u) => /imgextra|@sc04/.test(u))],
     ['없는 값은 null', f.sales_count.value === null && f.sales_count.source === null],
   ]);
 </script>

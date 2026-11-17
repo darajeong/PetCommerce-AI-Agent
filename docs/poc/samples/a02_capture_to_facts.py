@@ -39,9 +39,11 @@ ATTR_RULES = {  # 입력표 항목 ← 속성 이름 (영문·한국어 페이�
     "size": r"^(size|product size|dimensions?|item size|크기|사이즈|치수|제품 크기)$",
     "weight": r"^(weight|product weight|net weight|item weight|무게|중량|순중량)$",
     "pet_weight": r"(pet|dog).*weight|권장 체중|적용 체중",
-    "package_size": r"package size|포장 크기|패키지 크기",
-    "package_weight": r"gross weight|포장 총?중량|총중량",
+    "package_size": r"package size|패키지\s*크기|포장\s*크기",
+    "package_weight": r"gross weight|총\s*중량|포장\s*(무게|중량)",
+    "breed_size": r"breed size|pet size|dog size|품종\s*크기|견종\s*크기|적용\s*크기",
 }
+TITLE_SUFFIX = re.compile(r"\s*[-|]\s*(Buy\b.*|.*on Alibaba\.com)$", re.I)
 DIM_RE = re.compile(r"(\d+(?:\.\d+)?)\s*[x×*]\s*(\d+(?:\.\d+)?)(?:\s*[x×*]\s*(\d+(?:\.\d+)?))?\s*(mm|cm|m|inches|inch|in)\b", re.I)
 WEIGHT_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(kg|g|lbs|lb|oz)\b", re.I)
 NUMERIC_KEYS = {"price_min", "price_max", "sales_count", "rating", "review_count", "length", "width", "height", "weight"}
@@ -55,9 +57,14 @@ def num_str(x: float | None) -> str:
     return str(int(x)) if float(x).is_integer() else f"{x:g}"
 
 
-def find_attr(attrs: list[dict], key: str) -> str | None:
+def find_attrs(attrs: list[dict], key: str) -> list[dict]:
     rule = re.compile(ATTR_RULES[key], re.I)
-    return next((a["value"] for a in attrs if rule.search(a["name"].strip())), None)
+    return [a for a in attrs if rule.search(a["name"].strip())]
+
+
+def find_attr(attrs: list[dict], key: str) -> str | None:
+    hit = find_attrs(attrs, key)
+    return hit[0]["value"] if hit else None
 
 
 def read_template(path: Path) -> tuple[list[list[str]], dict[str, dict[str, str]]]:
@@ -77,7 +84,9 @@ def build_column(cap: dict, human: dict[str, str], rates: dict[str, float]) -> t
     v: dict[str, str] = {"category_id": human.get("category_id", ""), "source_url": cap.get("source_url", ""),
                          "platform": cap.get("platform") or ""}
     rep: dict = {"product_id": cap.get("product_id"), "notes": []}
-    v["original_name"] = g("original_name")
+    v["original_name"] = TITLE_SUFFIX.sub("", g("original_name"))
+    if re.search(r"[가-힣]", v["original_name"]):
+        rep["notes"].append("상품명이 한국어 번역 제목으로 보임. 원문(영어) 제목이 필요하면 사이트 언어를 English로 바꿔 다시 추출")
 
     # ---- 가격 (통화·범위 검사)
     ctx = g("currency_setting") or None
@@ -97,6 +106,9 @@ def build_column(cap: dict, human: dict[str, str], rates: dict[str, float]) -> t
                 and (cross["min"], cross["max"]) != (pr["min"], pr["max"]) and cross["kind"] == "range":
             pr["reviews"].append(f"가격 글자 범위({cross['min']:g}~{cross['max']:g})와 구간가 범위({pr['min']:g}~{pr['max']:g})가 다름")
             pr["status"] = "error" if pr["errors"] else "needs_review"
+        elif cross["currency"] and pr["currency"] and cross["currency"] != pr["currency"]:
+            pr["warnings"].append(f"가격 글자 '{cross['raw']}'({f.get('price_text', {}).get('source')})는 화면 구간가({pr['currency']})와 "
+                                  f"통화가 달라 입력표에 쓰지 않음 (사이트 기준 통화 값으로 보임)")
     if pr and pr["status"] != "error" and pr.get("min") is not None:
         v["price_min"], v["price_max"] = num_str(pr["min"]), num_str(pr["max"])
         v["currency"] = pr["currency"] or ""
@@ -112,9 +124,16 @@ def build_column(cap: dict, human: dict[str, str], rates: dict[str, float]) -> t
     # ---- 옵션·속성
     v["options"] = "; ".join(f"{o['name']}={'/'.join(o['values'])}" for o in cap.get("options") or [])
     attrs = cap.get("attributes") or []
-    mat = find_attr(attrs, "material")
-    if mat:
-        v["material"] = ";".join(m.strip() for m in re.split(r"[;,/]|\band\b", mat) if m.strip())
+    mats: list[str] = []   # '소재'·'재질'처럼 소재 속성이 여러 칸이면 모두 합친다
+    for a in find_attrs(attrs, "material"):
+        for m in (x.strip() for x in re.split(r"[;,/]|\band\b", a["value"])):
+            if m and m not in mats:
+                mats.append(m)
+    if mats:
+        v["material"] = ";".join(mats)
+    for a in find_attrs(attrs, "breed_size"):
+        if re.search(r"대형|large|big", a["value"], re.I):
+            rep["notes"].append(f"속성 '{a['name']}: {a['value']}'에 대형 표기 있음 → large_dog_label 판단 참고 (입력표에는 사람이 기록)")
     size = find_attr(attrs, "size")
     if size:
         m = DIM_RE.search(size)
@@ -326,6 +345,30 @@ def self_test() -> int:
         bp.write_text(json.dumps(diff, ensure_ascii=False), encoding="utf-8")
         _, rd, _ = run([bp], template, out_csv, report, {}, "없음")[0]
         check("음성: 가격 글자·구간가 범위 다름 → needs_review", rd["price"]["status"] == "needs_review")
+
+        # 한국어 페이지 형태 (2026-11-17 실제 추출에서 확인된 모양을 지어낸 값으로 재현)
+        ko = json.loads(caps[0].read_text(encoding="utf-8"))
+        ko["fields"]["original_name"]["value"] = "대형 개 리프트 하네스 - Buy  Product on Alibaba.com"
+        ko["fields"]["price_text"] = {"value": "USD 2.7", "source": "jsonld"}
+        ko["attributes"] = [{"name": "소재", "value": "폴리아미드"}, {"name": "재질", "value": "폴리에스터"},
+                            {"name": "단일 패키지 크기", "value": "20X25X15 cm"}, {"name": "단일 총 중량", "value": "1.500 kg"},
+                            {"name": "품종 크기", "value": "대형, 중간, 작은"}]
+        bp.write_text(json.dumps(ko, ensure_ascii=False), encoding="utf-8")
+        vk, rk, _ = run([bp], template, out_csv, report, {}, "없음")[0]
+        check("한국어: 소재·재질 두 칸 합침", vk["material"] == "폴리아미드;폴리에스터")
+        check("한국어: 단일 패키지 크기·단일 총 중량", vk["package_size"] == "20X25X15 cm" and vk["package_weight"] == "1.500 kg")
+        check("제목 끝 ' - Buy … on Alibaba.com' 제거", vk["original_name"] == "대형 개 리프트 하네스")
+        check("한국어 제목·대형 표기 메모", any("한국어" in n for n in rk["notes"]) and any("대형 표기" in n for n in rk["notes"]))
+        check("JSON-LD USD 가격은 구간가(KRW)와 통화 달라 참고만",
+              rk["price"]["status"] == "ok" and vk["currency"] == "KRW" and any("통화가 달라" in w for w in rk["price"]["warnings"]))
+
+    real = HERE / "a02_captures" / "prod-w2-01_capture_20261117-0921.json"
+    if real.exists():   # 첫 실사용 추출본(v0.1.0) 회귀 확인
+        with tempfile.TemporaryDirectory() as td:
+            vr, rr, _ = run([real], template, Path(td) / "f.csv", Path(td) / "r.md", {}, "없음")[0]
+        check("실제 추출본: KRW 구간가 3677~4358", (vr["price_min"], vr["price_max"], vr["currency"], rr["price"]["status"]) == ("3677", "4358", "KRW", "ok"))
+        check("실제 추출본: 소재 2개·공급처·리뷰 수", vr["material"] == "폴리아미드;폴리에스터" and vr["review_count"] == "13"
+              and vr["supplier_name"].startswith("Chaozhou"))
 
     for name, ok in results:
         print(f"[{'PASS' if ok else 'FAIL'}] {name}")

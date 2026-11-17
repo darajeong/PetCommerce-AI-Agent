@@ -1,0 +1,229 @@
+{
+  "attributes": [
+    {
+      "name": "원래 장소",
+      "value": "Guangdong, China"
+    },
+    {
+      "name": "유명 상표",
+      "value": "Ikitchen"
+    },
+    {
+      "name": "모델 번호",
+      "value": "NEW06"
+    },
+    {
+      "name": "특징",
+      "value": "사려깊은, 편안한, 내구성, 통기성, 조정가능한, 세탁 가능, Breakaway, Jeweled, 개인화된, 조명, 친환경, 구입하는, 덧대는, 빠른 릴리스, 지속 가능"
+    },
+    {
+      "name": "적용 대상 반려동물",
+      "value": "개, 고양이"
+    },
+    {
+      "name": "유형",
+      "value": "노 젓는 사람"
+    },
+    {
+      "name": "클로저 종류",
+      "value": "버클"
+    },
+    {
+      "name": "소재",
+      "value": "폴리아미드"
+    },
+    {
+      "name": "본",
+      "value": "격자 무늬의"
+    },
+    {
+      "name": "작풍",
+      "value": "럭셔리, 만화, 귀여운, 클래식, 간단한, 패션, 축제, 스포츠"
+    },
+    {
+      "name": "훈장",
+      "value": "FEATHER"
+    },
+    {
+      "name": "품종 크기",
+      "value": "대형, 중간, 작은"
+    },
+    {
+      "name": "세척 지침",
+      "value": "손 세척"
+    },
+    {
+      "name": "제품명",
+      "value": "강아지 리프트 하네스"
+    },
+    {
+      "name": "로고",
+      "value": "맞춤형 브랜드 로고"
+    },
+    {
+      "name": "최소주문수량(MOQ)",
+      "value": "100개"
+    },
+    {
+      "name": "상업 구매자",
+      "value": "선물 가게"
+    },
+    {
+      "name": "시즌",
+      "value": "사계절용"
+    },
+    {
+      "name": "휴일 선택",
+      "value": "지원하지 않음"
+    },
+    {
+      "name": "목줄 및 리드 유형",
+      "value": "하네스"
+    },
+    {
+      "name": "OEM 및 ODM",
+      "value": "수락 가능"
+    },
+    {
+      "name": "재질",
+      "value": "폴리에스터"
+    }
+  ],
+  "attributes_source": "page_data:detailData.globalData.product.productBasicProperties",
+  "capture_mode": "alibaba",
+  "capture_version": "0.1",
+  "captured_at": "2026-11-17T09:21:13+09:00",
+  "collector": "A 형준",
+  "debug": {
+    "notes": [],
+    "page_data_roots": {
+      "detailData": [
+        "devData",
+        "globalData",
+        "hierarchy",
+        "metaData",
+        "nodeMap"
+      ]
+    },
+    "strategies": [
+      "jsonld",
+      "page_data",
+      "dom"
+    ]
+  },
+  "edited_fields": [],
+  "fields": {
+    "currency_setting": {
+      "source": null,
+      "value": null
+    },
+    "moq_text": {
+      "source": "page_data:detailData.globalData.product.moq",
+      "value": "100"
+    },
+    "original_name": {
+      "source": "jsonld",
+      "value": "대형 개를위한 조정 가능한 개 리프트 하네스 개 슬링 뒷다리 약한 뒷다리를위한 부드러운 재활 하네스 부상당한 장애인을 돕습니다 - Buy  Product on Alibaba.com"
+    },
+    "price_text": {
+      "source": "jsonld",
+      "value": "USD 2.7"
+    },
+    "rating": {
+      "source": "page_data:detailData.globalData.review.productReview.averageStar",
+      "value": "5"
+    },
+    "review_count": {
+      "source": "text",
+      "value": "13"
+    },
+    "sales_count": {
+      "source": null,
+      "value": null
+    },
+    "supplier_name": {
+      "source": "page_data:detailData.globalData.seller.companyName",
+      "value": "Chaozhou Chaoan Ikitchen Stainless Steel Co., Ltd."
+    }
+  },
+  "host": "www.alibaba.com",
+  "image_urls": [
+    "https://sc04.alicdn.com/kf/Hbbfc1ef71cad4addb262d3e78309c76cR.jpg",
+    "https://sc04.alicdn.com/kf/H3fad6274730c4224ae156a27abc71260J.jpg",
+    "https://sc04.alicdn.com/kf/H2841d436397f432ab0eb6560eb274aedb.jpg",
+    "https://sc04.alicdn.com/kf/Hd1759693459a4c94beba8eeb2a5cfb75R.jpg",
+    "https://sc04.alicdn.com/kf/H9cf718cd7e604e268899e9ef22310d4bN.jpg",
+    "https://sc04.alicdn.com/kf/Hcaf7587dfe5d45f6b05610b204d0d52b7.jpg",
+    "https://sc04.alicdn.com/kf/H71b46655a61044cbbac72ea5013945f1l.jpg",
+    "https://img.alicdn.com/imgextra/i4/O1CN01JZ9fAH1lJ4nNzWtQI_!!6000000004797-2-tps-2250-1791.png",
+    "https://s.alicdn.com/@img/imgextra/i2/O1CN01M1wlXy1IWhrOEMX42_!!6000000000901-2-tps-522-522.png",
+    "https://img.alicdn.com/imgextra/i1/O1CN01uwKbqB1cDHVNbcnt3_!!6000000003566-2-tps-813-552.png",
+    "https://s.alicdn.com/@img/imgextra/i2/O1CN01gYGGdK1N6fPvHQhuO_!!6000000001521-2-tps-30-36.png",
+    "https://s.alicdn.com/@img/imgextra/i2/O1CN01PkPfW11Tz4AyzYFnc_!!6000000002452-2-tps-145-42.png",
+    "https://sc04.alicdn.com/kf/Hc593b0f015f5420fbfa0d2cfd7c6c99aa.jpg",
+    "https://img.alicdn.com/imgextra/i1/O1CN01xzJ1jy41kqH7nNnk_!!6000000005289-2-tps-3840-80.png",
+    "https://s.alicdn.com/@sc04/kf/Hbbfc1ef71cad4addb262d3e78309c76cR.jpg",
+    "https://s.alicdn.com/@sc04/kf/H3fad6274730c4224ae156a27abc71260J.jpg",
+    "https://s.alicdn.com/@sc04/kf/H2841d436397f432ab0eb6560eb274aedb.jpg",
+    "https://s.alicdn.com/@sc04/kf/Hd1759693459a4c94beba8eeb2a5cfb75R.jpg",
+    "https://s.alicdn.com/@sc04/kf/H9cf718cd7e604e268899e9ef22310d4bN.jpg",
+    "https://s.alicdn.com/@sc04/kf/Hcaf7587dfe5d45f6b05610b204d0d52b7.jpg"
+  ],
+  "image_usage": "needs_review",
+  "method_note": "사람이 페이지를 열고 버튼을 눌러 추출, 저장 전 사람이 값 확인 (W1-07: 페이지 열기·탐색 자동화 없음)",
+  "not_collected": [
+    "HTML 본문",
+    "상품 설명 원문",
+    "리뷰 원문",
+    "이미지 파일",
+    "쿠키·계정 정보"
+  ],
+  "options": [
+    {
+      "name": "색깔",
+      "values": [
+        "블랙"
+      ]
+    },
+    {
+      "name": "크기",
+      "values": [
+        "다양한 사이즈"
+      ]
+    }
+  ],
+  "options_source": "page_data:detailData.globalData.product.sku.skuAttrs",
+  "page_kind": "product_detail",
+  "platform": "alibaba",
+  "price_texts": [
+    "USD 2.7"
+  ],
+  "price_tiers": [
+    {
+      "price_text": "₩4,358",
+      "quantity_text": "100 - 799",
+      "source": "page_data:detailData.globalData.product.customPrice.productLadderPrices"
+    },
+    {
+      "price_text": "₩4,222",
+      "quantity_text": "800 - 4999",
+      "source": "page_data:detailData.globalData.product.customPrice.productLadderPrices"
+    },
+    {
+      "price_text": "₩3,950",
+      "quantity_text": "5000 - 9999",
+      "source": "page_data:detailData.globalData.product.customPrice.productLadderPrices"
+    },
+    {
+      "price_text": "₩3,677",
+      "quantity_text": ">= 10000",
+      "source": "page_data:detailData.globalData.product.customPrice.productLadderPrices"
+    }
+  ],
+  "product_id": "prod-w2-01",
+  "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
+  "tool": {
+    "name": "a02_capture_ext",
+    "version": "0.1.0"
+  }
+}

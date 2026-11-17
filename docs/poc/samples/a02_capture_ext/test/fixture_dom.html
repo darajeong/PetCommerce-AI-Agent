@@ -8,7 +8,7 @@
 <meta property="og:image" content="https://img.example.com/fixture/harness-main.jpg_350x350.jpg">
 </head>
 <body>
-<div class="top-bar"><span class="currency-switch">Ship to: KR · Currency: KRW</span></div>
+<header class="site-header"><div><span>배송지: KR</span><span>한국어-KRW</span></div></header>
 <h1>TEST FIXTURE Padded Dog Support Harness for Large Dogs</h1>
 <div class="product-gallery">
   <img src="https://img.example.com/fixture/harness-main.jpg_350x350.jpg" alt="">
@@ -22,8 +22,8 @@
   <div class="tier"><div class="qty">&gt;= 10000 pieces</div><div class="price-num">₩3,735</div></div>
 </div>
 <div class="order-info">Min. order: 100 pieces</div>
-<div class="review-line">5.0/5 · 13 reviews · 7 sold</div>
-<div class="supplier-card"><a href="https://fixture-test.en.alibaba.com/">Fixture Test Pet Products Co., Ltd.</a></div>
+<div class="review-line">5.0 (13 reviews) · 8 판매</div>
+<div class="supplier-card"><a href="https://fixture-test.en.alibaba.com/">Fixture Test Pet Products Co., Ltd.</a><span class="store-score">4.9/5 (4225)</span></div>
 <div class="key-attributes">
   <div class="attr-row"><span>Material</span><span>Nylon; Polyester</span></div>
   <div class="attr-row"><span>Size</span><span>60 x 40 x 10 cm</span></div>
@@ -46,8 +46,9 @@
     ['마지막 구간 >= 10000 pieces', r.price_tiers[3].quantity_text === '>= 10000 pieces'],
     ['MOQ 글자', f.moq_text.value === 'Min. order: 100 pieces'],
     ['공급처', f.supplier_name.value === 'Fixture Test Pet Products Co., Ltd.'],
-    ['판매량·평점·리뷰 수', f.sales_count.value === '7' && f.rating.value === '5.0' && f.review_count.value === '13'],
-    ['통화 설정 KRW', f.currency_setting.value === 'KRW'],
+    ['판매량 "8 판매"', f.sales_count.value === '8'],
+    ['평점은 상품 평점 5.0 (스토어 4.9/5 아님)', f.rating.value === '5.0' && f.review_count.value === '13'],
+    ['통화 설정 KRW (머리글 "한국어-KRW")', f.currency_setting.value === 'KRW'],
     ['속성 6개, 소재', r.attributes.length === 6 && attr('Material') === 'Nylon; Polyester'],
     ['이미지 2개 (아이콘 제외, 크기 꼬리 제거)', r.image_urls.length === 2 && r.image_urls[0] === 'https://img.example.com/fixture/harness-main.jpg'],
     ['상세페이지로 판정', r.platform === 'alibaba' && r.page_kind === 'product_detail'],
