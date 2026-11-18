@@ -2,6 +2,8 @@
 
 사람이 직접 연 알리바바 상품 상세페이지에서, 사람이 버튼을 눌렀을 때만 **사실 값**(상품명·가격·통화·수량별 구간가·MOQ·속성·옵션·공급처·판매량·평점·리뷰 수)과 **이미지 주소**를 JSON으로 저장한다. 저장본은 `a02_capture_to_facts.py`가 통화·가격 범위를 검사해 A02-02 입력표 형식으로 바꾸고, 그 뒤는 기존 `a02_build_product.py` → `a03_normalize.py`를 그대로 쓴다.
 
+PoC 기록(W1-06 형식, 판정 기준·회차별 결과): [`docs/poc/planning/W4-A02-02_BROWSER_EXT_CAPTURE.md`](../../planning/W4-A02-02_BROWSER_EXT_CAPTURE.md)
+
 ```
 사람이 상세페이지 열기 → [사실 값 추출] → 사람이 대조·수정 → [JSON 저장]
   → a02_capture_to_facts.py (통화·가격 검사, 사람 입력값 비교) → W2-A02-02_FACTS_CAPTURE.csv
