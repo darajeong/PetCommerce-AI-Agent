@@ -122,6 +122,12 @@ def build_column(cap: dict, human: dict[str, str], rates: dict[str, float]) -> t
             v["price_note"] = "구간가 " + " / ".join(f"{t['quantity']['raw']} {t['price']['raw']}" for t in pr["tiers"])
         else:
             v["price_note"] = f"가격 글자 {pr['raw']}"
+            src = (f.get("price_text") or {}).get("source") or ""
+            if re.search(r"promotion|discount", src, re.I):   # 할인가면 같은 묶음의 할인 전 범위도 적는다
+                parent = src.split(":", 1)[-1].rsplit(".", 1)[0]
+                orig = next((c["value"] for c in (cap.get("price_candidates") or {}).get("page_data") or []
+                             if c["path"].rsplit(".", 1)[0] == parent and c["path"].endswith("priceRangeText")), None)
+                v["price_note"] = f"할인가 {pr['raw']}" + (f" (할인 전 {orig})" if orig else "")
         if moq:
             v["price_note"] += f" (MOQ {moq})"
     plaus = check_plausibility(pr["min"] if pr else None, pr["max"] if pr else None, pr["currency"] if pr else None, rates)
@@ -173,6 +179,9 @@ def build_column(cap: dict, human: dict[str, str], rates: dict[str, float]) -> t
         if v["review_count"] and (f.get("review_count") or {}).get("source") == "text":
             rep["notes"].append(f"리뷰 수 {v['review_count']}도 스토어 리뷰 수일 수 있어 비움 (사람 확인)")
             v["review_count"] = ""
+    if v["review_count"] and not v["rating"] and (f.get("review_count") or {}).get("source") == "text":
+        rep["notes"].append(f"리뷰 수 {v['review_count']}는 상품 평점 없이 화면 글자에서만 찾은 값이라 비움 (스토어 리뷰 수일 수 있음, 사람 확인)")
+        v["review_count"] = ""
     v["supplier_name"] = g("supplier_name")
     v["collected_at"] = (cap.get("captured_at") or "")[:16].replace("T", " ")
     tool = cap.get("tool", {})
@@ -397,6 +406,16 @@ def self_test() -> int:
         check("실제 추출본: KRW 구간가 3677~4358", (vr["price_min"], vr["price_max"], vr["currency"], rr["price"]["status"]) == ("3677", "4358", "KRW", "ok"))
         check("실제 추출본: 소재 2개·공급처·리뷰 수", vr["material"] == "폴리아미드;폴리에스터" and vr["review_count"] == "13"
               and vr["supplier_name"].startswith("Chaozhou"))
+    r07 = HERE / "a02_captures" / "prod-w2-07_capture_20261118-0947.json"
+    r09 = HERE / "a02_captures" / "prod-w2-09_capture_20261118-0947.json"
+    if r07.exists() and r09.exists():   # v0.3.0 범위가 상품 회귀 확인
+        with tempfile.TemporaryDirectory() as td:
+            (v7, p7, _), (v9, p9, _) = run([r07, r09], template, Path(td) / "f.csv", Path(td) / "r.md", {}, "없음")
+        check("실제 07: 할인 범위가 KRW·할인 전 범위 메모", (v7["price_min"], v7["price_max"], v7["currency"]) == ("10125", "11628", "KRW")
+              and "할인 전 ₩11,245-12,926" in v7["price_note"] and p7["price"]["status"] == "ok")
+        check("실제 07: 상품 평점 없음 → 글자에서 찾은 리뷰 수(스토어) 비움", v7["rating"] == "" and v7["review_count"] == "")
+        check("실제 09: 범위가 KRW·상품명 온전", (v9["price_min"], v9["price_max"], v9["currency"]) == ("2528", "5056", "KRW")
+              and v9["original_name"].startswith("Long-lasting Interactive Dog Toy"))
 
     for name, ok in results:
         print(f"[{'PASS' if ok else 'FAIL'}] {name}")

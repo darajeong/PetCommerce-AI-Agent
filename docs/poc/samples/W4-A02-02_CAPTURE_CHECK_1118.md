@@ -1,7 +1,7 @@
 # A02-02 확장 프로그램 추출 검사 보고서
 
-- 생성: 2026-11-18 09:43
-- 추출본: prod-w2-01_capture_20261118-0933.json, prod-w2-07_capture_20261118-0934.json, prod-w2-09_capture_20261118-0934.json
+- 생성: 2026-11-18 09:49
+- 추출본: prod-w2-01_capture_20261118-0933.json, prod-w2-07_capture_20261118-0947.json, prod-w2-09_capture_20261118-0947.json
 - 환율: 입력 없음 (KRW 외 상식선 검사 생략)
 - 빈칸은 확장이 못 찾은 값이다. a02_build_product.py에서 `manual_review_required`(사람 확인 전)로 처리된다.
 - 이미지는 주소만 추출본에 남기고 입력표에는 넣지 않았다 (W1-07 1.1절, usage = needs_review).
@@ -59,35 +59,30 @@
 ## prod-w2-07
 
 - 출처: https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html
-- 추출 시각: 2026-11-18 09:34 · 방식: alibaba
+- 추출 시각: 2026-11-18 09:47 · 방식: alibaba
 - 사람이 고친 칸: 없음 · 이미지 주소 12개
 
 ### 가격 검사
 
-- 판정: **needs_review** (가격 글자)
-- 통화: USD (근거: code)
-- 최저~최고: 8.23 ~ 8.23 · MOQ 10
-- 사람 확인 필요:
-  - 화면 표시 통화(KRW) 가격을 못 뽑고 다른 통화(USD) 가격만 있음 (출처 jsonld) → 화면 가격을 사람이 확인
-- 참고:
-  - 페이지 통화 설정(KRW)과 가격 표시 통화(USD)가 다름
-- 원화 상식선: 검사 생략 / USD→KRW 환율이 입력되지 않아 상식선 검사 생략
+- 판정: **ok** (가격 글자)
+- 통화: KRW (근거: symbol)
+- 최저~최고: 10125 ~ 11628 · MOQ 10
+- 원화 상식선: 10,125원 ~ 11,628원 (환율 1)
 
 ### 빈칸 (사람 확인 필요)
 
 - length, weight, sales_count, rating, review_count, shipping_method, shipping_fee, large_dog_label, product_use
 - 크기 속성 'M, L'을 치수로 읽지 못해 빈칸 (옵션 사이즈일 수 있음)
-- 평점 4.8은 스토어 평가(page_data:detailData.globalData.review.storeReview.averageStar)라 비움
-- 리뷰 수 1710도 스토어 리뷰 수일 수 있어 비움 (사람 확인)
+- 리뷰 수 1710는 상품 평점 없이 화면 글자에서만 찾은 값이라 비움 (스토어 리뷰 수일 수 있음, 사람 확인)
 
-### 사람 입력값과 비교 (일치 7/16)
+### 사람 입력값과 비교 (일치 8/16)
 
 | 항목 | 사람 입력 | 확장 추출 | 결과 |
 |---|---|---|---|
 | original_name | Wholesale Washable Dog Beds for Large Dogs Mattress Comfortable and Warming Rectangle | Wholesale Washable Dog Beds For Large Dogs Mattress Comfortable And Warming Rectangle | 일치 |
-| price_min | 10250 | 8.23 | 불일치 |
-| price_max | 11772 | 8.23 | 불일치 |
-| currency | KRW | USD | 불일치 |
+| price_min | 10250 | 10125 | 불일치 |
+| price_max | 11772 | 11628 | 불일치 |
+| currency | KRW | KRW | 일치 |
 | options | 색상=회색, 갈색; 크기=M 54*43*18/13cm, L 67*50*18/13cm | Color=Gray/Brown; Size=M: 54*43*18/13cm/L: 67*50*18/13cm | 불일치 |
 | length | 67 | · | 확장 못 찾음 |
 | width | 50 | · | 확장 못 찾음 |
@@ -104,32 +99,28 @@
 ## prod-w2-09
 
 - 출처: https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html
-- 추출 시각: 2026-11-18 09:34 · 방식: alibaba
+- 추출 시각: 2026-11-18 09:47 · 방식: alibaba
 - 사람이 고친 칸: 없음 · 이미지 주소 11개
 
 ### 가격 검사
 
-- 판정: **needs_review** (가격 글자)
-- 통화: USD (근거: code)
-- 최저~최고: 1.85 ~ 1.85 · MOQ 200
-- 사람 확인 필요:
-  - 화면 표시 통화(KRW) 가격을 못 뽑고 다른 통화(USD) 가격만 있음 (출처 jsonld) → 화면 가격을 사람이 확인
-- 참고:
-  - 페이지 통화 설정(KRW)과 가격 표시 통화(USD)가 다름
-- 원화 상식선: 검사 생략 / USD→KRW 환율이 입력되지 않아 상식선 검사 생략
+- 판정: **ok** (가격 글자)
+- 통화: KRW (근거: symbol)
+- 최저~최고: 2528 ~ 5056 · MOQ 200
+- 원화 상식선: 2,528원 ~ 5,056원 (환율 1)
 
 ### 빈칸 (사람 확인 필요)
 
 - length, weight, shipping_method, shipping_fee, large_dog_label, product_use
 
-### 사람 입력값과 비교 (일치 11/16)
+### 사람 입력값과 비교 (일치 13/16)
 
 | 항목 | 사람 입력 | 확장 추출 | 결과 |
 |---|---|---|---|
-| original_name | Long-Lasting Interactive Dog Toy Ball Freeze Treats Toy Eco-Friendly Food Grade Silicone Dog Chew Lick Toys for Large Dogs | Long | 불일치 |
-| price_min | 2535 | 1.85 | 불일치 |
-| price_max | 5069 | 1.85 | 불일치 |
-| currency | KRW | USD | 불일치 |
+| original_name | Long-Lasting Interactive Dog Toy Ball Freeze Treats Toy Eco-Friendly Food Grade Silicone Dog Chew Lick Toys for Large Dogs | Long-lasting Interactive Dog Toy Ball Freeze Treats Toy Eco-friendly Food Grade Silicone Dog Chew Lick Toys For Large Dogs | 일치 |
+| price_min | 2535 | 2528 | 불일치 |
+| price_max | 5069 | 5056 | 불일치 |
+| currency | KRW | KRW | 일치 |
 | options | 색상=녹색, 노란색 | Color=Green/Yellow(silicone Treat Tray) | 불일치 |
 | length | 없음 | · | 일치 (둘 다 없음) |
 | width | 없음 | · | 일치 (둘 다 없음) |

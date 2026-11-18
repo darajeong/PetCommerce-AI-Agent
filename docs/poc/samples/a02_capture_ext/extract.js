@@ -1,5 +1,5 @@
 /*
- * A02 상세페이지 사실 값 추출 함수 (a02_capture_ext v0.3.0, 2026-11-18)
+ * A02 상세페이지 사실 값 추출 함수 (a02_capture_ext v0.3.1, 2026-11-18)
  *
  * - 사람이 직접 연 상품 상세페이지에서, 사람이 확장 프로그램 버튼을 눌렀을 때 한 번만 실행된다.
  * - 네트워크 요청을 보내지 않고, 다른 페이지를 열거나 이동하지 않는다. 이미 화면에 그려진 DOM 과
@@ -12,7 +12,7 @@
  * 시험용 페이지(test/)에서는 pageUrlOverride 로 상품 URL 을 흉내 낸다.
  */
 function a02ExtractFacts(pageUrlOverride) {
-  const VERSION = '0.3.0';
+  const VERSION = '0.3.1';
   const MAX_ATTR = 60, MAX_IMG = 20, MAX_PRICE_TEXT = 20, MAX_NODES = 40000;
   const href = pageUrlOverride || location.href;
   const url = new URL(href);
@@ -84,7 +84,7 @@ function a02ExtractFacts(pageUrlOverride) {
     if (/productReview/i.test(path)) pd.hasProductReview = true;
     if (/storeReview|sellerReview|shopReview|companyReview/i.test(path)) pd.hasStoreReview = true;
     // 가격 후보: 키 이름에 price 가 들어간 짧은 값 (샘플가·배송비는 뺌). 사람이 팝업에서 고르고, 다음 규칙 조정의 근거로 쓴다
-    if (/price/i.test(k) && !/sample|shipping|freight|logistic/i.test(path) && pd.priceCands.length < 40
+    if (/price/i.test(k) && !/sample|shipping|freight|logistic|i18n/i.test(path) && pd.priceCands.length < 40
         && (typeof x === 'string' || typeof x === 'number')) {
       const t = clean(x);
       if (/\d/.test(t) && t.length <= 60) pd.priceCands.push({ path, value: t });
@@ -306,7 +306,9 @@ function a02ExtractFacts(pageUrlOverride) {
   const dispRe = curV && SYM[curV];
   // 할인 전 정가·시장가 같은 후보는 뒤로 미룬다 (화면의 판매가를 먼저)
   const notOriginal = (c) => !/original|origin|before|market|retail|strike|listPrice|was/i.test(c.path);
-  const pdDisp = dispRe && pd.priceCands.find((c) => !/ladder/i.test(c.path) && notOriginal(c) && dispRe.test(c.value) && PRICE_RE.test(c.value));
+  const pdPool = dispRe ? pd.priceCands.filter((c) => !/ladder/i.test(c.path) && notOriginal(c) && dispRe.test(c.value) && PRICE_RE.test(c.value)) : [];
+  // 할인 중이면 화면에 크게 보이는 할인가(…Promotion…)를 먼저 쓴다 (11/18 방석: pricePromotionRangeText)
+  const pdDisp = pdPool.find((c) => /promotion|discount/i.test(c.path)) || pdPool[0];
   const domDisp = dispRe && domPriceCands.find((c) => dispRe.test(c.text));
   const [priceV, priceS] = tiersFound
     ? first([ld.prices[0], 'jsonld'], [domPrices[0], 'dom:price'])
@@ -318,10 +320,15 @@ function a02ExtractFacts(pageUrlOverride) {
   // 페이지 데이터에 스토어 평가만 있고 상품 리뷰가 없으면, 화면 글자에서 찾은 평점·리뷰 수도 스토어 값일 수 있어 쓰지 않는다
   const storeOnly = pd.hasStoreReview && !pd.hasProductReview;
   if (storeOnly) debug.notes.push('상품 리뷰 없음으로 봄: 페이지 데이터에 스토어 평가만 있음 (평점·리뷰 수 비움)');
+  // 페이지 데이터에 리뷰 정보가 있는데 상품 평점이 없으면 화면 글자에서도 평점을 찾지 않는다 (스토어 평점을 잡지 않도록)
+  const pdReviewKnown = pd.hasProductReview || pd.hasStoreReview;
   const [rateV, rateS] = first([ld.rating, 'jsonld'], pd.rating && [String(pd.rating.v), `page_data:${pd.rating.p}`],
-    !storeOnly && ratingM && [ratingM[1], 'text']);
+    !pdReviewKnown && ratingM && [ratingM[1], 'text']);
+  // 상품 평점이 없으면(리뷰가 없는 상품) 화면 글자의 "N reviews"는 스토어 리뷰 수일 가능성이 커서 쓰지 않는다 (11/18 방석 사례)
+  const textReviewOk = !storeOnly && rateV != null;
+  if (!storeOnly && rateV == null && (ratingM || reviewM)) debug.notes.push('상품 평점이 없어 화면 글자의 리뷰 수를 쓰지 않음 (스토어 리뷰 수일 수 있음)');
   const [revV, revS] = first([ld.reviewCount, 'jsonld'], pd.reviewCount && [String(pd.reviewCount.v), `page_data:${pd.reviewCount.p}`],
-    !storeOnly && ratingM && [ratingM[2].replace(/,/g, ''), 'text'], !storeOnly && reviewM && [reviewM[1].replace(/,/g, ''), 'text']);
+    textReviewOk && ratingM && [ratingM[2].replace(/,/g, ''), 'text'], textReviewOk && reviewM && [reviewM[1].replace(/,/g, ''), 'text']);
 
   const imgs = [];
   const imgSeen = new Set();

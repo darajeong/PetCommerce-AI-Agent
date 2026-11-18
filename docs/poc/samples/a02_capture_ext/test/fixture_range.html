@@ -15,13 +15,15 @@
     globalData: {
       product: {
         moq: 10,
-        priceModule: { originalPriceText: '₩11,385 - 13,086', formatPriceRange: '₩10,250 - 11,772', discountText: '10% off' },
+        // 11/18 실제 구조의 키 이름을 따르되 값은 지어냄. 정가 범위가 할인가보다 먼저 나와도 할인가를 골라야 한다
+        customPrice: { productRangePrices: { priceRangeText: '₩11,385 - 13,086', pricePromotionRangeText: '₩10,250 - 11,772',
+                                             dollarPriceRangeLow: 8.23, priceRangeLow: 11385 } },
         productBasicProperties: [
           { attrName: 'Material', attrValue: 'Velvet' },
           { attrName: 'Size', attrValue: 'M, L' }
         ]
       },
-      review: { storeReview: { averageStar: 4.8, reviewCount: 1710 } },
+      review: { productReview: { hasReview: false }, storeReview: { averageStar: 4.8, reviewCount: 1710 } },
       seller: { companyName: 'Fixture Bed Test Co., Ltd.' }
     }
   };
@@ -31,6 +33,7 @@
 <header class="site-header"><span>English-KRW</span></header>
 <h1>TEST FIXTURE Long-Lasting Washable Dog Bed (h1)</h1>
 <div class="store-box">Store rating 4.8 (1710 reviews)</div>
+<div class="store-tab">1710 reviews</div>
 <div class="key-attributes">
   <div class="attr-row"><span>Gray</span><span>Brown</span></div>
   <div class="attr-row"><span>M: 54*43*18/13cm</span><span>L: 67*50*18/13cm</span></div>
@@ -48,9 +51,10 @@
     ['구간가 없음', r.price_tiers.length === 0],
     ['가격은 화면 통화(KRW) 판매가 후보를 JSON-LD(USD)보다 먼저', f.price_text.value === '₩10,250 - 11,772' && f.price_text.source.startsWith('page_data:')],
     ['할인 전 정가는 가격 후보 목록에만 남김', r.price_candidates.page_data.some((c) => c.value === '₩11,385 - 13,086')],
+    ['가격 출처는 할인가 키', /pricePromotionRangeText$/.test(f.price_text.source)],
     ['통화 설정 KRW', f.currency_setting.value === 'KRW'],
-    ['스토어 평가만 있으면 평점·리뷰 수 비움', f.rating.value === null && f.review_count.value === null
-      && r.debug.notes.some((n) => n.includes('스토어 평가만'))],
+    ['상품 평점이 없으면 스토어 평점·리뷰 수(4.8, 1710)를 잡지 않음', f.rating.value === null && f.review_count.value === null
+      && r.debug.notes.some((n) => n.includes('상품 평점이 없어'))],
     ['옵션 버튼 줄(Gray|Brown)은 속성에 안 섞임', !names.includes('Gray') && !names.some((n) => n.startsWith('M:'))],
     ['화면의 포장 정보는 속성에 더함', names.includes('Single package size') && names.includes('Single gross weight') && r.attributes.length === 4],
   ]);
