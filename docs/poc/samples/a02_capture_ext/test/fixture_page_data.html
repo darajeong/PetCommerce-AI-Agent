@@ -35,6 +35,7 @@
                      { imageUrl: '//sc04.example-cdn.com/kf/Hfixture1.jpg' }, { imageUrl: '//s.example-cdn.com/@sc04/kf/Hfixture1.jpg' },
                      { imageUrl: '//img.example-cdn.com/imgextra/i1/O1CN-fixture_!!600-2-tps-30-36.png' }]
       },
+      logistics: { deliveryTime: '3-7 days', shippingFrom: 'Guangdong' },
       seller: { companyName: 'Fixture Silicone Test Co., Ltd.' },
       user: { email: 'should-not-appear@example.com', loginId: 'fixture-secret-login' }
     }
@@ -43,6 +44,7 @@
 </head>
 <body>
 <h1>TEST FIXTURE Silicone Lick Treat Ball (h1)</h1>
+<div class="shipping-module"><span>Shipping</span><p>Standard Alibaba.com Logistics</p><p>Shipping fee: ₩442,283 for 100 pieces</p><p>Guaranteed delivery by Dec 27</p></div>
 <div class="detail-desc">FIXTURE DESCRIPTION TEXT — 설명 원문은 추출 결과에 들어가면 안 된다.</div>
 <script src="../extract.js"></script>
 <script src="expect.js"></script>
@@ -63,6 +65,8 @@
     ['옵션 Color = Blue / Orange', r.options.length === 1 && r.options[0].values.join('/') === 'Blue/Orange'],
     ['이미지 3개 (같은 kf 파일 중복·화면용 아이콘 제외)', r.image_urls.length === 3 && !r.image_urls.some((u) => /imgextra|@sc04/.test(u))],
     ['없는 값은 null', f.sales_count.value === null && f.sales_count.source === null],
+    ['배송 상자 글자 (영어)·배송 후보', (f.shipping_text.value || '').includes('Shipping fee: ₩442,283 for 100 pieces')
+      && r.shipping_candidates.some((c) => c.value === '3-7 days')],
   ]);
 </script>
 </body>

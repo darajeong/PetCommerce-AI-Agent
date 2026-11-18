@@ -8,10 +8,10 @@ price_max,최고 가격 (숫자만),4373,11628,5056
 currency,가격 통화 (페이지에 보이는 통화),KRW,KRW,KRW
 price_note,가격 조건 (구간가·할인·MOQ 등),"구간가 100 - 799 ₩4,373 / 800 - 4999 ₩4,236 / 5000 - 9999 ₩3,963 / >= 10000 ₩3,690 (MOQ 100)","할인가 ₩10,125-11,628 (할인 전 ₩11,245-12,926) (MOQ 10)","가격 글자 ₩2,528-5,056 (MOQ 200)"
 options,옵션 (이름=값; 이름=값),Color=Black; Size=Multiple Size,Color=Gray/Brown; Size=M: 54*43*18/13cm/L: 67*50*18/13cm,Color=Green/Yellow(silicone Treat Tray)
-length,길이 (숫자),,,
-width,폭 (숫자),,,
-height,높이 (숫자),,,
-dim_unit,크기 단위 (mm·cm·in),,,
+length,길이 (숫자),,67,
+width,폭 (숫자),,50,
+height,높이 (숫자),,18,
+dim_unit,크기 단위 (mm·cm·in),,cm,
 weight,무게 (숫자),,,
 weight_unit,무게 단위 (g·kg·lb),,,
 material,소재 (여러 개면 ;로 구분),polyamide;Polyester,Velvet,Food Grade Silicone;Silicone
@@ -24,9 +24,9 @@ shipping_method,배송 방법,,,
 shipping_fee,배송비 (숫자),,,
 shipping_currency,배송비 통화,,,
 supplier_name,공급처(판매자) 이름,"Chaozhou Chaoan Ikitchen Stainless Steel Co., Ltd.","Dalian Usmile Pet Technology Co., Ltd.","Dongguan Wellfine Silicone Products Co., Ltd."
-large_dog_label,상세 페이지에 대형견 표기가 있는가 (예·아니오),,,
+large_dog_label,상세 페이지에 대형견 표기가 있는가 (예·아니오),예,예,예
 product_use,용도 (예: 산책용 / 보행 보조용 슬링),,,
-size_note,크기 기준 메모,,,
+size_note,크기 기준 메모,,"옵션별 치수: M 54×43×18/13cm, L 67×50×18/13cm. 대표 치수는 가장 큰 옵션(L)을 자동 선택 (대형견 PoC 기준, 사람 확인). 높이 18/13는 앞 숫자를 씀",
 package_size,"포장 크기 (하나의 패키지 크기, 상품 치수 아님)",20X25X15 cm,18X10X5 cm,10X10X9 cm
 package_weight,포장 총중량 (단일 총중량),1.5 kg,0.8 kg,0.35 kg
 collected_at_overrides,확인 시각이 collected_at과 다른 값 (key=일시; ...),,,

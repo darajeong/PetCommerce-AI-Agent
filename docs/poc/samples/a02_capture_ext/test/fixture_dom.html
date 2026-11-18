@@ -22,6 +22,7 @@
   <div class="tier"><div class="qty">&gt;= 10000 pieces</div><div class="price-num">₩3,735</div></div>
 </div>
 <div class="order-info">Min. order: 100 pieces</div>
+<div class="ship-card"><div>배송</div><div>스탠더드 Alibaba.com Logistics</div><div>배송비: 100개당 ₩442,283</div><div>무료 배송 최대한도 ₩27,236</div></div>
 <div class="review-line">5.0 (13 reviews) · 8 판매</div>
 <div class="supplier-card"><a href="https://fixture-test.en.alibaba.com/">Fixture Test Pet Products Co., Ltd.</a><span class="store-score">4.9/5 (4225)</span></div>
 <div class="key-attributes">
@@ -52,6 +53,7 @@
     ['속성 6개, 소재', r.attributes.length === 6 && attr('Material') === 'Nylon; Polyester'],
     ['이미지 2개 (아이콘 제외, 크기 꼬리 제거)', r.image_urls.length === 2 && r.image_urls[0] === 'https://img.example.com/fixture/harness-main.jpg'],
     ['상세페이지로 판정', r.platform === 'alibaba' && r.page_kind === 'product_detail'],
+    ['배송 상자 글자 (한국어)', (f.shipping_text.value || '').includes('Alibaba.com Logistics') && f.shipping_text.value.includes('100개당 ₩442,283')],
   ]);
 </script>
 </body>

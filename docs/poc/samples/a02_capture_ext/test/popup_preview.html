@@ -12,7 +12,7 @@
       || 'https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html' }] },
     scripting: {
       executeScript: async () => {
-        const c = await fetch('sample_capture_prod-w2-01.json').then((r) => r.json());
+        const c = await fetch('sample_capture_prod-w2-01.json', { cache: 'no-store' }).then((r) => r.json());
         ['product_id', 'collector', 'capture_mode', 'edited_fields', 'method_note'].forEach((k) => delete c[k]);
         c.platform = 'alibaba';
         return [{ result: c }];
@@ -22,12 +22,12 @@
     downloads: { download: async (o) => { window.__lastDownload = o; return 1; } },
   };
   (async () => {
-    const html = await fetch('../popup.html').then((r) => r.text());
+    const html = await fetch('../popup.html', { cache: 'no-store' }).then((r) => r.text());
     const doc = new DOMParser().parseFromString(html, 'text/html');
     document.head.append(...doc.head.querySelectorAll('style'));
     [...doc.body.children].filter((el) => el.tagName !== 'SCRIPT').forEach((el) => document.body.appendChild(el));
     for (const src of ['../extract.js', '../popup.js']) {
-      await new Promise((ok) => { const s = document.createElement('script'); s.src = src; s.onload = ok; document.body.appendChild(s); });
+      await new Promise((ok) => { const s = document.createElement('script'); s.src = src + '?t=' + Date.now(); s.onload = ok; document.body.appendChild(s); });
     }
   })();
 </script>

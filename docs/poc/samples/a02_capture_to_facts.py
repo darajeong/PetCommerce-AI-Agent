@@ -69,6 +69,51 @@ def find_attr(attrs: list[dict], key: str) -> str | None:
     return hit[0]["value"] if hit else None
 
 
+MONEY = r"(₩\s?[\d,]+(?:\.\d+)?|US\$\s?[\d,.]+|\$\s?[\d,.]+|[\d,]+(?:\.\d+)?\s?원)"
+
+
+def parse_shipping(text: str) -> dict:
+    """배송 상자 글자 → 배송 방법·배송비(수량 기준)·무료 배송 한도. 배송지·수량에 따라 바뀌는 값이라 원문도 같이 남긴다."""
+    t = re.sub(r"\s+", " ", text or "").strip()
+    out = {"raw": t, "method": None, "fee": None, "fee_text": None, "per_qty": None, "free_upto": None, "currency": None}
+    m = re.search(r"((?:Standard|Express|Economy|Premium|스탠더드|스탠다드|익스프레스|이코노미)\s*)?Alibaba\.com\s*Logistics", t, re.I) \
+        or re.search(r"([A-Z][A-Za-z.&]*(?: [A-Z][A-Za-z.&]*){0,3} (?:Logistics|Express|Shipping))", t)
+    if m:
+        out["method"] = m.group(0).strip()
+    fee = re.search(r"(?:Shipping fee|Shipping cost|배송비)\s*[:：]?\s*(?:(\d[\d,]*)\s*(?:개당|pieces?|pcs|units?)\s*(?:당)?\s*)?" + MONEY +
+                    r"(?:\s*(?:for|/)\s*(\d[\d,]*)\s*(?:pieces?|pcs|units?))?", t, re.I)
+    if fee:
+        out["fee_text"] = fee.group(0)
+        p = parse_price_text(fee.group(2))
+        out["fee"], out["currency"] = p["min"], p["currency"]
+        q = fee.group(1) or fee.group(3)
+        out["per_qty"] = int(q.replace(",", "")) if q else None
+    free = re.search(r"(?:Free shipping|무료\s*배송)[^₩$\d]{0,20}" + MONEY, t, re.I)
+    if free:
+        out["free_upto"] = free.group(1).replace(" ", "")
+        if out["currency"] is None:
+            out["currency"] = parse_price_text(free.group(1))["currency"]
+    return out
+
+
+OPT_DIM_RE = re.compile(r"(?:^|(?P<label>[^:：/]{1,12})[:：]\s*)?(?P<l>\d+(?:\.\d+)?)\s*[x×*X]\s*(?P<w>\d+(?:\.\d+)?)\s*[x×*X]\s*(?P<h>\d+(?:\.\d+)?)"
+                        r"(?:\s*/\s*(?P<h2>\d+(?:\.\d+)?))?\s*(?P<u>mm|cm|inches|inch|in)\b", re.I)
+
+
+def option_dims(options: list[dict]) -> list[dict]:
+    """옵션 값 안의 치수 (예: 'M: 54*43*18/13cm') → [{label, length, width, height, height2, unit}]"""
+    out = []
+    for o in options or []:
+        for val in o.get("values") or []:
+            m = OPT_DIM_RE.search(val)
+            if m:
+                out.append({"label": (m.group("label") or val.split(":")[0]).strip(), "length": float(m.group("l")),
+                            "width": float(m.group("w")), "height": float(m.group("h")),
+                            "height2": float(m.group("h2")) if m.group("h2") else None,
+                            "unit": {"inch": "in", "inches": "in"}.get(m.group("u").lower(), m.group("u").lower()), "raw": val})
+    return out
+
+
 def read_template(path: Path) -> tuple[list[list[str]], dict[str, dict[str, str]]]:
     with path.open(encoding="utf-8-sig", newline="") as f:
         rows = list(csv.reader(f))
@@ -167,6 +212,56 @@ def build_column(cap: dict, human: dict[str, str], rates: dict[str, float]) -> t
         v["pet_weight_max"], v["pet_weight_unit"] = m.group(1), {"lbs": "lb"}.get(m.group(2).lower(), m.group(2).lower())
     v["package_size"] = find_attr(attrs, "package_size") or ""
     v["package_weight"] = find_attr(attrs, "package_weight") or ""
+
+    # 옵션 이름 안의 치수: 속성에 상품 치수가 없을 때 가장 큰 옵션을 대표 치수로 (대형견 PoC 기준, 사람이 바꿀 수 있음)
+    dims = option_dims(cap.get("options") or [])
+    rep["option_dims"] = dims
+    if dims:
+        listing = ", ".join(f"{d['label']} {num_str(d['length'])}×{num_str(d['width'])}×{num_str(d['height'])}"
+                            + (f"/{num_str(d['height2'])}" if d["height2"] else "") + d["unit"] for d in dims)
+        if not v.get("length"):
+            big = max(dims, key=lambda d: d["length"] * d["width"])
+            v["length"], v["width"], v["height"] = num_str(big["length"]), num_str(big["width"]), num_str(big["height"])
+            v["dim_unit"] = big["unit"]
+            v["size_note"] = (f"옵션별 치수: {listing}. 대표 치수는 가장 큰 옵션({big['label']})을 자동 선택 (대형견 PoC 기준, 사람 확인)"
+                              + (f". 높이 {num_str(big['height'])}/{num_str(big['height2'])}는 앞 숫자를 씀" if big["height2"] else ""))
+        else:
+            v["size_note"] = f"옵션별 치수: {listing}"
+
+    # 대형견 표기: 제목·속성(적용 대상·품종 크기)에 large/대형이 있으면 "예" + 근거. 없으면 비워 사람이 판단 ("아니오"는 자동으로 쓰지 않음)
+    evidence = []
+    if re.search(r"\blarge\b|\bbig\b|대형", v["original_name"], re.I):
+        evidence.append("제목")
+    for a in attrs:
+        if re.search(ATTR_RULES["breed_size"] + r"|applicable pet|suitable for|적용 대상", a["name"], re.I) \
+                and re.search(r"\blarge\b|\bbig\b|대형", a["value"], re.I):
+            evidence.append(f"속성 '{a['name']}: {a['value']}'")
+    if evidence:
+        v["large_dog_label"] = "예"
+        rep["notes"].append(f"대형견 표기 '예' 자동 기록 (근거: {', '.join(evidence)})")
+
+    # 배송 상자 글자 → 배송 방법·배송비 (v0.4.0 이상 추출본)
+    ship_txt = g("shipping_text")
+    rep["shipping"] = None
+    if ship_txt:
+        sh = parse_shipping(ship_txt)
+        rep["shipping"] = sh
+        method = sh["method"] or ""
+        extra = []
+        if sh["per_qty"]:
+            extra.append(f"배송비는 {sh['per_qty']}개 기준")
+        if sh["free_upto"]:
+            extra.append(f"무료 배송 최대 {sh['free_upto']}")
+        v["shipping_method"] = (method + (f" ({', '.join(extra)})" if extra else "")).strip()
+        if sh["fee"] is not None:
+            v["shipping_fee"], v["shipping_currency"] = num_str(sh["fee"]), sh["currency"] or ""
+        elif sh["free_upto"]:
+            v["shipping_fee"], v["shipping_currency"] = "0", sh["currency"] or ""
+            rep["notes"].append(f"배송비 숫자가 없고 무료 배송({sh['free_upto']} 한도)만 있어 배송비 0으로 기록")
+        if not method:
+            rep["notes"].append(f"배송 상자에서 배송 방법을 못 읽음: '{sh['raw'][:80]}'")
+        if ctx and sh["currency"] and sh["currency"] != ctx.upper():
+            rep["notes"].append(f"배송비 통화({sh['currency']})가 화면 통화({ctx})와 다름")
 
     # ---- 그 밖의 사실 값
     for k in ("sales_count", "rating", "review_count"):
@@ -323,7 +418,8 @@ def self_test() -> int:
         check("01 크기 60x40x10 cm", (v1["length"], v1["width"], v1["height"], v1["dim_unit"]) == ("60", "40", "10", "cm"))
         check("01 무게 0.45 kg", (v1["weight"], v1["weight_unit"]) == ("0.45", "kg"))
         check("01 포장 크기·총중량", v1["package_size"] == "20X25X15 cm" and v1["package_weight"] == "1.500 kg")
-        check("01 배송·대형견 표기는 빈칸 (사람 판단)", not v1.get("shipping_method") and not v1.get("large_dog_label"))
+        check("01 배송 글자 없으면 배송 빈칸", not v1.get("shipping_method") and not v1.get("shipping_fee"))
+        check("01 제목에 Large Dogs → 대형견 표기 '예' + 근거", v1["large_dog_label"] == "예" and any("근거: 제목" in n for n in r1["notes"]))
         check("01 category_id 는 입력표에서", v1["category_id"] == "pet_harness")
         check("01 확인 일시 형식", v1["collected_at"] == "2026-11-17 10:00")
         check("09 USD 구간가", (v9["price_min"], v9["price_max"], v9["currency"]) == ("2.5", "3.8", "USD"))
@@ -399,6 +495,26 @@ def self_test() -> int:
         check("화면 통화(KRW) 없이 USD만 → 확인 필요",
               rgr["price"]["status"] == "needs_review" and any("화면 표시 통화" in x for x in rgr["price"]["reviews"]))
 
+        # v0.4.0: 배송 상자 글자·옵션 치수 (지어낸 값)
+        sp = json.loads(caps[1].read_text(encoding="utf-8"))
+        sp["fields"]["shipping_text"] = {"value": "배송 스탠더드 Alibaba.com Logistics 배송비: 100개당 ₩442,283 무료 배송 최대한도 ₩27,236",
+                                         "source": "dom:shipping-box"}
+        sp["options"] = [{"name": "Size", "values": ["M: 54*43*18/13cm", "L: 67*50*18/13cm"]}]
+        sp["attributes"] = [a for a in sp["attributes"] if a["name"] != "Size"]
+        bp.write_text(json.dumps(sp, ensure_ascii=False), encoding="utf-8")
+        vs, rs, _ = run([bp], template, out_csv, report, {}, "없음")[0]
+        check("배송: 방법·배송비(100개 기준)·무료 배송 한도", vs["shipping_method"] == "스탠더드 Alibaba.com Logistics (배송비는 100개 기준, 무료 배송 최대 ₩27,236)"
+              and (vs["shipping_fee"], vs["shipping_currency"]) == ("442283", "KRW"))
+        check("옵션 치수 → 가장 큰 옵션(L)을 대표 치수로", (vs["length"], vs["width"], vs["height"], vs["dim_unit"]) == ("67", "50", "18", "cm")
+              and "가장 큰 옵션(L)" in vs["size_note"] and "M 54×43×18/13cm" in vs["size_note"])
+        fr = json.loads(caps[0].read_text(encoding="utf-8"))
+        fr["fields"]["shipping_text"] = {"value": "Shipping Free shipping up to ₩27,236 Standard Alibaba.com Logistics", "source": "dom:shipping-box"}
+        fr["fields"]["original_name"]["value"] = "TEST Small Pet Collar"
+        bp.write_text(json.dumps(fr, ensure_ascii=False), encoding="utf-8")
+        vf, rf, _ = run([bp], template, out_csv, report, {}, "없음")[0]
+        check("배송비 숫자 없이 무료 배송만 → 0 + 메모", vf["shipping_fee"] == "0" and any("무료 배송" in n for n in rf["notes"]))
+        check("대형 표기 없으면 '아니오'로 단정하지 않고 빈칸", vf.get("large_dog_label", "") == "")
+
     real = HERE / "a02_captures" / "prod-w2-01_capture_20261117-0921.json"
     if real.exists():   # 첫 실사용 추출본(v0.1.0) 회귀 확인
         with tempfile.TemporaryDirectory() as td:
@@ -414,6 +530,8 @@ def self_test() -> int:
         check("실제 07: 할인 범위가 KRW·할인 전 범위 메모", (v7["price_min"], v7["price_max"], v7["currency"]) == ("10125", "11628", "KRW")
               and "할인 전 ₩11,245-12,926" in v7["price_note"] and p7["price"]["status"] == "ok")
         check("실제 07: 상품 평점 없음 → 글자에서 찾은 리뷰 수(스토어) 비움", v7["rating"] == "" and v7["review_count"] == "")
+        check("실제 07: 옵션 치수 L 67×50×18cm (11/09 사람 입력과 같음)", (v7["length"], v7["width"], v7["height"], v7["dim_unit"]) == ("67", "50", "18", "cm"))
+        check("실제 07·09: 대형견 표기 '예' (제목 For Large Dogs)", v7["large_dog_label"] == "예" and v9["large_dog_label"] == "예")
         check("실제 09: 범위가 KRW·상품명 온전", (v9["price_min"], v9["price_max"], v9["currency"]) == ("2528", "5056", "KRW")
               and v9["original_name"].startswith("Long-lasting Interactive Dog Toy"))
 

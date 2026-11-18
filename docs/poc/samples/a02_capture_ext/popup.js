@@ -1,4 +1,4 @@
-// A02 사실 값 추출 팝업 (a02_capture_ext v0.3.1)
+// A02 사실 값 추출 팝업 (a02_capture_ext v0.4.0)
 // 버튼을 누를 때만 현재 탭에서 extract.js 의 a02ExtractFacts 를 한 번 실행한다. 자동 실행·페이지 이동 없음.
 
 // W1-07 1.1절: PoC 내부 검증 상품 3개로 한정. 상품을 바꾸려면 팀 합의 후 이 목록을 고친다.
@@ -9,7 +9,8 @@ const PRODUCTS = [
   ['prod-w2-09', '09 · 간식 공 장난감', '1601391234725'],
 ];
 const itemNo = (u) => { const m = u.pathname.match(/_(\d{8,})\.html?$/); return m ? m[1] : null; };
-const FIELDS = ['original_name', 'price_text', 'currency_setting', 'moq_text', 'supplier_name', 'sales_count', 'rating', 'review_count'];
+const FIELDS = ['original_name', 'price_text', 'currency_setting', 'moq_text', 'supplier_name', 'sales_count', 'rating', 'review_count', 'shipping_text'];
+const fieldOf = (r, k) => (r.fields && r.fields[k]) || { value: null, source: null };   // 예전 버전 추출본에는 없는 칸 대비
 const $ = (id) => document.getElementById(id);
 let tab = null;
 let mode = null;
@@ -63,8 +64,8 @@ function collect() {
   const edited = [...(out.edited_fields || [])];   // 팝업을 다시 열었을 때 앞서 고친 칸 유지
   for (const k of FIELDS) {
     const v = $('f_' + k).value.trim();
-    if (v !== (out.fields[k].value || '')) {
-      out.fields[k] = { value: v || null, source: v ? 'human_edit' : null, auto_value: out.fields[k].value };
+    if (v !== (fieldOf(out, k).value || '')) {
+      out.fields[k] = { value: v || null, source: v ? 'human_edit' : null, auto_value: fieldOf(out, k).value };
       edited.push(k);
     }
   }
@@ -138,7 +139,7 @@ $('extract').addEventListener('click', async () => {
     if (!r) throw new Error('결과 없음');
     if (mode === 'test') r.platform = 'test';
     render(r);
-    const missing = FIELDS.filter((k) => !r.fields[k].value).length;
+    const missing = FIELDS.filter((k) => !fieldOf(r, k).value).length;
     say(`추출 완료. 못 찾은 칸 ${missing}개, 수량 구간 ${r.price_tiers.length}개, 속성 ${r.attributes.length}개. 페이지와 대조한 뒤 저장하세요.`, missing ? 'warn' : 'ok');
     remember();
   } catch (e) {

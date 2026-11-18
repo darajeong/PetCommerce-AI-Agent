@@ -1,6 +1,6 @@
 # A02-02 확장 프로그램 추출 검사 보고서
 
-- 생성: 2026-11-18 09:49
+- 생성: 2026-11-18 10:04
 - 추출본: prod-w2-01_capture_20261118-0933.json, prod-w2-07_capture_20261118-0947.json, prod-w2-09_capture_20261118-0947.json
 - 환율: 입력 없음 (KRW 외 상식선 검사 생략)
 - 빈칸은 확장이 못 찾은 값이다. a02_build_product.py에서 `manual_review_required`(사람 확인 전)로 처리된다.
@@ -31,9 +31,10 @@
 
 ### 빈칸 (사람 확인 필요)
 
-- length, weight, shipping_method, shipping_fee, large_dog_label, product_use
+- length, weight, shipping_method, shipping_fee, product_use
 - 속성 'Breed Size: Large, Medium, Small'에 대형 표기 있음 → large_dog_label 판단 참고 (입력표에는 사람이 기록)
 - 크기 속성 'Multiple Size'을 치수로 읽지 못해 빈칸 (옵션 사이즈일 수 있음)
+- 대형견 표기 '예' 자동 기록 (근거: 제목, 속성 'Breed Size: Large, Medium, Small')
 
 ### 사람 입력값과 비교 (일치 11/16)
 
@@ -71,11 +72,12 @@
 
 ### 빈칸 (사람 확인 필요)
 
-- length, weight, sales_count, rating, review_count, shipping_method, shipping_fee, large_dog_label, product_use
+- weight, sales_count, rating, review_count, shipping_method, shipping_fee, product_use
 - 크기 속성 'M, L'을 치수로 읽지 못해 빈칸 (옵션 사이즈일 수 있음)
+- 대형견 표기 '예' 자동 기록 (근거: 제목)
 - 리뷰 수 1710는 상품 평점 없이 화면 글자에서만 찾은 값이라 비움 (스토어 리뷰 수일 수 있음, 사람 확인)
 
-### 사람 입력값과 비교 (일치 8/16)
+### 사람 입력값과 비교 (일치 11/16)
 
 | 항목 | 사람 입력 | 확장 추출 | 결과 |
 |---|---|---|---|
@@ -84,9 +86,9 @@
 | price_max | 11772 | 11628 | 불일치 |
 | currency | KRW | KRW | 일치 |
 | options | 색상=회색, 갈색; 크기=M 54*43*18/13cm, L 67*50*18/13cm | Color=Gray/Brown; Size=M: 54*43*18/13cm/L: 67*50*18/13cm | 불일치 |
-| length | 67 | · | 확장 못 찾음 |
-| width | 50 | · | 확장 못 찾음 |
-| height | 18 | · | 확장 못 찾음 |
+| length | 67 | 67 | 일치 |
+| width | 50 | 50 | 일치 |
+| height | 18 | 18 | 일치 |
 | weight | 없음 | · | 일치 (둘 다 없음) |
 | material | 벨벳 | Velvet | 불일치 |
 | sales_count | 없음 | · | 일치 (둘 다 없음) |
@@ -111,7 +113,8 @@
 
 ### 빈칸 (사람 확인 필요)
 
-- length, weight, shipping_method, shipping_fee, large_dog_label, product_use
+- length, weight, shipping_method, shipping_fee, product_use
+- 대형견 표기 '예' 자동 기록 (근거: 제목)
 
 ### 사람 입력값과 비교 (일치 13/16)
 

@@ -1,5 +1,5 @@
 /*
- * A02 상세페이지 사실 값 추출 함수 (a02_capture_ext v0.3.1, 2026-11-18)
+ * A02 상세페이지 사실 값 추출 함수 (a02_capture_ext v0.4.0, 2026-11-18)
  *
  * - 사람이 직접 연 상품 상세페이지에서, 사람이 확장 프로그램 버튼을 눌렀을 때 한 번만 실행된다.
  * - 네트워크 요청을 보내지 않고, 다른 페이지를 열거나 이동하지 않는다. 이미 화면에 그려진 DOM 과
@@ -12,7 +12,7 @@
  * 시험용 페이지(test/)에서는 pageUrlOverride 로 상품 URL 을 흉내 낸다.
  */
 function a02ExtractFacts(pageUrlOverride) {
-  const VERSION = '0.3.1';
+  const VERSION = '0.4.0';
   const MAX_ATTR = 60, MAX_IMG = 20, MAX_PRICE_TEXT = 20, MAX_NODES = 40000;
   const href = pageUrlOverride || location.href;
   const url = new URL(href);
@@ -75,7 +75,7 @@ function a02ExtractFacts(pageUrlOverride) {
   // ---------------------------------------------------------------- 2. 페이지에 이미 들어 있는 데이터
   const pd = { title: null, titleWeak: null, currency: {}, moq: null, supplier: null, sold: null, rating: null,
                reviewCount: null, images: [], tiers: null, attrs: { v: [], p: [] }, options: null,
-               hasProductReview: false, hasStoreReview: false, priceCands: [] };
+               hasProductReview: false, hasStoreReview: false, priceCands: [], shipCands: [] };
   const KNOWN_CUR = new RegExp('^(' + CODES + ')$');
   const isNum = (x) => (typeof x === 'number' && isFinite(x)) || (typeof x === 'string' && /^\d[\d,]*(\.\d+)?$/.test(x.trim()));
   const pick = (o, re) => Object.keys(o).find((k) => re.test(k));
@@ -88,6 +88,12 @@ function a02ExtractFacts(pageUrlOverride) {
         && (typeof x === 'string' || typeof x === 'number')) {
       const t = clean(x);
       if (/\d/.test(t) && t.length <= 60) pd.priceCands.push({ path, value: t });
+    }
+    // 배송 후보: 배송·물류 경로의 짧은 값 (규칙 조정용, 화면 배송 상자 글자가 기본)
+    if (/shipping|freight|logistic|delivery/i.test(path) && !/i18n/i.test(path) && pd.shipCands.length < 30
+        && (typeof x === 'string' || typeof x === 'number')) {
+      const t = clean(x);
+      if (t && t.length <= 80 && !/^https?:|^\/\//i.test(t)) pd.shipCands.push({ path, value: t });
     }
     if (typeof x === 'string') {
       const t = clean(x);
@@ -287,6 +293,24 @@ function a02ExtractFacts(pageUrlOverride) {
     }
   }
 
+  // 배송 상자: "Shipping"/"배송" 제목이나 "… Logistics" 글자에서 위로 올라가며 배송 내용이 담긴 작은 상자 글자를 찾는다
+  // (배송 방법·배송비·도착 예정일. 배송지·수량에 따라 바뀌는 값이라 해석은 변환 스크립트가 하고, 여기서는 글자를 그대로 둔다)
+  let shipText = null;
+  const SHIP_HEAD = /^(shipping|shipping & delivery|배송|배송 정보)$/i;
+  const SHIP_BODY = /logistics|shipping fee|free shipping|delivery|배송비|무료 배송|배송/i;
+  for (const el of document.querySelectorAll('body *')) {
+    if (el.children.length || /^(SCRIPT|STYLE|NOSCRIPT)$/.test(el.tagName)) continue;
+    const t = clean(el.textContent);
+    if (!t || !(SHIP_HEAD.test(t) || /Logistics$/i.test(t))) continue;
+    let box = el.parentElement;
+    for (let up = 0; box && up < 5; up++, box = box.parentElement) {
+      const bt = clean(box.innerText);
+      if (bt.length > 600) break;
+      if (bt.length > 30 && SHIP_BODY.test(bt.replace(t, ''))) { shipText = bt; break; }
+    }
+    if (shipText) break;
+  }
+
   const galleryImgs = [];
   document.querySelectorAll('[class*="gallery" i] img,[class*="main-image" i] img,[class*="slider" i] img,[class*="thumb" i] img,[class*="image-view" i] img,[class*="media" i] img').forEach((img) => {
     galleryImgs.push(img.currentSrc || img.getAttribute('src') || img.getAttribute('data-src'));
@@ -376,10 +400,12 @@ function a02ExtractFacts(pageUrlOverride) {
       rating: field(rateV, rateS),
       review_count: field(revV, revS),
       currency_setting: field(curV, curS),
+      shipping_text: field(shipText, 'dom:shipping-box'),
     },
     price_tiers: tiers,
     price_texts: [...ld.prices, ...domPrices].slice(0, MAX_PRICE_TEXT),
     price_candidates: { page_data: pd.priceCands.slice(0, 25), dom: domPriceCands },
+    shipping_candidates: pd.shipCands,
     attributes: attrs,
     attributes_source: attrSources.length ? attrSources.join('; ') : null,
     options: pd.options ? pd.options.v : [],
