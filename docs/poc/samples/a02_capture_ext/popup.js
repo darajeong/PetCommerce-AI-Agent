@@ -1,12 +1,14 @@
-// A02 사실 값 추출 팝업 (a02_capture_ext v0.2.0)
+// A02 사실 값 추출 팝업 (a02_capture_ext v0.3.0)
 // 버튼을 누를 때만 현재 탭에서 extract.js 의 a02ExtractFacts 를 한 번 실행한다. 자동 실행·페이지 이동 없음.
 
 // W1-07 1.1절: PoC 내부 검증 상품 3개로 한정. 상품을 바꾸려면 팀 합의 후 이 목록을 고친다.
+// [상품 ID, 이름, Alibaba.com 상품 번호] — 주소의 상품 번호로 ID를 자동으로 고르고, 목록에 없는 상품은 추출하지 않는다.
 const PRODUCTS = [
-  ['prod-w2-01', '01 · 대형견 리프트 하네스'],
-  ['prod-w2-07', '07 · 대형견 방석'],
-  ['prod-w2-09', '09 · 간식 공 장난감'],
+  ['prod-w2-01', '01 · 대형견 리프트 하네스', '1601429812402'],
+  ['prod-w2-07', '07 · 대형견 방석', '1600570388952'],
+  ['prod-w2-09', '09 · 간식 공 장난감', '1601391234725'],
 ];
+const itemNo = (u) => { const m = u.pathname.match(/_(\d{8,})\.html?$/); return m ? m[1] : null; };
 const FIELDS = ['original_name', 'price_text', 'currency_setting', 'moq_text', 'supplier_name', 'sales_count', 'rating', 'review_count'];
 const $ = (id) => document.getElementById(id);
 let tab = null;
@@ -51,7 +53,8 @@ function render(r) {
   $('s_options').textContent = r.options_source ? `찾은 곳: ${r.options_source}` : '못 찾음 → 직접 입력';
   $('imgSummary').textContent = `이미지 주소 ${r.image_urls.length}개 (파일은 저장 안 함, usage: needs_review)`;
   $('imgList').replaceChildren(...r.image_urls.map((u) => { const li = document.createElement('li'); li.textContent = u; return li; }));
-  $('debug').textContent = JSON.stringify({ strategies: r.debug.strategies, page_data_roots: r.debug.page_data_roots, notes: r.debug.notes, price_texts: r.price_texts }, null, 2);
+  $('debug').textContent = JSON.stringify({ strategies: r.debug.strategies, page_data_roots: r.debug.page_data_roots, notes: r.debug.notes,
+    price_texts: r.price_texts, price_candidates: r.price_candidates }, null, 2);
   $('save').disabled = false;
 }
 
@@ -102,16 +105,24 @@ async function init() {
   try { u = new URL(tab.url); } catch (e) { /* chrome:// 등 */ }
   mode = u ? pageMode(u) : null;
   $('pageUrl').textContent = u ? u.hostname + u.pathname : '(주소 없음)';
+  const bound = mode === 'alibaba' ? PRODUCTS.find((p) => p[2] === itemNo(u)) : null;
   if (!mode) {
     $('extract').disabled = true;
     say('알리바바 상품 상세페이지(/product-detail/)에서만 쓸 수 있습니다. 페이지를 직접 연 뒤 다시 눌러 주세요.', 'warn');
+  } else if (mode === 'alibaba' && !bound) {
+    $('extract').disabled = true;
+    $('pid').disabled = true;
+    say('PoC 상품 3개(01·07·09)가 아닌 페이지입니다. W1-07에 따라 이 3개 상품에서만 추출합니다.', 'warn');
+  } else if (bound) {
+    $('pid').value = bound[0];
+    $('pid').disabled = true;   // 주소로 정해지므로 사람이 잘못 고를 수 없게 한다
   } else if (mode === 'test') {
     say('시험 페이지 모드입니다 (실제 상품 아님).', 'warn');
   }
   try {
     const { a02_last: last } = await chrome.storage.session.get('a02_last');
     if (last && last.url === tab.url && last.extracted) {
-      $('pid').value = last.pid;
+      if (!bound) $('pid').value = last.pid;
       $('collector').value = last.collector;
       render(last.extracted);
       say('이 페이지에서 마지막으로 추출한 값을 다시 불러왔습니다.', '');

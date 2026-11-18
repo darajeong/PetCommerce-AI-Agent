@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "PetCommerce A02 사실 값 추출 (PoC)",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "사람이 연 알리바바 상세페이지에서 버튼을 눌렀을 때만 사실 값과 이미지 주소를 JSON으로 저장합니다. HTML·이미지 파일·설명·리뷰 원문은 저장하지 않습니다.",
   "action": {
     "default_popup": "popup.html",

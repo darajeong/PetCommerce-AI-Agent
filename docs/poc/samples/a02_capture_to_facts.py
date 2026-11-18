@@ -43,7 +43,9 @@ ATTR_RULES = {  # 입력표 항목 ← 속성 이름 (영문·한국어 페이�
     "package_weight": r"gross weight|총\s*중량|포장\s*(무게|중량)",
     "breed_size": r"breed size|pet size|dog size|품종\s*크기|견종\s*크기|적용\s*크기",
 }
-TITLE_SUFFIX = re.compile(r"\s*[-|]\s*(Buy\b.*|.*on Alibaba\.com)$", re.I)
+# 앞뒤 빈칸이 있는 " - "만 본다 ("Long-Lasting" 같은 낱말 속 하이픈에서 자르지 않도록)
+TITLE_SUFFIX = re.compile(r"\s+[-|]\s+(?:Buy\b.*?|[^-|]*?)\s*on Alibaba\.com$|\s+[-|]\s+Buy\b.*$", re.I)
+STORE_SRC = re.compile(r"store|seller|company|supplier|shop", re.I)
 DIM_RE = re.compile(r"(\d+(?:\.\d+)?)\s*[x×*]\s*(\d+(?:\.\d+)?)(?:\s*[x×*]\s*(\d+(?:\.\d+)?))?\s*(mm|cm|m|inches|inch|in)\b", re.I)
 WEIGHT_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(kg|g|lbs|lb|oz)\b", re.I)
 NUMERIC_KEYS = {"price_min", "price_max", "sales_count", "rating", "review_count", "length", "width", "height", "weight"}
@@ -109,6 +111,10 @@ def build_column(cap: dict, human: dict[str, str], rates: dict[str, float]) -> t
         elif cross["currency"] and pr["currency"] and cross["currency"] != pr["currency"]:
             pr["warnings"].append(f"가격 글자 '{cross['raw']}'({f.get('price_text', {}).get('source')})는 화면 구간가({pr['currency']})와 "
                                   f"통화가 달라 입력표에 쓰지 않음 (사이트 기준 통화 값으로 보임)")
+    if kind == "text" and ctx and pr["currency"] and pr["currency"] != ctx.upper():
+        pr["reviews"].append(f"화면 표시 통화({ctx}) 가격을 못 뽑고 다른 통화({pr['currency']}) 가격만 있음 "
+                             f"(출처 {f.get('price_text', {}).get('source')}) → 화면 가격을 사람이 확인")
+        pr["status"] = "error" if pr["errors"] else "needs_review"
     if pr and pr["status"] != "error" and pr.get("min") is not None:
         v["price_min"], v["price_max"] = num_str(pr["min"]), num_str(pr["max"])
         v["currency"] = pr["currency"] or ""
@@ -159,6 +165,14 @@ def build_column(cap: dict, human: dict[str, str], rates: dict[str, float]) -> t
     # ---- 그 밖의 사실 값
     for k in ("sales_count", "rating", "review_count"):
         v[k] = g(k).replace(",", "")
+    # 평점이 스토어(공급업체) 평가에서 나왔으면 상품 값이 아니므로 비운다 (v0.2.0 이하 추출본 대응)
+    rsrc = (f.get("rating") or {}).get("source") or ""
+    if v["rating"] and STORE_SRC.search(rsrc):
+        rep["notes"].append(f"평점 {v['rating']}은 스토어 평가({rsrc})라 비움")
+        v["rating"] = ""
+        if v["review_count"] and (f.get("review_count") or {}).get("source") == "text":
+            rep["notes"].append(f"리뷰 수 {v['review_count']}도 스토어 리뷰 수일 수 있어 비움 (사람 확인)")
+            v["review_count"] = ""
     v["supplier_name"] = g("supplier_name")
     v["collected_at"] = (cap.get("captured_at") or "")[:16].replace("T", " ")
     tool = cap.get("tool", {})
@@ -361,6 +375,20 @@ def self_test() -> int:
         check("한국어 제목·대형 표기 메모", any("한국어" in n for n in rk["notes"]) and any("대형 표기" in n for n in rk["notes"]))
         check("JSON-LD USD 가격은 구간가(KRW)와 통화 달라 참고만",
               rk["price"]["status"] == "ok" and vk["currency"] == "KRW" and any("통화가 달라" in w for w in rk["price"]["warnings"]))
+
+        # 2026-11-18 세 상품 추출에서 확인된 문제 (지어낸 값으로 재현)
+        rg = json.loads(caps[0].read_text(encoding="utf-8"))
+        rg["fields"]["original_name"]["value"] = "Long-Lasting Washable Bed - Buy Long-lasting Bed Product on Alibaba.com"
+        rg["price_tiers"] = []
+        rg["fields"]["price_text"] = {"value": "USD 8.23", "source": "jsonld"}
+        rg["fields"]["rating"] = {"value": "4.8", "source": "page_data:detailData.globalData.review.storeReview.averageStar"}
+        rg["fields"]["review_count"] = {"value": "1710", "source": "text"}
+        bp.write_text(json.dumps(rg, ensure_ascii=False), encoding="utf-8")
+        vg, rgr, _ = run([bp], template, out_csv, report, {}, "없음")[0]
+        check("제목 속 하이픈(Long-Lasting)에서 자르지 않음", vg["original_name"] == "Long-Lasting Washable Bed")
+        check("스토어 평점·리뷰 수는 비움", vg["rating"] == "" and vg["review_count"] == "" and any("스토어" in n for n in rgr["notes"]))
+        check("화면 통화(KRW) 없이 USD만 → 확인 필요",
+              rgr["price"]["status"] == "needs_review" and any("화면 표시 통화" in x for x in rgr["price"]["reviews"]))
 
     real = HERE / "a02_captures" / "prod-w2-01_capture_20261117-0921.json"
     if real.exists():   # 첫 실사용 추출본(v0.1.0) 회귀 확인

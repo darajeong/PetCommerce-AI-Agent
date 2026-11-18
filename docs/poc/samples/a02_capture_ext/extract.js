@@ -1,5 +1,5 @@
 /*
- * A02 상세페이지 사실 값 추출 함수 (a02_capture_ext v0.2.0, 2026-11-17)
+ * A02 상세페이지 사실 값 추출 함수 (a02_capture_ext v0.3.0, 2026-11-18)
  *
  * - 사람이 직접 연 상품 상세페이지에서, 사람이 확장 프로그램 버튼을 눌렀을 때 한 번만 실행된다.
  * - 네트워크 요청을 보내지 않고, 다른 페이지를 열거나 이동하지 않는다. 이미 화면에 그려진 DOM 과
@@ -12,7 +12,7 @@
  * 시험용 페이지(test/)에서는 pageUrlOverride 로 상품 URL 을 흉내 낸다.
  */
 function a02ExtractFacts(pageUrlOverride) {
-  const VERSION = '0.2.0';
+  const VERSION = '0.3.0';
   const MAX_ATTR = 60, MAX_IMG = 20, MAX_PRICE_TEXT = 20, MAX_NODES = 40000;
   const href = pageUrlOverride || location.href;
   const url = new URL(href);
@@ -43,7 +43,9 @@ function a02ExtractFacts(pageUrlOverride) {
   // 같은 이미지가 다른 CDN 주소로 두 번 나오는 경우(…/kf/파일명) 하나로 본다
   const imgKey = (u) => { const m = u.match(/\/kf\/([^/?#]+)$/); return m ? 'kf:' + m[1] : u; };
   // 제목 끝의 사이트 문구(" - Buy … on Alibaba.com") 제거
-  const stripTitle = (t) => (t == null ? t : clean(t).replace(/\s*[-|]\s*(Buy\b.*|.*on Alibaba\.com)$/i, ''));
+  // 앞뒤에 빈칸이 있는 " - "만 본다 ("Long-Lasting" 같은 낱말 속 하이픈에서 자르지 않도록)
+  const stripTitle = (t) => (t == null ? t : clean(t)
+    .replace(/\s+[-|]\s+(?:Buy\b.*?|[^-|]*?)\s*on Alibaba\.com$/i, '').replace(/\s+[-|]\s+Buy\b.*$/i, ''));
 
   // ---------------------------------------------------------------- 1. JSON-LD (구조화 데이터)
   const ld = { name: null, prices: [], images: [], rating: null, reviewCount: null, brand: null };
@@ -72,12 +74,21 @@ function a02ExtractFacts(pageUrlOverride) {
 
   // ---------------------------------------------------------------- 2. 페이지에 이미 들어 있는 데이터
   const pd = { title: null, titleWeak: null, currency: {}, moq: null, supplier: null, sold: null, rating: null,
-               reviewCount: null, images: [], tiers: null, attrs: { v: [], p: [] }, options: null };
+               reviewCount: null, images: [], tiers: null, attrs: { v: [], p: [] }, options: null,
+               hasProductReview: false, hasStoreReview: false, priceCands: [] };
   const KNOWN_CUR = new RegExp('^(' + CODES + ')$');
   const isNum = (x) => (typeof x === 'number' && isFinite(x)) || (typeof x === 'string' && /^\d[\d,]*(\.\d+)?$/.test(x.trim()));
   const pick = (o, re) => Object.keys(o).find((k) => re.test(k));
 
   function inspectKey(k, x, path) {
+    if (/productReview/i.test(path)) pd.hasProductReview = true;
+    if (/storeReview|sellerReview|shopReview|companyReview/i.test(path)) pd.hasStoreReview = true;
+    // 가격 후보: 키 이름에 price 가 들어간 짧은 값 (샘플가·배송비는 뺌). 사람이 팝업에서 고르고, 다음 규칙 조정의 근거로 쓴다
+    if (/price/i.test(k) && !/sample|shipping|freight|logistic/i.test(path) && pd.priceCands.length < 40
+        && (typeof x === 'string' || typeof x === 'number')) {
+      const t = clean(x);
+      if (/\d/.test(t) && t.length <= 60) pd.priceCands.push({ path, value: t });
+    }
     if (typeof x === 'string') {
       const t = clean(x);
       if (/^(subject|productTitle|productName)$/i.test(k) && t.length >= 8 && t.length <= 300 && !pd.title) pd.title = { v: t, p: path };
@@ -89,9 +100,10 @@ function a02ExtractFacts(pageUrlOverride) {
     if (isNum(x)) {
       const n = Number(String(x).replace(/,/g, ''));
       if (/^(moq|minOrder|minOrderQuantity|minimumOrderQuantity|minOrderQty)$/i.test(k) && pd.moq == null && n > 0) pd.moq = { v: n, p: path };
-      if (/^(soldCount|salesVolume|tradeCount|orderCount|sold|saleCount|soldQuantity|salesCount|totalSold)$/i.test(k) && pd.sold == null) pd.sold = { v: n, p: path };
-      if (/^(averageStar|ratingValue|rating|productScore|reviewScore|avgStar)$/i.test(k) && pd.rating == null && n >= 0 && n <= 5) pd.rating = { v: n, p: path };
-      if (/^(reviewCount|totalReviews|commentCount|reviewNum|reviewsCount)$/i.test(k) && pd.reviewCount == null) pd.reviewCount = { v: n, p: path };
+      const storeish = /store|seller|company|supplier|shop/i.test(path);   // 공급업체·스토어 값은 상품 값으로 쓰지 않음
+      if (/^(soldCount|salesVolume|tradeCount|orderCount|sold|saleCount|soldQuantity|salesCount|totalSold)$/i.test(k) && pd.sold == null && !storeish) pd.sold = { v: n, p: path };
+      if (/^(averageStar|ratingValue|rating|productScore|reviewScore|avgStar)$/i.test(k) && pd.rating == null && n >= 0 && n <= 5 && !storeish) pd.rating = { v: n, p: path };
+      if (/^(reviewCount|totalReviews|commentCount|reviewNum|reviewsCount)$/i.test(k) && pd.reviewCount == null && !storeish) pd.reviewCount = { v: n, p: path };
     }
   }
 
@@ -187,7 +199,7 @@ function a02ExtractFacts(pageUrlOverride) {
   const meta = (p) => { const m = document.querySelector(`meta[property="${p}"],meta[name="${p}"]`); return m ? m.getAttribute('content') : null; };
   const h1 = document.querySelector('h1');
   const ogTitle = meta('og:title');
-  const docTitle = clean(document.title).replace(/\s*[-|]\s*(Buy|Alibaba\.com).*$/i, '');
+  const docTitle = clean(document.title).replace(/\s+[-|]\s+(Buy|Alibaba\.com).*$/i, '');
 
   const domPrices = [];
   document.querySelectorAll('[class*="price" i]').forEach((el) => {
@@ -196,6 +208,17 @@ function a02ExtractFacts(pageUrlOverride) {
     if (t.length > 80) return;
     const m = t.match(PRICE_RE);
     if (m && !domPrices.includes(clean(m[0]))) domPrices.push(clean(m[0]));
+  });
+  // 화면의 가격 글자 후보: 클래스 이름과 상관없이 가격 모양의 짧은 글자 (예: "₩10,250 - 11,772")
+  const domPriceCands = [];
+  document.querySelectorAll('body *').forEach((el) => {
+    if (domPriceCands.length >= 20 || el.children.length > 1 || /^(SCRIPT|STYLE|NOSCRIPT)$/.test(el.tagName)) return;
+    const t = clean(el.textContent);
+    if (!t || t.length > 40) return;
+    const m = t.match(PRICE_RE);
+    if (m && t.length - m[0].length <= 12 && !domPriceCands.some((c) => c.text === clean(m[0]))) {
+      domPriceCands.push({ text: clean(m[0]), hint: String(el.getAttribute('class') || '').slice(0, 40) });
+    }
   });
 
   const domTiers = [];
@@ -246,8 +269,8 @@ function a02ExtractFacts(pageUrlOverride) {
   }
   const soldM = bodyText.match(/([\d,]+)\s*(?:sold|판매됨|(?:개|건)\s*판매|판매(?!하))/i);
   const reviewM = bodyText.match(/([\d,]+)\s*(?:reviews?|리뷰|후기|상품평)/i);
-  // "5.0 (13 리뷰)" 형태만 상품 평점으로 본다 ("4.9/5" 는 공급업체 스토어 평가일 수 있어 쓰지 않음)
-  const ratingM = bodyText.match(/(\d(?:\.\d)?)\s*\(\s*[\d,]+\s*(?:개\s*)?(?:리뷰|reviews?)\s*\)/i);
+  // "5.0 (13 리뷰)"·"5.0 · 13 reviews" 형태만 상품 평점으로 본다. "4.9/5" 처럼 "/" 뒤 숫자는 스토어 평가일 수 있어 쓰지 않음
+  const ratingM = bodyText.match(/(?<![\/\d.,])(\d(?:\.\d)?)(?![\d.,])(?:\s*[(·•|]\s*|\s+)\(?\s*([\d,]+)\s*(?:개\s*)?(?:리뷰|reviews?)(?![A-Za-z])/i);
 
   let domCurrency = null;
   const curOf = (t) => { const m = t.match(new RegExp('(?:^|[\\s\\-–/·|:])(' + CODES + ')$')); return m ? (m[1] === 'RMB' ? 'CNY' : m[1]) : null; };
@@ -276,13 +299,29 @@ function a02ExtractFacts(pageUrlOverride) {
   const [nameV, nameS] = first([stripTitle(ld.name), 'jsonld'], pd.title && [stripTitle(pd.title.v), `page_data:${pd.title.p}`],
     h1 && [stripTitle(h1.innerText), 'dom:h1'], [stripTitle(ogTitle), 'dom:og:title'],
     pd.titleWeak && [stripTitle(pd.titleWeak.v), `page_data:${pd.titleWeak.p}`], [docTitle, 'dom:title']);
-  const [priceV, priceS] = first([ld.prices[0], 'jsonld'], [domPrices[0], 'dom:price']);
+  const [curV, curS] = first(pdCur && [pdCur[0], 'page_data'], [domCurrency, 'dom:currency']);
+  // 수량별 구간가가 없는 상품(범위가·할인가)은 화면 표시 통화의 가격 후보를 JSON-LD(사이트 기준 통화)보다 먼저 쓴다
+  const tiersFound = !!(pd.tiers || domTiers.length);
+  const SYM = { KRW: /₩|￦|KRW|원/, USD: /US\$|USD|\$/, CNY: /CN¥|CNY|RMB|元|¥/, EUR: /€|EUR/, JPY: /JP¥|JPY|円|¥/ };
+  const dispRe = curV && SYM[curV];
+  // 할인 전 정가·시장가 같은 후보는 뒤로 미룬다 (화면의 판매가를 먼저)
+  const notOriginal = (c) => !/original|origin|before|market|retail|strike|listPrice|was/i.test(c.path);
+  const pdDisp = dispRe && pd.priceCands.find((c) => !/ladder/i.test(c.path) && notOriginal(c) && dispRe.test(c.value) && PRICE_RE.test(c.value));
+  const domDisp = dispRe && domPriceCands.find((c) => dispRe.test(c.text));
+  const [priceV, priceS] = tiersFound
+    ? first([ld.prices[0], 'jsonld'], [domPrices[0], 'dom:price'])
+    : first(pdDisp && [pdDisp.value, `page_data:${pdDisp.path}`], domDisp && [domDisp.text, 'dom:price-candidate'],
+      [ld.prices[0], 'jsonld'], [domPrices[0], 'dom:price']);
   const [moqV, moqS] = first(pd.moq && [String(pd.moq.v), `page_data:${pd.moq.p}`], moqM && [clean(moqM[0]), 'text']);
   const [supV, supS] = first(pd.supplier && [pd.supplier.v, `page_data:${pd.supplier.p}`], [domSupplier, 'dom:supplier']);
   const [soldV, soldS] = first(pd.sold && [String(pd.sold.v), `page_data:${pd.sold.p}`], soldM && [soldM[1].replace(/,/g, ''), 'text']);
-  const [rateV, rateS] = first([ld.rating, 'jsonld'], pd.rating && [String(pd.rating.v), `page_data:${pd.rating.p}`], ratingM && [ratingM[1], 'text']);
-  const [revV, revS] = first([ld.reviewCount, 'jsonld'], pd.reviewCount && [String(pd.reviewCount.v), `page_data:${pd.reviewCount.p}`], reviewM && [reviewM[1].replace(/,/g, ''), 'text']);
-  const [curV, curS] = first(pdCur && [pdCur[0], 'page_data'], [domCurrency, 'dom:currency']);
+  // 페이지 데이터에 스토어 평가만 있고 상품 리뷰가 없으면, 화면 글자에서 찾은 평점·리뷰 수도 스토어 값일 수 있어 쓰지 않는다
+  const storeOnly = pd.hasStoreReview && !pd.hasProductReview;
+  if (storeOnly) debug.notes.push('상품 리뷰 없음으로 봄: 페이지 데이터에 스토어 평가만 있음 (평점·리뷰 수 비움)');
+  const [rateV, rateS] = first([ld.rating, 'jsonld'], pd.rating && [String(pd.rating.v), `page_data:${pd.rating.p}`],
+    !storeOnly && ratingM && [ratingM[1], 'text']);
+  const [revV, revS] = first([ld.reviewCount, 'jsonld'], pd.reviewCount && [String(pd.reviewCount.v), `page_data:${pd.reviewCount.p}`],
+    !storeOnly && ratingM && [ratingM[2].replace(/,/g, ''), 'text'], !storeOnly && reviewM && [reviewM[1].replace(/,/g, ''), 'text']);
 
   const imgs = [];
   const imgSeen = new Set();
@@ -293,10 +332,14 @@ function a02ExtractFacts(pageUrlOverride) {
     imgs.push(n);
   });
   const tiers = pd.tiers || (domTiers.length ? domTiers : []);
-  // 페이지 데이터 속성 + 화면 속성 블록(이름이 겹치지 않는 것만)
+  // 페이지 데이터 속성 + 화면 속성 블록. 페이지 데이터가 있으면 화면에서는 포장·무게·판매 단위 같은 칸만 더한다
+  // (옵션 버튼 "Gray | Brown" 같은 두 칸짜리 줄이 속성으로 섞이지 않도록)
+  const DOM_ATTR_OK = /package|gross|weight|dimension|selling\s*unit|포장|중량|무게|치수|판매\s*단위/i;
   const attrs = [...pd.attrs.v];
   for (const [name, value] of domAttrs) {
-    if (attrs.length < MAX_ATTR && !attrs.some((a) => a.name === name)) attrs.push({ name, value });
+    if (attrs.length < MAX_ATTR && !attrs.some((a) => a.name === name) && (!pd.attrs.v.length || DOM_ATTR_OK.test(name))) {
+      attrs.push({ name, value });
+    }
   }
   const attrSources = [...pd.attrs.p.map((p) => `page_data:${p}`),
     ...(attrs.length > pd.attrs.v.length && attrSource ? [attrSource] : [])];
@@ -329,6 +372,7 @@ function a02ExtractFacts(pageUrlOverride) {
     },
     price_tiers: tiers,
     price_texts: [...ld.prices, ...domPrices].slice(0, MAX_PRICE_TEXT),
+    price_candidates: { page_data: pd.priceCands.slice(0, 25), dom: domPriceCands },
     attributes: attrs,
     attributes_source: attrSources.length ? attrSources.join('; ') : null,
     options: pd.options ? pd.options.v : [],

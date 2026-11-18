@@ -1,0 +1,203 @@
+{
+  "attributes": [
+    {
+      "name": "Place of Origin",
+      "value": "Guangdong, China"
+    },
+    {
+      "name": "Brand Name",
+      "value": "others"
+    },
+    {
+      "name": "Model Number",
+      "value": "woof pupsicle"
+    },
+    {
+      "name": "Feature",
+      "value": "Interactive, Durable, Boredom Buster, Anxiety Relief, Eco-Friendly, Eco-friendly, Interactive, Durable"
+    },
+    {
+      "name": "Applicable Pet",
+      "value": "Dogs, Small Animals"
+    },
+    {
+      "name": "Type",
+      "value": "Chew Toys"
+    },
+    {
+      "name": "Usage",
+      "value": "Outdoor, Indoor, Dog Playing Chewing"
+    },
+    {
+      "name": "Material",
+      "value": "Food Grade Silicone, Silicone"
+    },
+    {
+      "name": "Style",
+      "value": "Simple, Popular, Modern, Classic, Fashion, Funny, Popular, Modern"
+    },
+    {
+      "name": "Holiday",
+      "value": "All Holidays"
+    },
+    {
+      "name": "Product Name",
+      "value": "Pet Dog Treats Toy"
+    },
+    {
+      "name": "Application",
+      "value": "Dogs"
+    },
+    {
+      "name": "Color",
+      "value": "Green, Orange or custom color"
+    },
+    {
+      "name": "Pattern",
+      "value": "Solid"
+    },
+    {
+      "name": "OEM/ODM",
+      "value": "Aceeptable"
+    },
+    {
+      "name": "Function",
+      "value": "Interactive Dog Funny Toy"
+    },
+    {
+      "name": "Item Type",
+      "value": "Chew Toys"
+    },
+    {
+      "name": "Green",
+      "value": "Yellow(silicone Treat Tray)"
+    },
+    {
+      "name": "Dogs",
+      "value": "Small Animals"
+    },
+    {
+      "name": "Outdoor",
+      "value": "Indoor"
+    },
+    {
+      "name": "Selling Units",
+      "value": "Single item"
+    },
+    {
+      "name": "Single package size",
+      "value": "10X10X9 cm"
+    },
+    {
+      "name": "Single gross weight",
+      "value": "0.35 kg"
+    }
+  ],
+  "attributes_source": "page_data:detailData.globalData.product.productBasicProperties; dom:attribute-block",
+  "capture_version": "0.1",
+  "captured_at": "2026-11-18T09:34:42+09:00",
+  "debug": {
+    "notes": [],
+    "page_data_roots": {
+      "detailData": [
+        "devData",
+        "globalData",
+        "hierarchy",
+        "metaData",
+        "nodeMap"
+      ]
+    },
+    "strategies": [
+      "jsonld",
+      "page_data",
+      "dom"
+    ]
+  },
+  "fields": {
+    "currency_setting": {
+      "source": "dom:currency",
+      "value": "KRW"
+    },
+    "moq_text": {
+      "source": "page_data:detailData.globalData.product.moq",
+      "value": "200"
+    },
+    "original_name": {
+      "source": "jsonld",
+      "value": "Long"
+    },
+    "price_text": {
+      "source": "jsonld",
+      "value": "USD 1.85"
+    },
+    "rating": {
+      "source": "page_data:detailData.globalData.review.productReview.averageStar",
+      "value": "5"
+    },
+    "review_count": {
+      "source": "text",
+      "value": "13"
+    },
+    "sales_count": {
+      "source": "text",
+      "value": "1157"
+    },
+    "supplier_name": {
+      "source": "page_data:detailData.globalData.seller.companyName",
+      "value": "Dongguan Wellfine Silicone Products Co., Ltd."
+    }
+  },
+  "host": "www.alibaba.com",
+  "image_urls": [
+    "https://sc04.alicdn.com/kf/H00f2e5bbf12f4c96bbe39fa88145119eQ.jpg",
+    "https://sc04.alicdn.com/kf/H2dd2b6fc9c524b9fb59b0141d59edb50V.jpg",
+    "https://sc04.alicdn.com/kf/H04d5b02b029e467eba777a1fc06d2d99G.jpg",
+    "https://sc04.alicdn.com/kf/Hee77f7b19fbf4f16a5f47d5d25f3c37aM.jpg",
+    "https://sc04.alicdn.com/kf/H4371aa9b26264a128b574e6e647efbf9n.jpg",
+    "https://sc04.alicdn.com/kf/Hfb371fb881b546319f75c53032768ba83.jpg",
+    "https://sc04.alicdn.com/kf/H694c694e48384c9496413581f3fccdf8v.jpg",
+    "https://sc04.alicdn.com/kf/Ha635066f1adc49b9a8208bc5edcd97bfp.jpg",
+    "https://sc04.alicdn.com/kf/Hdf8ba23ea5664875827f0fb72ecbe9c4R.jpg",
+    "https://sc04.alicdn.com/kf/Ha47452f8c08844d3a583d7cbb9eaa475c.jpg",
+    "https://sc04.alicdn.com/kf/Hb385a3beefaf4c229ecd5288f7bb22ad3.jpg"
+  ],
+  "image_usage": "needs_review",
+  "not_collected": [
+    "HTML 본문",
+    "상품 설명 원문",
+    "리뷰 원문",
+    "이미지 파일",
+    "쿠키·계정 정보"
+  ],
+  "options": [
+    {
+      "name": "Color",
+      "values": [
+        "Green",
+        "Yellow(silicone Treat Tray)"
+      ]
+    }
+  ],
+  "options_source": "page_data:detailData.globalData.product.sku.skuAttrs",
+  "page_kind": "product_detail",
+  "platform": "alibaba",
+  "price_texts": [
+    "USD 1.85"
+  ],
+  "price_tiers": [],
+  "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
+  "tool": {
+    "name": "a02_capture_ext",
+    "version": "0.2.0"
+  },
+  "product_id": "prod-w2-09",
+  "collector": "A 형준",
+  "capture_mode": "alibaba",
+  "edited_fields": [],
+  "method_note": "사람이 페이지를 열고 버튼을 눌러 추출, 저장 전 사람이 값 확인 (W1-07: 페이지 열기·탐색 자동화 없음)",
+  "product_id_fix": {
+    "saved_as": "prod-w2-01",
+    "fixed_to": "prod-w2-09",
+    "reason": "팝업에서 상품 ID를 바꾸지 않고 저장 → source_url 상품 번호 기준으로 정정 (2026-11-18)"
+  }
+}
