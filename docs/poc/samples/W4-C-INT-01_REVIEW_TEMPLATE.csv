@@ -1,0 +1,4 @@
+﻿row_id,product_id,channel,section,sentence_no,sentence,auto_label,auto_reasons,rule_ids,evidence_refs,evidence_data_type,label,label_reason,action,publish,reviewer,reviewed_at
+예시-001,prod-w2-01,smartstore,규격,1,(예시·지어낸 문장) 소재는 폴리아미드와 폴리에스터예요.,사실,,,product.material,actual,사실,,유지,공개 가능,A 형준,2026-11-18
+예시-002,prod-w2-01,smartstore,핵심 장점,1,(예시·지어낸 문장) 뒷다리가 약한 대형견 보행을 돕는 하네스입니다.,추정,원본과 직접 비교할 값이 없음 → 근거 필드를 사람이 연결,,product.original_name,actual,추정,상품명의 Lift Harness·Large Dogs 근거,유지,검토 후 공개,A 형준,2026-11-18
+예시-003,prod-w2-01,coupang,주의사항,2,(예시·지어낸 문장) 관절염 치료에 효과적입니다.,금지 표현,의약품이 아닌 제품의 질병 치료·예방 표방,P03,,,금지 표현,,삭제,공개 불가,A 형준,2026-11-18
