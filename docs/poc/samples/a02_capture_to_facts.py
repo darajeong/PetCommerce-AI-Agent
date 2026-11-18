@@ -53,6 +53,11 @@ COMPARE_KEYS = ["original_name", "price_min", "price_max", "currency", "options"
                 "material", "sales_count", "rating", "review_count", "supplier_name", "package_size", "package_weight"]
 
 
+def money(x: float, cur: str | None) -> str:
+    """배송비 메모용 금액 표기 (KRW는 ₩와 천 단위 쉼표)."""
+    return f"₩{x:,.0f}" if cur == "KRW" else f"{num_str(x)} {cur or ''}".strip()
+
+
 def num_str(x: float | None) -> str:
     if x is None:
         return ""
@@ -72,27 +77,41 @@ def find_attr(attrs: list[dict], key: str) -> str | None:
 MONEY = r"(₩\s?[\d,]+(?:\.\d+)?|US\$\s?[\d,.]+|\$\s?[\d,.]+|[\d,]+(?:\.\d+)?\s?원)"
 
 
-def parse_shipping(text: str) -> dict:
-    """배송 상자 글자 → 배송 방법·배송비(수량 기준)·무료 배송 한도. 배송지·수량에 따라 바뀌는 값이라 원문도 같이 남긴다."""
+def parse_shipping(text: str, cands: list[dict] | None = None) -> dict:
+    """배송 상자 글자 → 배송 등급·물류·배송비(할인가·정가, 몇 개 기준)·무료 배송 한도·도착 예정.
+    배송지·수량·프로모션에 따라 바뀌는 값이라 원문도 같이 남긴다.
+    예) 영어: "Shipping Change Standard Shipping fee: ₩444,021 ₩471,347 for 100 pieces Guaranteed delivery: Nov 26 - Dec 28"
+        한국어: "배송 스탠더드 Alibaba.com Logistics 배송비:100개당 ₩442,283 ₩469,519 보장된 배송: 11월 25일 ~ 12월 27일" """
     t = re.sub(r"\s+", " ", text or "").strip()
-    out = {"raw": t, "method": None, "fee": None, "fee_text": None, "per_qty": None, "free_upto": None, "currency": None}
-    m = re.search(r"((?:Standard|Express|Economy|Premium|스탠더드|스탠다드|익스프레스|이코노미)\s*)?Alibaba\.com\s*Logistics", t, re.I) \
-        or re.search(r"([A-Z][A-Za-z.&]*(?: [A-Z][A-Za-z.&]*){0,3} (?:Logistics|Express|Shipping))", t)
-    if m:
-        out["method"] = m.group(0).strip()
-    fee = re.search(r"(?:Shipping fee|Shipping cost|배송비)\s*[:：]?\s*(?:(\d[\d,]*)\s*(?:개당|pieces?|pcs|units?)\s*(?:당)?\s*)?" + MONEY +
-                    r"(?:\s*(?:for|/)\s*(\d[\d,]*)\s*(?:pieces?|pcs|units?))?", t, re.I)
+    out = {"raw": t, "method": None, "tier": None, "carrier": None, "carrier_from": None, "fee": None, "fee_original": None,
+           "fee_text": None, "per_qty": None, "free_upto": None, "delivery": None, "currency": None}
+    tier = re.search(r"\b(Standard|Economy|Express|Premium)\b|(스탠더드|스탠다드|이코노미|익스프레스|프리미엄)", t, re.I)
+    if tier:
+        out["tier"] = tier.group(0)
+    carrier = re.search(r"Alibaba\.com\s*Logistics|\b[A-Z][A-Za-z.&]+ Logistics\b", t)
+    if carrier:
+        out["carrier"], out["carrier_from"] = carrier.group(0), "text"
+    elif any(c.get("value") == "aliLogistics" for c in cands or []):
+        out["carrier"], out["carrier_from"] = "Alibaba.com Logistics", "page_data:logisticsFtType"
+    out["method"] = " ".join(x for x in (out["tier"], out["carrier"]) if x) or None
+    fee = re.search(r"(?:Shipping fee|Shipping cost|배송비)\s*[:：]?\s*(?:(\d[\d,]*)\s*(?:개당|pieces?|pcs|units?)\s*(?:당)?\s*)?"
+                    + MONEY + r"(?:\s+" + MONEY + r")?(?:\s*(?:for|/)\s*(\d[\d,]*)\s*(?:pieces?|pcs|units?))?", t, re.I)
     if fee:
         out["fee_text"] = fee.group(0)
         p = parse_price_text(fee.group(2))
         out["fee"], out["currency"] = p["min"], p["currency"]
-        q = fee.group(1) or fee.group(3)
+        if fee.group(3):   # 두 번째 금액 = 할인 전 정가(취소선)
+            out["fee_original"] = parse_price_text(fee.group(3))["min"]
+        q = fee.group(1) or fee.group(4)
         out["per_qty"] = int(q.replace(",", "")) if q else None
     free = re.search(r"(?:Free shipping|무료\s*배송)[^₩$\d]{0,20}" + MONEY, t, re.I)
     if free:
         out["free_upto"] = free.group(1).replace(" ", "")
         if out["currency"] is None:
             out["currency"] = parse_price_text(free.group(1))["currency"]
+    dl = re.search(r"(?:Guaranteed delivery|Estimated delivery|보장된 배송|예상 배송|도착 예정)\s*[:：]?\s*([A-Za-z0-9가-힣 ~\-–./]{3,30})", t, re.I)
+    if dl:
+        out["delivery"] = dl.group(1).strip()
     return out
 
 
@@ -244,14 +263,22 @@ def build_column(cap: dict, human: dict[str, str], rates: dict[str, float]) -> t
     ship_txt = g("shipping_text")
     rep["shipping"] = None
     if ship_txt:
-        sh = parse_shipping(ship_txt)
+        sh = parse_shipping(ship_txt, cap.get("shipping_candidates"))
         rep["shipping"] = sh
         method = sh["method"] or ""
         extra = []
         if sh["per_qty"]:
             extra.append(f"배송비는 {sh['per_qty']}개 기준")
+        if sh["fee_original"] is not None:
+            extra.append(f"할인 전 {money(sh['fee_original'], sh['currency'])}")
         if sh["free_upto"]:
             extra.append(f"무료 배송 최대 {sh['free_upto']}")
+        if sh["delivery"]:
+            extra.append(f"도착 보장 {sh['delivery']}")
+        if sh["carrier_from"] and sh["carrier_from"] != "text":
+            rep["notes"].append(f"물류 '{sh['carrier']}'는 배송 상자 글자가 아니라 {sh['carrier_from']}에서 읽음")
+        if sh["fee"] is not None and sh["fee_original"] and sh["fee"] < sh["fee_original"] * 0.5:
+            rep["notes"].append(f"배송비 할인 폭이 큼 ({money(sh['fee_original'], sh['currency'])} → {money(sh['fee'], sh['currency'])}). 첫 주문 할인 같은 조건인지 사람 확인")
         v["shipping_method"] = (method + (f" ({', '.join(extra)})" if extra else "")).strip()
         if sh["fee"] is not None:
             v["shipping_fee"], v["shipping_currency"] = num_str(sh["fee"]), sh["currency"] or ""
@@ -532,6 +559,16 @@ def self_test() -> int:
         check("실제 07: 상품 평점 없음 → 글자에서 찾은 리뷰 수(스토어) 비움", v7["rating"] == "" and v7["review_count"] == "")
         check("실제 07: 옵션 치수 L 67×50×18cm (11/09 사람 입력과 같음)", (v7["length"], v7["width"], v7["height"], v7["dim_unit"]) == ("67", "50", "18", "cm"))
         check("실제 07·09: 대형견 표기 '예' (제목 For Large Dogs)", v7["large_dog_label"] == "예" and v9["large_dog_label"] == "예")
+    s01, s07, s09 = (HERE / "a02_captures" / f"prod-w2-0{n}_capture_20261118-1007.json" for n in (1, 7, 9))
+    if s01.exists() and s07.exists() and s09.exists():   # v0.4.0 배송 상자 회귀 확인
+        with tempfile.TemporaryDirectory() as td:
+            (a1, _, _), (a7, b7, _), (a9, _, _) = run([s01, s07, s09], template, Path(td) / "f.csv", Path(td) / "r.md", {}, "없음")
+        check("실제 v0.4 01: 배송 Standard·₩444,021(100개 기준)·할인 전·도착 보장",
+              a1["shipping_method"].startswith("Standard Alibaba.com Logistics (배송비는 100개 기준, 할인 전 ₩471,347")
+              and (a1["shipping_fee"], a1["shipping_currency"]) == ("444021", "KRW") and "Nov 26 - Dec 28" in a1["shipping_method"])
+        check("실제 v0.4 07: Economy ₩766(10개 기준) + 할인 폭 확인 메모", a7["shipping_fee"] == "766" and a7["shipping_method"].startswith("Economy")
+              and any("할인 폭" in n for n in b7["notes"]))
+        check("실제 v0.4 09: ₩217,816(200개 기준)", a9["shipping_fee"] == "217816" and "200개 기준" in a9["shipping_method"])
         check("실제 09: 범위가 KRW·상품명 온전", (v9["price_min"], v9["price_max"], v9["currency"]) == ("2528", "5056", "KRW")
               and v9["original_name"].startswith("Long-lasting Interactive Dog Toy"))
 

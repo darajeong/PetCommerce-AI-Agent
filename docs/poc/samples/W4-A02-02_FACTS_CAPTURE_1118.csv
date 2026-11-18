@@ -1,4 +1,4 @@
-﻿key,"설명 (사람이 상품 페이지를 직접 열어 보이는 값만 적는다. 없으면 '없음', 아직 안 봤으면 빈칸)",prod-w2-01 (확장 추출 2026-11-18 09:33),prod-w2-07 (확장 추출 2026-11-18 09:47),prod-w2-09 (확장 추출 2026-11-18 09:47)
+﻿key,"설명 (사람이 상품 페이지를 직접 열어 보이는 값만 적는다. 없으면 '없음', 아직 안 봤으면 빈칸)",prod-w2-01 (확장 추출 2026-11-18 10:07),prod-w2-07 (확장 추출 2026-11-18 10:07),prod-w2-09 (확장 추출 2026-11-18 10:07)
 category_id,상품 유형 코드,pet_harness,pet_bedding,pet_toy
 source_url,상품 페이지 URL,https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html,https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html,https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html
 platform,플랫폼,alibaba,alibaba,alibaba
@@ -20,9 +20,9 @@ pet_weight_unit,권장 체중 단위 (kg·lb),,,
 sales_count,판매량 (숫자),8,,1157
 rating,상품 평점 (숫자),5,,5
 review_count,상품 리뷰 수 (숫자),13,,13
-shipping_method,배송 방법,,,
-shipping_fee,배송비 (숫자),,,
-shipping_currency,배송비 통화,,,
+shipping_method,배송 방법,"Standard Alibaba.com Logistics (배송비는 100개 기준, 할인 전 ₩471,347, 도착 보장 Nov 26 - Dec 28)","Economy (배송비는 10개 기준, 할인 전 ₩28,092, 도착 보장 Nov 30 - Feb 01)","Standard Alibaba.com Logistics (배송비는 200개 기준, 할인 전 ₩245,142, 도착 보장 Nov 27 - Dec 31)"
+shipping_fee,배송비 (숫자),444021,766,217816
+shipping_currency,배송비 통화,KRW,KRW,KRW
 supplier_name,공급처(판매자) 이름,"Chaozhou Chaoan Ikitchen Stainless Steel Co., Ltd.","Dalian Usmile Pet Technology Co., Ltd.","Dongguan Wellfine Silicone Products Co., Ltd."
 large_dog_label,상세 페이지에 대형견 표기가 있는가 (예·아니오),예,예,예
 product_use,용도 (예: 산책용 / 보행 보조용 슬링),,,
@@ -30,5 +30,5 @@ size_note,크기 기준 메모,,"옵션별 치수: M 54×43×18/13cm, L 67×50×
 package_size,"포장 크기 (하나의 패키지 크기, 상품 치수 아님)",20X25X15 cm,18X10X5 cm,10X10X9 cm
 package_weight,포장 총중량 (단일 총중량),1.5 kg,0.8 kg,0.35 kg
 collected_at_overrides,확인 시각이 collected_at과 다른 값 (key=일시; ...),,,
-collected_at,확인 일시 (2026-11-07 14:00),2026-11-18 09:33,2026-11-18 09:47,2026-11-18 09:47
-collector,확인한 사람,"A 형준 (확장 프로그램 a02_capture_ext 0.2.0 추출, 저장 전 사람 확인)","A 형준 (확장 프로그램 a02_capture_ext 0.3.0 추출, 저장 전 사람 확인)","A 형준 (확장 프로그램 a02_capture_ext 0.3.0 추출, 저장 전 사람 확인)"
+collected_at,확인 일시 (2026-11-07 14:00),2026-11-18 10:07,2026-11-18 10:07,2026-11-18 10:07
+collector,확인한 사람,"A 형준 (확장 프로그램 a02_capture_ext 0.4.0 추출, 저장 전 사람 확인)","A 형준 (확장 프로그램 a02_capture_ext 0.4.0 추출, 저장 전 사람 확인)","A 형준 (확장 프로그램 a02_capture_ext 0.4.0 추출, 저장 전 사람 확인)"

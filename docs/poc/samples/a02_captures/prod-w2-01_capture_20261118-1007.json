@@ -1,0 +1,537 @@
+{
+  "attributes": [
+    {
+      "name": "Place of Origin",
+      "value": "Guangdong, China"
+    },
+    {
+      "name": "Brand Name",
+      "value": "Ikitchen"
+    },
+    {
+      "name": "Model Number",
+      "value": "NEW06"
+    },
+    {
+      "name": "Applicable Pet",
+      "value": "Dogs, Cats"
+    },
+    {
+      "name": "Type",
+      "value": "Rower"
+    },
+    {
+      "name": "Closure Type",
+      "value": "Buckle"
+    },
+    {
+      "name": "Material",
+      "value": "polyamide, Polyester"
+    },
+    {
+      "name": "Pattern",
+      "value": "Plaid"
+    },
+    {
+      "name": "Style",
+      "value": "Luxury, Cartoon, Cute, Classic, Simple, Fashion, Festival, Sport"
+    },
+    {
+      "name": "Decoration",
+      "value": "Feather"
+    },
+    {
+      "name": "Breed Size",
+      "value": "Large, Medium, Small"
+    },
+    {
+      "name": "Wash Instructions",
+      "value": "Hand Wash"
+    },
+    {
+      "name": "Product name",
+      "value": "Dog Lift Harness"
+    },
+    {
+      "name": "Logo",
+      "value": "Customized Brand Logo"
+    },
+    {
+      "name": "MOQ",
+      "value": "100pcs"
+    },
+    {
+      "name": "Commercial Buyer",
+      "value": "Gifts Stores"
+    },
+    {
+      "name": "Season",
+      "value": "All-Season"
+    },
+    {
+      "name": "Holiday Selection",
+      "value": "Not Support"
+    },
+    {
+      "name": "Collar & Leash Type",
+      "value": "Harnesses"
+    },
+    {
+      "name": "OEM & ODM",
+      "value": "Aceeptable"
+    },
+    {
+      "name": "Feature",
+      "value": "Sustainable"
+    },
+    {
+      "name": "Selling Units",
+      "value": "Single item"
+    },
+    {
+      "name": "Single package size",
+      "value": "20X25X15 cm"
+    },
+    {
+      "name": "Single gross weight",
+      "value": "1.5 kg"
+    }
+  ],
+  "attributes_source": "page_data:detailData.globalData.product.productBasicProperties; page_data:detailData.globalData.product.productOtherProperties; dom:attribute-block",
+  "capture_version": "0.1",
+  "captured_at": "2026-11-18T10:07:15+09:00",
+  "debug": {
+    "notes": [],
+    "page_data_roots": {
+      "detailData": [
+        "devData",
+        "globalData",
+        "hierarchy",
+        "metaData",
+        "nodeMap"
+      ]
+    },
+    "strategies": [
+      "jsonld",
+      "page_data",
+      "dom"
+    ]
+  },
+  "fields": {
+    "currency_setting": {
+      "source": "dom:currency",
+      "value": "KRW"
+    },
+    "moq_text": {
+      "source": "page_data:detailData.globalData.product.moq",
+      "value": "100"
+    },
+    "original_name": {
+      "source": "jsonld",
+      "value": "Adjustable Dog Lift Harness Dog Sling For Large Dogs Hind Leg Soft Rehab Harness For Weak Rear Legs Helps Injured Disabled"
+    },
+    "price_text": {
+      "source": "jsonld",
+      "value": "USD 2.7"
+    },
+    "rating": {
+      "source": "page_data:detailData.globalData.review.productReview.averageStar",
+      "value": "5"
+    },
+    "review_count": {
+      "source": "text",
+      "value": "13"
+    },
+    "sales_count": {
+      "source": "text",
+      "value": "8"
+    },
+    "shipping_text": {
+      "source": "dom:shipping-box",
+      "value": "Shipping Change Standard Shipping fee: ₩444,021 ₩471,347 for 100 pieces Guaranteed delivery: Nov 26 - Dec 28"
+    },
+    "supplier_name": {
+      "source": "page_data:detailData.globalData.seller.companyName",
+      "value": "Chaozhou Chaoan Ikitchen Stainless Steel Co., Ltd."
+    }
+  },
+  "host": "www.alibaba.com",
+  "image_urls": [
+    "https://sc04.alicdn.com/kf/Hbbfc1ef71cad4addb262d3e78309c76cR.jpg",
+    "https://sc04.alicdn.com/kf/H3fad6274730c4224ae156a27abc71260J.jpg",
+    "https://sc04.alicdn.com/kf/H2841d436397f432ab0eb6560eb274aedb.jpg",
+    "https://sc04.alicdn.com/kf/Hd1759693459a4c94beba8eeb2a5cfb75R.jpg",
+    "https://sc04.alicdn.com/kf/H9cf718cd7e604e268899e9ef22310d4bN.jpg",
+    "https://sc04.alicdn.com/kf/Hcaf7587dfe5d45f6b05610b204d0d52b7.jpg",
+    "https://sc04.alicdn.com/kf/H71b46655a61044cbbac72ea5013945f1l.jpg",
+    "https://sc04.alicdn.com/kf/Hc593b0f015f5420fbfa0d2cfd7c6c99aa.jpg"
+  ],
+  "image_usage": "needs_review",
+  "not_collected": [
+    "HTML 본문",
+    "상품 설명 원문",
+    "리뷰 원문",
+    "이미지 파일",
+    "쿠키·계정 정보"
+  ],
+  "options": [
+    {
+      "name": "Color",
+      "values": [
+        "Black"
+      ]
+    },
+    {
+      "name": "Size",
+      "values": [
+        "Multiple Size"
+      ]
+    }
+  ],
+  "options_source": "page_data:detailData.globalData.product.sku.skuAttrs",
+  "page_kind": "product_detail",
+  "platform": "alibaba",
+  "price_candidates": {
+    "dom": [
+      {
+        "hint": "id-break-words id-text-xs min-[1600px]:i",
+        "text": "$100"
+      },
+      {
+        "hint": "",
+        "text": "₩27,327"
+      },
+      {
+        "hint": "id-flex id-flex-col id-items-start",
+        "text": "₩4,373"
+      },
+      {
+        "hint": "id-flex id-flex-col id-items-start",
+        "text": "₩4,236"
+      },
+      {
+        "hint": "id-flex id-flex-col id-items-start",
+        "text": "₩3,963"
+      },
+      {
+        "hint": "id-flex id-flex-col id-items-start",
+        "text": "₩3,690"
+      },
+      {
+        "hint": "",
+        "text": "₩444,021"
+      },
+      {
+        "hint": "",
+        "text": "₩471,347"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩5,643"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩3,553"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩1,585"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩7,064"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩9,196"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩1,640"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩14,757"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩1,913-2,255"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩4,783"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩6,559"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩820"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩20,495"
+      }
+    ],
+    "page_data": [
+      {
+        "path": "detailData.globalData.product.customPrice.formatLadderPrice",
+        "value": "₩3,690-4,373"
+      },
+      {
+        "path": "detailData.globalData.product.price.formatLadderPrice",
+        "value": "₩3,690-4,373"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productLadderPrices[0].dollarPrice",
+        "value": "3.2"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productLadderPrices[0].formatPrice",
+        "value": "₩4,373"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productLadderPrices[0].price",
+        "value": "4373"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productLadderPrices[1].dollarPrice",
+        "value": "3.1"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productLadderPrices[1].formatPrice",
+        "value": "₩4,236"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productLadderPrices[1].price",
+        "value": "4236"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productLadderPrices[2].dollarPrice",
+        "value": "2.9"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productLadderPrices[2].formatPrice",
+        "value": "₩3,963"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productLadderPrices[2].price",
+        "value": "3963"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productLadderPrices[3].dollarPrice",
+        "value": "2.7"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productLadderPrices[3].formatPrice",
+        "value": "₩3,690"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productLadderPrices[3].price",
+        "value": "3690"
+      },
+      {
+        "path": "detailData.globalData.product.price.productLadderPrices[0].dollarPrice",
+        "value": "3.2"
+      },
+      {
+        "path": "detailData.globalData.product.price.productLadderPrices[0].formatPrice",
+        "value": "₩4,373"
+      },
+      {
+        "path": "detailData.globalData.product.price.productLadderPrices[0].price",
+        "value": "4373"
+      },
+      {
+        "path": "detailData.globalData.product.price.productLadderPrices[1].dollarPrice",
+        "value": "3.1"
+      },
+      {
+        "path": "detailData.globalData.product.price.productLadderPrices[1].formatPrice",
+        "value": "₩4,236"
+      },
+      {
+        "path": "detailData.globalData.product.price.productLadderPrices[1].price",
+        "value": "4236"
+      },
+      {
+        "path": "detailData.globalData.product.price.productLadderPrices[2].dollarPrice",
+        "value": "2.9"
+      },
+      {
+        "path": "detailData.globalData.product.price.productLadderPrices[2].formatPrice",
+        "value": "₩3,963"
+      },
+      {
+        "path": "detailData.globalData.product.price.productLadderPrices[2].price",
+        "value": "3963"
+      },
+      {
+        "path": "detailData.globalData.product.price.productLadderPrices[3].dollarPrice",
+        "value": "2.7"
+      },
+      {
+        "path": "detailData.globalData.product.price.productLadderPrices[3].formatPrice",
+        "value": "₩3,690"
+      }
+    ]
+  },
+  "price_texts": [
+    "USD 2.7"
+  ],
+  "price_tiers": [
+    {
+      "price_text": "₩4,373",
+      "quantity_text": "100 - 799",
+      "source": "page_data:detailData.globalData.product.customPrice.productLadderPrices"
+    },
+    {
+      "price_text": "₩4,236",
+      "quantity_text": "800 - 4999",
+      "source": "page_data:detailData.globalData.product.customPrice.productLadderPrices"
+    },
+    {
+      "price_text": "₩3,963",
+      "quantity_text": "5000 - 9999",
+      "source": "page_data:detailData.globalData.product.customPrice.productLadderPrices"
+    },
+    {
+      "price_text": "₩3,690",
+      "quantity_text": ">= 10000",
+      "source": "page_data:detailData.globalData.product.customPrice.productLadderPrices"
+    }
+  ],
+  "shipping_candidates": [
+    {
+      "path": "detailData.globalData.inventory.shippingToCountry",
+      "value": "KR"
+    },
+    {
+      "path": "detailData.globalData.product.logisticsFtId",
+      "value": "2010973013"
+    },
+    {
+      "path": "detailData.globalData.product.logisticsFtType",
+      "value": "aliLogistics"
+    },
+    {
+      "path": "detailData.globalData.seller.supplierOnTimeDeliveryRate",
+      "value": "95.0%"
+    },
+    {
+      "path": "detailData.nodeMap.module_dropshipping.moduleName",
+      "value": "Dropshipping"
+    },
+    {
+      "path": "detailData.nodeMap.module_dropshipping.nodeType",
+      "value": "Module"
+    },
+    {
+      "path": "detailData.nodeMap.module_dropshipping.renderType",
+      "value": "js_ssr"
+    },
+    {
+      "path": "detailData.nodeMap.module_free_shipping.moduleName",
+      "value": "FreeShipping"
+    },
+    {
+      "path": "detailData.nodeMap.module_free_shipping.nodeType",
+      "value": "Module"
+    },
+    {
+      "path": "detailData.nodeMap.module_free_shipping.renderType",
+      "value": "js_ssr"
+    },
+    {
+      "path": "detailData.nodeMap.module_product_highlights_dropshipping.moduleName",
+      "value": "customizationHighlights"
+    },
+    {
+      "path": "detailData.nodeMap.module_product_highlights_dropshipping.nodeType",
+      "value": "Module"
+    },
+    {
+      "path": "detailData.nodeMap.module_product_highlights_dropshipping.renderType",
+      "value": "js_ssr"
+    },
+    {
+      "path": "detailData.nodeMap.module_shipping.moduleName",
+      "value": "Shipping"
+    },
+    {
+      "path": "detailData.nodeMap.module_shipping.nodeType",
+      "value": "Module"
+    },
+    {
+      "path": "detailData.nodeMap.module_shipping.renderType",
+      "value": "js_ssr"
+    },
+    {
+      "path": "detailData.nodeMap.module_logistics_lead_time.moduleName",
+      "value": "LeadTime"
+    },
+    {
+      "path": "detailData.nodeMap.module_logistics_lead_time.nodeType",
+      "value": "Module"
+    },
+    {
+      "path": "detailData.nodeMap.module_logistics_lead_time.renderType",
+      "value": "js_ssr"
+    },
+    {
+      "path": "detailData.nodeMap.module_dropshipping_overview.moduleName",
+      "value": "DropShippingOverview"
+    },
+    {
+      "path": "detailData.nodeMap.module_dropshipping_overview.nodeType",
+      "value": "Module"
+    },
+    {
+      "path": "detailData.nodeMap.module_dropshipping_overview.renderType",
+      "value": "js_ssr"
+    },
+    {
+      "path": "detailData.globalData.product.dropshippingPrice.batchNum",
+      "value": "1"
+    },
+    {
+      "path": "detailData.globalData.product.dropshippingPrice.fixedDollarPrice",
+      "value": "3.2"
+    },
+    {
+      "path": "detailData.globalData.product.dropshippingPrice.fixedPrice",
+      "value": "4373"
+    },
+    {
+      "path": "detailData.globalData.product.dropshippingPrice.formatFixedPrice",
+      "value": "₩4,373"
+    },
+    {
+      "path": "detailData.globalData.product.dropshippingPrice.saleType",
+      "value": "normal"
+    },
+    {
+      "path": "detailData.globalData.product.dropshippingPrice.unit",
+      "value": "piece"
+    },
+    {
+      "path": "detailData.globalData.product.dropshippingPrice.unitEven",
+      "value": "pieces"
+    },
+    {
+      "path": "detailData.globalData.trade.logisticInfo.productShippingTemplateId",
+      "value": "2010973013"
+    }
+  ],
+  "source_url": "https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html",
+  "tool": {
+    "name": "a02_capture_ext",
+    "version": "0.4.0"
+  },
+  "product_id": "prod-w2-01",
+  "collector": "A 형준",
+  "capture_mode": "alibaba",
+  "edited_fields": [],
+  "method_note": "사람이 페이지를 열고 버튼을 눌러 추출, 저장 전 사람이 값 확인 (W1-07: 페이지 열기·탐색 자동화 없음)"
+}

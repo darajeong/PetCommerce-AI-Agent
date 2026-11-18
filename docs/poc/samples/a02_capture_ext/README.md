@@ -91,7 +91,7 @@ python docs/poc/samples/a02_price_parse.py --self-test
 python docs/poc/samples/a02_capture_to_facts.py --self-test
 ```
 
-- 가격 파서 39/39, 변환 44/44 PASS (v0.4.0, 2026-11-18). 변환 시험은 출력 CSV를 `a02_build_product.py`가 다시 읽어 W1-04 JSON을 만드는 것까지 확인하고, 첫 실사용 추출본(`a02_captures/`)도 회귀 확인한다.
+- 가격 파서 39/39, 변환 47/47 PASS (v0.4.0, 2026-11-18). 변환 시험은 출력 CSV를 `a02_build_product.py`가 다시 읽어 W1-04 JSON을 만드는 것까지 확인하고, 첫 실사용 추출본(`a02_captures/`)도 회귀 확인한다.
 - 추출 함수: 이 폴더에서 `python -m http.server 8765 --bind 127.0.0.1`을 띄우고 `http://127.0.0.1:8765/test/fixture_dom.html`, `test/fixture_page_data.html`, `test/fixture_range.html`(범위가·스토어 평가만 있는 경우)을 열면 페이지 아래에 결과가 나온다 (16/16 · 16/16 · 12/12 PASS). 계정 정보·설명 원문이 결과에 없는지도 검사한다.
 - 팝업 화면: `test/popup_preview.html` (가짜 chrome API로 추출 → 수정 → 저장 흐름 확인).
 - `test/`의 시험 페이지와 `sample_capture_*.json`은 모두 지어낸 값(가짜 상품)이다. 실제 사이트 마크업을 옮긴 것이 아니다.

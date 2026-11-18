@@ -1,7 +1,7 @@
 # A02-02 확장 프로그램 추출 검사 보고서
 
-- 생성: 2026-11-18 10:04
-- 추출본: prod-w2-01_capture_20261118-0933.json, prod-w2-07_capture_20261118-0947.json, prod-w2-09_capture_20261118-0947.json
+- 생성: 2026-11-18 10:10
+- 추출본: prod-w2-01_capture_20261118-1007.json, prod-w2-07_capture_20261118-1007.json, prod-w2-09_capture_20261118-1007.json
 - 환율: 입력 없음 (KRW 외 상식선 검사 생략)
 - 빈칸은 확장이 못 찾은 값이다. a02_build_product.py에서 `manual_review_required`(사람 확인 전)로 처리된다.
 - 이미지는 주소만 추출본에 남기고 입력표에는 넣지 않았다 (W1-07 1.1절, usage = needs_review).
@@ -9,7 +9,7 @@
 ## prod-w2-01
 
 - 출처: https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html
-- 추출 시각: 2026-11-18 09:33 · 방식: alibaba
+- 추출 시각: 2026-11-18 10:07 · 방식: alibaba
 - 사람이 고친 칸: 없음 · 이미지 주소 8개
 
 ### 가격 검사
@@ -31,10 +31,10 @@
 
 ### 빈칸 (사람 확인 필요)
 
-- length, weight, shipping_method, shipping_fee, product_use
+- length, weight, product_use
 - 속성 'Breed Size: Large, Medium, Small'에 대형 표기 있음 → large_dog_label 판단 참고 (입력표에는 사람이 기록)
-- 크기 속성 'Multiple Size'을 치수로 읽지 못해 빈칸 (옵션 사이즈일 수 있음)
 - 대형견 표기 '예' 자동 기록 (근거: 제목, 속성 'Breed Size: Large, Medium, Small')
+- 물류 'Alibaba.com Logistics'는 배송 상자 글자가 아니라 page_data:logisticsFtType에서 읽음
 
 ### 사람 입력값과 비교 (일치 11/16)
 
@@ -60,7 +60,7 @@
 ## prod-w2-07
 
 - 출처: https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html
-- 추출 시각: 2026-11-18 09:47 · 방식: alibaba
+- 추출 시각: 2026-11-18 10:07 · 방식: alibaba
 - 사람이 고친 칸: 없음 · 이미지 주소 12개
 
 ### 가격 검사
@@ -72,10 +72,10 @@
 
 ### 빈칸 (사람 확인 필요)
 
-- weight, sales_count, rating, review_count, shipping_method, shipping_fee, product_use
+- weight, sales_count, rating, review_count, product_use
 - 크기 속성 'M, L'을 치수로 읽지 못해 빈칸 (옵션 사이즈일 수 있음)
 - 대형견 표기 '예' 자동 기록 (근거: 제목)
-- 리뷰 수 1710는 상품 평점 없이 화면 글자에서만 찾은 값이라 비움 (스토어 리뷰 수일 수 있음, 사람 확인)
+- 배송비 할인 폭이 큼 (₩28,092 → ₩766). 첫 주문 할인 같은 조건인지 사람 확인
 
 ### 사람 입력값과 비교 (일치 11/16)
 
@@ -101,7 +101,7 @@
 ## prod-w2-09
 
 - 출처: https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html
-- 추출 시각: 2026-11-18 09:47 · 방식: alibaba
+- 추출 시각: 2026-11-18 10:07 · 방식: alibaba
 - 사람이 고친 칸: 없음 · 이미지 주소 11개
 
 ### 가격 검사
@@ -113,8 +113,9 @@
 
 ### 빈칸 (사람 확인 필요)
 
-- length, weight, shipping_method, shipping_fee, product_use
+- length, weight, product_use
 - 대형견 표기 '예' 자동 기록 (근거: 제목)
+- 물류 'Alibaba.com Logistics'는 배송 상자 글자가 아니라 page_data:logisticsFtType에서 읽음
 
 ### 사람 입력값과 비교 (일치 13/16)
 
