@@ -1,0 +1,42 @@
+{
+  "capture_version": "0.1",
+  "tool": {"name": "a02_capture_ext", "version": "0.1.0"},
+  "source_url": "https://www.alibaba.com/product-detail/Test-Fixture-Treat-Ball_1000000000009.html",
+  "host": "www.alibaba.com",
+  "platform": "test",
+  "page_kind": "product_detail",
+  "captured_at": "2026-11-17T10:00:00+09:00",
+  "fields": {
+    "original_name": {"value": "TEST FIXTURE Silicone Lick Treat Ball for Large Dogs", "source": "jsonld"},
+    "price_text": {"value": "USD 2.50 - 3.80", "source": "jsonld"},
+    "moq_text": {"value": "50", "source": "page_data:detailData.globalData.product.moq"},
+    "supplier_name": {"value": "Fixture Silicone Test Co., Ltd.", "source": "page_data:detailData.globalData.seller.companyName"},
+    "sales_count": {"value": null, "source": null},
+    "rating": {"value": null, "source": null},
+    "review_count": {"value": null, "source": null},
+    "currency_setting": {"value": "USD", "source": "page_data"}
+  },
+  "price_tiers": [
+    {"quantity_text": "50 - 199", "price_text": "US$3.80", "source": "page_data:detailData.globalData.product.ladderPrices"},
+    {"quantity_text": "200 - 999", "price_text": "US$3.10", "source": "page_data:detailData.globalData.product.ladderPrices"},
+    {"quantity_text": ">= 1000", "price_text": "US$2.50", "source": "page_data:detailData.globalData.product.ladderPrices"}
+  ],
+  "price_texts": ["USD 2.50 - 3.80"],
+  "attributes": [
+    {"name": "Material", "value": "Food Grade Silicone"},
+    {"name": "Size", "value": "9 x 9 x 9 cm"},
+    {"name": "Weight", "value": "180 g"}
+  ],
+  "attributes_source": "page_data:detailData.globalData.product.productBasicProperties",
+  "options": [{"name": "Color", "values": ["Blue", "Orange"]}],
+  "options_source": "page_data:detailData.globalData.product.sku.skuAttrs",
+  "image_urls": ["https://img.example.com/fixture/ball-1.jpg", "https://img.example.com/fixture/ball-2.jpg"],
+  "image_usage": "needs_review",
+  "not_collected": ["HTML 본문", "상품 설명 원문", "리뷰 원문", "이미지 파일", "쿠키·계정 정보"],
+  "debug": {"strategies": ["jsonld", "page_data", "dom"], "page_data_roots": {"detailData": ["globalData"]}, "notes": []},
+  "product_id": "prod-w2-09",
+  "collector": "A 형준",
+  "capture_mode": "test",
+  "edited_fields": [],
+  "method_note": "시험 페이지(가짜 상품) 추출 결과"
+}

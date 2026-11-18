@@ -1,0 +1,127 @@
+{
+  "collector": "A 형준",
+  "capture_mode": "test",
+  "edited_fields": [],
+  "method_note": "시험 페이지(가짜 상품) 추출 결과",
+  "image_usage": "needs_review",
+  "not_collected": [
+    "HTML 본문",
+    "상품 설명 원문",
+    "리뷰 원문",
+    "이미지 파일",
+    "쿠키·계정 정보"
+  ],
+  "capture_version": "0.1",
+  "tool": {
+    "name": "a02_capture_ext",
+    "version": "0.1.0"
+  },
+  "platform": "test",
+  "host": "www.alibaba.com",
+  "page_kind": "product_detail",
+  "captured_at": "2026-11-17T10:00:00+09:00",
+  "product_id": "prod-w2-01",
+  "source_url": "https://www.alibaba.com/product-detail/Test-Fixture-Dog-Harness_1000000000001.html",
+  "fields": {
+    "original_name": {
+      "value": "TEST FIXTURE Padded Dog Support Harness for Large Dogs",
+      "source": "dom:h1"
+    },
+    "price_text": {
+      "value": "₩4,427",
+      "source": "dom:price"
+    },
+    "moq_text": {
+      "value": "Min. order: 100 pieces",
+      "source": "text"
+    },
+    "supplier_name": {
+      "value": "Fixture Test Pet Products Co., Ltd.",
+      "source": "dom:supplier"
+    },
+    "sales_count": {
+      "value": "7",
+      "source": "text"
+    },
+    "rating": {
+      "value": "5.0",
+      "source": "text"
+    },
+    "review_count": {
+      "value": "13",
+      "source": "text"
+    },
+    "currency_setting": {
+      "value": "KRW",
+      "source": "dom:currency"
+    }
+  },
+  "price_tiers": [
+    {
+      "quantity_text": "100 - 799 pieces",
+      "price_text": "₩4,427",
+      "source": "dom:tier"
+    },
+    {
+      "quantity_text": "800 - 4999 pieces",
+      "price_text": "₩4,289",
+      "source": "dom:tier"
+    },
+    {
+      "quantity_text": "5000 - 9999 pieces",
+      "price_text": "₩4,012",
+      "source": "dom:tier"
+    },
+    {
+      "quantity_text": ">= 10000 pieces",
+      "price_text": "₩3,735",
+      "source": "dom:tier"
+    }
+  ],
+  "price_texts": [
+    "₩4,427",
+    "₩4,289",
+    "₩4,012",
+    "₩3,735"
+  ],
+  "attributes": [
+    {
+      "name": "Material",
+      "value": "Nylon; Polyester"
+    },
+    {
+      "name": "Size",
+      "value": "60 x 40 x 10 cm"
+    },
+    {
+      "name": "Weight",
+      "value": "0.45 kg"
+    },
+    {
+      "name": "Single package size",
+      "value": "20X25X15 cm"
+    },
+    {
+      "name": "Single gross weight",
+      "value": "1.500 kg"
+    },
+    {
+      "name": "Place of Origin",
+      "value": "Test Province"
+    }
+  ],
+  "attributes_source": "dom:attribute-block",
+  "options": [],
+  "options_source": null,
+  "image_urls": [
+    "https://img.example.com/fixture/harness-main.jpg",
+    "https://img.example.com/fixture/harness-side.jpg"
+  ],
+  "debug": {
+    "strategies": [
+      "dom"
+    ],
+    "page_data_roots": {},
+    "notes": []
+  }
+}

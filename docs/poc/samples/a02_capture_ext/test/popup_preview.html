@@ -1,0 +1,35 @@
+<!doctype html>
+<!-- 팝업 화면 미리보기 (확장 프로그램 설치 없이). chrome API 를 가짜로 바꿔 끼우고 popup.html·popup.js 를 그대로 불러온다.
+     로컬 서버로 열기: python -m http.server 8765 --bind 127.0.0.1 (a02_capture_ext 폴더에서) → http://127.0.0.1:8765/test/popup_preview.html -->
+<html lang="ko">
+<head><meta charset="utf-8"><title>A02 팝업 미리보기</title></head>
+<body>
+<script>
+  // 가짜 chrome API: 시험 페이지 추출본(sample_capture_prod-w2-01.json)을 돌려주고, 저장은 window.__lastDownload 에 남긴다.
+  window.chrome = {
+    // 주소의 상품 번호가 PoC 목록(prod-w2-01)과 같아야 팝업이 추출을 허용한다. 추출 결과는 가짜 시험 데이터
+    tabs: { query: async () => [{ id: 1, url: new URLSearchParams(location.search).get('url')
+      || 'https://www.alibaba.com/product-detail/Adjustable-Dog-Lift-Harness-Dog-Sling_1601429812402.html' }] },
+    scripting: {
+      executeScript: async () => {
+        const c = await fetch('sample_capture_prod-w2-01.json', { cache: 'no-store' }).then((r) => r.json());
+        ['product_id', 'collector', 'capture_mode', 'edited_fields', 'method_note'].forEach((k) => delete c[k]);
+        c.platform = 'alibaba';
+        return [{ result: c }];
+      },
+    },
+    storage: { session: { get: async () => ({}), set: async () => {} } },
+    downloads: { download: async (o) => { window.__lastDownload = o; return 1; } },
+  };
+  (async () => {
+    const html = await fetch('../popup.html', { cache: 'no-store' }).then((r) => r.text());
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    document.head.append(...doc.head.querySelectorAll('style'));
+    [...doc.body.children].filter((el) => el.tagName !== 'SCRIPT').forEach((el) => document.body.appendChild(el));
+    for (const src of ['../extract.js', '../popup.js']) {
+      await new Promise((ok) => { const s = document.createElement('script'); s.src = src + '?t=' + Date.now(); s.onload = ok; document.body.appendChild(s); });
+    }
+  })();
+</script>
+</body>
+</html>

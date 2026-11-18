@@ -1,0 +1,60 @@
+<!doctype html>
+<!-- 시험용 가짜 상세페이지 (화면 DOM만 있는 경우). 내용은 모두 지어낸 값이며 실제 상품·실제 사이트 마크업이 아니다. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TEST FIXTURE Padded Dog Support Harness for Large Dogs - Buy Test on Example</title>
+<meta property="og:title" content="TEST FIXTURE Padded Dog Support Harness for Large Dogs">
+<meta property="og:image" content="https://img.example.com/fixture/harness-main.jpg_350x350.jpg">
+</head>
+<body>
+<header class="site-header"><div><span>배송지: KR</span><span>한국어-KRW</span></div></header>
+<h1>TEST FIXTURE Padded Dog Support Harness for Large Dogs</h1>
+<div class="product-gallery">
+  <img src="https://img.example.com/fixture/harness-main.jpg_350x350.jpg" alt="">
+  <img data-src="//img.example.com/fixture/harness-side.jpg_120x120.jpg" alt="">
+  <img src="https://img.example.com/fixture/icon-zoom.png" alt="">
+</div>
+<div class="price-list">
+  <div class="tier"><div class="qty">100 - 799 pieces</div><div class="price-num">₩4,427</div></div>
+  <div class="tier"><div class="qty">800 - 4999 pieces</div><div class="price-num">₩4,289</div></div>
+  <div class="tier"><div class="qty">5000 - 9999 pieces</div><div class="price-num">₩4,012</div></div>
+  <div class="tier"><div class="qty">&gt;= 10000 pieces</div><div class="price-num">₩3,735</div></div>
+</div>
+<div class="order-info">Min. order: 100 pieces</div>
+<div class="ship-card"><div>배송</div><div>스탠더드 Alibaba.com Logistics</div><div>배송비: 100개당 ₩442,283</div><div>무료 배송 최대한도 ₩27,236</div></div>
+<div class="review-line">5.0 (13 reviews) · 8 판매</div>
+<div class="supplier-card"><a href="https://fixture-test.en.alibaba.com/">Fixture Test Pet Products Co., Ltd.</a><span class="store-score">4.9/5 (4225)</span></div>
+<div class="key-attributes">
+  <div class="attr-row"><span>Material</span><span>Nylon; Polyester</span></div>
+  <div class="attr-row"><span>Size</span><span>60 x 40 x 10 cm</span></div>
+  <div class="attr-row"><span>Weight</span><span>0.45 kg</span></div>
+  <div class="attr-row"><span>Single package size</span><span>20X25X15 cm</span></div>
+  <div class="attr-row"><span>Single gross weight</span><span>1.500 kg</span></div>
+  <div class="attr-row"><span>Place of Origin</span><span>Test Province</span></div>
+</div>
+<div class="description"><p>FIXTURE DESCRIPTION TEXT — 설명 원문은 추출 결과에 들어가면 안 된다.</p></div>
+<script src="../extract.js"></script>
+<script src="expect.js"></script>
+<script>
+  const r = a02ExtractFacts('https://www.alibaba.com/product-detail/Test-Fixture-Dog-Harness_1000000000001.html?spm=fixture#top');
+  const f = r.fields;
+  const attr = (n) => (r.attributes.find((a) => a.name === n) || {}).value;
+  a02RenderChecks(r, [
+    ['상품명 = h1', f.original_name.value === 'TEST FIXTURE Padded Dog Support Harness for Large Dogs' && f.original_name.source === 'dom:h1'],
+    ['수량 구간 4개', r.price_tiers.length === 4],
+    ['첫 구간 100 - 799 pieces / ₩4,427', r.price_tiers[0].quantity_text === '100 - 799 pieces' && r.price_tiers[0].price_text === '₩4,427'],
+    ['마지막 구간 >= 10000 pieces', r.price_tiers[3].quantity_text === '>= 10000 pieces'],
+    ['MOQ 글자', f.moq_text.value === 'Min. order: 100 pieces'],
+    ['공급처', f.supplier_name.value === 'Fixture Test Pet Products Co., Ltd.'],
+    ['판매량 "8 판매"', f.sales_count.value === '8'],
+    ['평점은 상품 평점 5.0 (스토어 4.9/5 아님)', f.rating.value === '5.0' && f.review_count.value === '13'],
+    ['통화 설정 KRW (머리글 "한국어-KRW")', f.currency_setting.value === 'KRW'],
+    ['속성 6개, 소재', r.attributes.length === 6 && attr('Material') === 'Nylon; Polyester'],
+    ['이미지 2개 (아이콘 제외, 크기 꼬리 제거)', r.image_urls.length === 2 && r.image_urls[0] === 'https://img.example.com/fixture/harness-main.jpg'],
+    ['상세페이지로 판정', r.platform === 'alibaba' && r.page_kind === 'product_detail'],
+    ['배송 상자 글자 (한국어)', (f.shipping_text.value || '').includes('Alibaba.com Logistics') && f.shipping_text.value.includes('100개당 ₩442,283')],
+  ]);
+</script>
+</body>
+</html>

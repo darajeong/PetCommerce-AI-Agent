@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>A02 사실 값 추출</title>
+<style>
+  :root { --fg: #1d1d1f; --muted: #6e6e73; --line: #d2d2d7; --bg: #fff; --soft: #f5f5f7; --accent: #0b6bcb; --warn: #b25000; --bad: #c62828; --ok: #1b7f3b; }
+  * { box-sizing: border-box; }
+  body { margin: 0; width: 400px; font: 13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--fg); background: var(--bg); }
+  header { padding: 12px 14px 10px; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 15px; margin: 0 0 4px; }
+  .policy { color: var(--muted); font-size: 11.5px; margin: 0; }
+  main { padding: 10px 14px 14px; }
+  .page { background: var(--soft); border-radius: 8px; padding: 8px 10px; font-size: 12px; word-break: break-all; margin-bottom: 10px; }
+  .page b { display: block; margin-bottom: 2px; }
+  .row { display: grid; grid-template-columns: 92px 1fr; gap: 6px; align-items: center; margin: 6px 0; }
+  .row.top { align-items: start; }
+  label { color: var(--muted); font-size: 12px; }
+  input, select, textarea { width: 100%; font: inherit; padding: 5px 7px; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--fg); }
+  textarea { min-height: 64px; resize: vertical; font-family: ui-monospace, Consolas, monospace; font-size: 11.5px; }
+  .src { grid-column: 2; color: var(--muted); font-size: 10.5px; margin-top: -3px; }
+  button { font: inherit; padding: 7px 12px; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
+  button.ghost { background: #fff; color: var(--accent); }
+  button:disabled { opacity: .45; cursor: default; }
+  .actions { display: flex; gap: 8px; margin: 10px 0 4px; }
+  .msg { font-size: 12px; margin: 6px 0; }
+  .msg.ok { color: var(--ok); } .msg.warn { color: var(--warn); } .msg.bad { color: var(--bad); }
+  details { margin-top: 8px; font-size: 11.5px; }
+  details ul { padding-left: 16px; margin: 4px 0; word-break: break-all; }
+  #form[hidden] { display: none; }
+  h2 { font-size: 12.5px; margin: 14px 0 4px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>A02 사실 값 추출</h1>
+  <p class="policy">사람이 연 알리바바 상세페이지에서만 동작합니다. HTML·이미지 파일·설명·리뷰 원문은 저장하지 않고, 이미지는 주소만 남깁니다 (W1-07 1.1절).</p>
+</header>
+<main>
+  <div class="page" id="page"><b>현재 페이지</b><span id="pageUrl">확인 중…</span></div>
+  <div class="row"><label for="pid">상품 ID</label><select id="pid"></select></div>
+  <div class="row"><label for="collector">확인한 사람</label><input id="collector" value="A 형준"></div>
+  <div class="actions"><button id="extract">사실 값 추출</button><button id="save" class="ghost" disabled>JSON 저장</button></div>
+  <p class="msg" id="msg"></p>
+
+  <section id="form" hidden>
+    <h2>추출 결과 (틀리면 고친 뒤 저장)</h2>
+    <div class="row"><label for="f_original_name">상품명</label><input id="f_original_name"><div class="src" id="s_original_name"></div></div>
+    <div class="row"><label for="f_price_text">가격 글자</label><input id="f_price_text"><div class="src" id="s_price_text"></div></div>
+    <div class="row"><label for="f_currency_setting">통화 설정</label><input id="f_currency_setting" placeholder="KRW · USD 등 (페이지 상단 통화)"><div class="src" id="s_currency_setting"></div></div>
+    <div class="row"><label for="f_moq_text">MOQ</label><input id="f_moq_text"><div class="src" id="s_moq_text"></div></div>
+    <div class="row"><label for="f_supplier_name">공급처</label><input id="f_supplier_name"><div class="src" id="s_supplier_name"></div></div>
+    <div class="row"><label for="f_sales_count">판매량</label><input id="f_sales_count"><div class="src" id="s_sales_count"></div></div>
+    <div class="row"><label for="f_rating">평점</label><input id="f_rating"><div class="src" id="s_rating"></div></div>
+    <div class="row"><label for="f_review_count">리뷰 수</label><input id="f_review_count"><div class="src" id="s_review_count"></div></div>
+    <div class="row top"><label for="f_shipping_text">배송 글자</label><input id="f_shipping_text" placeholder="배송 상자 글자 (방법·배송비·도착일)"><div class="src" id="s_shipping_text"></div></div>
+    <div class="row top"><label for="t_tiers">수량 구간<br>(수량 | 가격)</label><textarea id="t_tiers"></textarea><div class="src" id="s_tiers"></div></div>
+    <div class="row top"><label for="t_attrs">속성<br>(이름: 값)</label><textarea id="t_attrs"></textarea><div class="src" id="s_attrs"></div></div>
+    <div class="row top"><label for="t_options">옵션<br>(이름 = 값 / 값)</label><textarea id="t_options"></textarea><div class="src" id="s_options"></div></div>
+    <details><summary id="imgSummary">이미지 주소</summary><ul id="imgList"></ul></details>
+    <details><summary>찾은 방식 (추출 규칙 맞출 때 참고)</summary><pre id="debug" style="white-space:pre-wrap;font-size:10.5px"></pre></details>
+  </section>
+</main>
+<script src="extract.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+{
+  "attributes": [
+    {
+      "name": "Place of Origin",
+      "value": "China"
+    },
+    {
+      "name": "Wash Instructions",
+      "value": "Mechanical Wash"
+    },
+    {
+      "name": "Material",
+      "value": "Velvet"
+    },
+    {
+      "name": "Product name",
+      "value": "Washable Rectangle Breathable Soft Padding"
+    },
+    {
+      "name": "Type",
+      "value": "Pet Dog Cat Cushion Mat"
+    },
+    {
+      "name": "Color",
+      "value": "Grey, Brown"
+    },
+    {
+      "name": "Size",
+      "value": "M, L"
+    },
+    {
+      "name": "Suitable for",
+      "value": "Dogs Cats Animals"
+    },
+    {
+      "name": "Logo",
+      "value": "Customized Accepted"
+    },
+    {
+      "name": "Keywords",
+      "value": "Dog bed"
+    },
+    {
+      "name": "Packing",
+      "value": "Opp Bag"
+    },
+    {
+      "name": "Delivery Time",
+      "value": "3-7 Days"
+    },
+    {
+      "name": "PAYMENT",
+      "value": "Paypal.western Union.TT. Trade Assurance"
+    },
+    {
+      "name": "Selling Units",
+      "value": "Single item"
+    },
+    {
+      "name": "Single package size",
+      "value": "18X10X5 cm"
+    },
+    {
+      "name": "Single gross weight",
+      "value": "0.8 kg"
+    }
+  ],
+  "attributes_source": "page_data:detailData.globalData.product.productBasicProperties; dom:attribute-block",
+  "capture_version": "0.1",
+  "captured_at": "2026-11-18T09:47:20+09:00",
+  "debug": {
+    "notes": [],
+    "page_data_roots": {
+      "detailData": [
+        "devData",
+        "globalData",
+        "hierarchy",
+        "metaData",
+        "nodeMap"
+      ]
+    },
+    "strategies": [
+      "jsonld",
+      "page_data",
+      "dom"
+    ]
+  },
+  "fields": {
+    "currency_setting": {
+      "source": "dom:currency",
+      "value": "KRW"
+    },
+    "moq_text": {
+      "source": "page_data:detailData.globalData.product.moq",
+      "value": "10"
+    },
+    "original_name": {
+      "source": "jsonld",
+      "value": "Wholesale Washable Dog Beds For Large Dogs Mattress Comfortable And Warming Rectangle"
+    },
+    "price_text": {
+      "source": "page_data:detailData.globalData.product.customPrice.productRangePrices.pricePromotionRangeText",
+      "value": "₩10,125-11,628"
+    },
+    "rating": {
+      "source": null,
+      "value": null
+    },
+    "review_count": {
+      "source": "text",
+      "value": "1710"
+    },
+    "sales_count": {
+      "source": null,
+      "value": null
+    },
+    "supplier_name": {
+      "source": "page_data:detailData.globalData.seller.companyName",
+      "value": "Dalian Usmile Pet Technology Co., Ltd."
+    }
+  },
+  "host": "www.alibaba.com",
+  "image_urls": [
+    "https://sc04.alicdn.com/kf/H4e4f7b2277c14cefa68d77e9e86f88e5m.png",
+    "https://sc04.alicdn.com/kf/H19f375ea69e446abaa749a1e5e1bb06aB.png",
+    "https://sc04.alicdn.com/kf/Hda4199a4fff144abbc528c17c0d90bcdF.png",
+    "https://sc04.alicdn.com/kf/Haef973818dc34d3d94fb4bd7ad24e392O.png",
+    "https://sc04.alicdn.com/kf/H92aa1fc16b7441d3b72c90d2bcd8b54fm.png",
+    "https://sc04.alicdn.com/kf/H98ca127b7de34049abe40d6c31a1fc7do.jpg",
+    "https://sc04.alicdn.com/kf/H0d38dc89dec54615abe9fbe6e2a1c74bd.png",
+    "https://sc04.alicdn.com/kf/H71e58401092741b99401288c5dc220f4y.png",
+    "https://sc04.alicdn.com/kf/Hdbbb6a106e8d4515be692063768d8fd4J.png",
+    "https://sc04.alicdn.com/kf/Hdcdda68a5c974643bba82b99a60a9907G.png",
+    "https://sc04.alicdn.com/kf/H018435c67be4469fb37ace1bc6888139Z.png",
+    "https://sc04.alicdn.com/kf/H048f1cf3022140f7b70c88e3a19e30a48.png"
+  ],
+  "image_usage": "needs_review",
+  "not_collected": [
+    "HTML 본문",
+    "상품 설명 원문",
+    "리뷰 원문",
+    "이미지 파일",
+    "쿠키·계정 정보"
+  ],
+  "options": [
+    {
+      "name": "Color",
+      "values": [
+        "Gray",
+        "Brown"
+      ]
+    },
+    {
+      "name": "Size",
+      "values": [
+        "M: 54*43*18/13cm",
+        "L: 67*50*18/13cm"
+      ]
+    }
+  ],
+  "options_source": "page_data:detailData.globalData.product.sku.skuAttrs",
+  "page_kind": "product_detail",
+  "platform": "alibaba",
+  "price_candidates": {
+    "dom": [
+      {
+        "hint": "id-break-words id-text-xs min-[1600px]:i",
+        "text": "$500"
+      },
+      {
+        "hint": "id-me-1 id-text-sm id-text-[#767676] ",
+        "text": "₩11,245-12,926"
+      },
+      {
+        "hint": "id-text-[26px] id-font-bold id-text-[#22",
+        "text": "₩10,125-11,628"
+      },
+      {
+        "hint": "id-mx-0 id-mt-3",
+        "text": "₩13,664"
+      },
+      {
+        "hint": "",
+        "text": "₩766"
+      },
+      {
+        "hint": "",
+        "text": "₩28,092"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩16,177-24,020"
+      },
+      {
+        "hint": "id-text-sm id-leading-[18px] id-text-[#7",
+        "text": "₩17,981-26,684"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩21,233-30,196"
+      },
+      {
+        "hint": "id-text-sm id-leading-[18px] id-text-[#7",
+        "text": "₩23,597-33,557"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩15,740-23,637"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩6,067-28,543"
+      },
+      {
+        "hint": "id-text-sm id-leading-[18px] id-text-[#7",
+        "text": "₩6,818-32,068"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩5,315-17,066"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩12,284"
+      },
+      {
+        "hint": "id-text-sm id-leading-[18px] id-text-[#7",
+        "text": "₩13,650"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩3,676-13,267"
+      },
+      {
+        "hint": "id-text-sm id-leading-[18px] id-text-[#7",
+        "text": "₩4,086-14,743"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩10,220-21,410"
+      },
+      {
+        "hint": "id-text-sm id-leading-[18px] id-text-[#7",
+        "text": "₩11,354-23,788"
+      }
+    ],
+    "page_data": [
+      {
+        "path": "detailData.globalData.i18n.pc_detail_sku_panel_product_price",
+        "value": "Item subtotal ({0} variations {1} items)"
+      },
+      {
+        "path": "detailData.globalData.i18n.pc_detail_sku_panel_product_price_back_double_number",
+        "value": "Item subtotal ({0} variation {1} items)"
+      },
+      {
+        "path": "detailData.globalData.i18n.pc_detail_sku_panel_product_price_front_double_number",
+        "value": "Item subtotal ({0} variations {1} item)"
+      },
+      {
+        "path": "detailData.globalData.i18n.pc_detail_sku_panel_product_price_singular_number",
+        "value": "Item subtotal ({0} variation {1} item)"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.dollarPriceRangeHigh",
+        "value": "9.46"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.dollarPriceRangeLow",
+        "value": "8.23"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.dollarPriceRangePromotionHigh",
+        "value": "8.51"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.dollarPriceRangePromotionLow",
+        "value": "7.41"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.pricePromotionRangeText",
+        "value": "₩10,125-11,628"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.priceRangeHigh",
+        "value": "12926"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.priceRangeLow",
+        "value": "11245"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.priceRangePromotionHigh",
+        "value": "11628"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.priceRangePromotionLow",
+        "value": "10125"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.priceRangeText",
+        "value": "₩11,245-12,926"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.dollarPriceRangeHigh",
+        "value": "9.46"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.dollarPriceRangeLow",
+        "value": "8.23"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.dollarPriceRangePromotionHigh",
+        "value": "8.51"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.dollarPriceRangePromotionLow",
+        "value": "7.41"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.pricePromotionRangeText",
+        "value": "₩10,125-11,628"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.priceRangeHigh",
+        "value": "12926"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.priceRangeLow",
+        "value": "11245"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.priceRangePromotionHigh",
+        "value": "11628"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.priceRangePromotionLow",
+        "value": "10125"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.priceRangeText",
+        "value": "₩11,245-12,926"
+      },
+      {
+        "path": "detailData.globalData.product.sku.skuInfoMap.191288010:5412614;191286172:-4;.dollarPrice",
+        "value": "9.46"
+      }
+    ]
+  },
+  "price_texts": [
+    "USD 8.23"
+  ],
+  "price_tiers": [],
+  "source_url": "https://www.alibaba.com/product-detail/Wholesale-Washable-Dog-Beds-for-Large_1600570388952.html",
+  "tool": {
+    "name": "a02_capture_ext",
+    "version": "0.3.0"
+  },
+  "product_id": "prod-w2-07",
+  "collector": "A 형준",
+  "capture_mode": "alibaba",
+  "edited_fields": [],
+  "method_note": "사람이 페이지를 열고 버튼을 눌러 추출, 저장 전 사람이 값 확인 (W1-07: 페이지 열기·탐색 자동화 없음)"
+}

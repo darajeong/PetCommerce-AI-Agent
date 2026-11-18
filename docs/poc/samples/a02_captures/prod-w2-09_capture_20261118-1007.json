@@ -1,0 +1,498 @@
+{
+  "attributes": [
+    {
+      "name": "Place of Origin",
+      "value": "Guangdong, China"
+    },
+    {
+      "name": "Brand Name",
+      "value": "others"
+    },
+    {
+      "name": "Model Number",
+      "value": "woof pupsicle"
+    },
+    {
+      "name": "Feature",
+      "value": "Interactive, Durable, Boredom Buster, Anxiety Relief, Eco-Friendly, Eco-friendly, Interactive, Durable"
+    },
+    {
+      "name": "Applicable Pet",
+      "value": "Dogs, Small Animals"
+    },
+    {
+      "name": "Type",
+      "value": "Chew Toys"
+    },
+    {
+      "name": "Usage",
+      "value": "Outdoor, Indoor, Dog Playing Chewing"
+    },
+    {
+      "name": "Material",
+      "value": "Food Grade Silicone, Silicone"
+    },
+    {
+      "name": "Style",
+      "value": "Simple, Popular, Modern, Classic, Fashion, Funny, Popular, Modern"
+    },
+    {
+      "name": "Holiday",
+      "value": "All Holidays"
+    },
+    {
+      "name": "Product Name",
+      "value": "Pet Dog Treats Toy"
+    },
+    {
+      "name": "Application",
+      "value": "Dogs"
+    },
+    {
+      "name": "Color",
+      "value": "Green, Orange or custom color"
+    },
+    {
+      "name": "Pattern",
+      "value": "Solid"
+    },
+    {
+      "name": "OEM/ODM",
+      "value": "Aceeptable"
+    },
+    {
+      "name": "Function",
+      "value": "Interactive Dog Funny Toy"
+    },
+    {
+      "name": "Item Type",
+      "value": "Chew Toys"
+    },
+    {
+      "name": "Selling Units",
+      "value": "Single item"
+    },
+    {
+      "name": "Single package size",
+      "value": "10X10X9 cm"
+    },
+    {
+      "name": "Single gross weight",
+      "value": "0.35 kg"
+    }
+  ],
+  "attributes_source": "page_data:detailData.globalData.product.productBasicProperties; dom:attribute-block",
+  "capture_version": "0.1",
+  "captured_at": "2026-11-18T10:07:48+09:00",
+  "debug": {
+    "notes": [],
+    "page_data_roots": {
+      "detailData": [
+        "devData",
+        "globalData",
+        "hierarchy",
+        "metaData",
+        "nodeMap"
+      ]
+    },
+    "strategies": [
+      "jsonld",
+      "page_data",
+      "dom"
+    ]
+  },
+  "fields": {
+    "currency_setting": {
+      "source": "dom:currency",
+      "value": "KRW"
+    },
+    "moq_text": {
+      "source": "page_data:detailData.globalData.product.moq",
+      "value": "200"
+    },
+    "original_name": {
+      "source": "jsonld",
+      "value": "Long-lasting Interactive Dog Toy Ball Freeze Treats Toy Eco-friendly Food Grade Silicone Dog Chew Lick Toys For Large Dogs"
+    },
+    "price_text": {
+      "source": "page_data:detailData.globalData.product.customPrice.productRangePrices.priceRangeText",
+      "value": "₩2,528-5,056"
+    },
+    "rating": {
+      "source": "page_data:detailData.globalData.review.productReview.averageStar",
+      "value": "5"
+    },
+    "review_count": {
+      "source": "text",
+      "value": "13"
+    },
+    "sales_count": {
+      "source": "text",
+      "value": "1157"
+    },
+    "shipping_text": {
+      "source": "dom:shipping-box",
+      "value": "Shipping Change Standard Shipping fee: ₩217,816 ₩245,142 for 200 pieces Guaranteed delivery: Nov 27 - Dec 31"
+    },
+    "supplier_name": {
+      "source": "page_data:detailData.globalData.seller.companyName",
+      "value": "Dongguan Wellfine Silicone Products Co., Ltd."
+    }
+  },
+  "host": "www.alibaba.com",
+  "image_urls": [
+    "https://sc04.alicdn.com/kf/H00f2e5bbf12f4c96bbe39fa88145119eQ.jpg",
+    "https://sc04.alicdn.com/kf/H2dd2b6fc9c524b9fb59b0141d59edb50V.jpg",
+    "https://sc04.alicdn.com/kf/H04d5b02b029e467eba777a1fc06d2d99G.jpg",
+    "https://sc04.alicdn.com/kf/Hee77f7b19fbf4f16a5f47d5d25f3c37aM.jpg",
+    "https://sc04.alicdn.com/kf/H4371aa9b26264a128b574e6e647efbf9n.jpg",
+    "https://sc04.alicdn.com/kf/Hfb371fb881b546319f75c53032768ba83.jpg",
+    "https://sc04.alicdn.com/kf/H694c694e48384c9496413581f3fccdf8v.jpg",
+    "https://sc04.alicdn.com/kf/Ha635066f1adc49b9a8208bc5edcd97bfp.jpg",
+    "https://sc04.alicdn.com/kf/Hdf8ba23ea5664875827f0fb72ecbe9c4R.jpg",
+    "https://sc04.alicdn.com/kf/Ha47452f8c08844d3a583d7cbb9eaa475c.jpg",
+    "https://sc04.alicdn.com/kf/Hb385a3beefaf4c229ecd5288f7bb22ad3.jpg"
+  ],
+  "image_usage": "needs_review",
+  "not_collected": [
+    "HTML 본문",
+    "상품 설명 원문",
+    "리뷰 원문",
+    "이미지 파일",
+    "쿠키·계정 정보"
+  ],
+  "options": [
+    {
+      "name": "Color",
+      "values": [
+        "Green",
+        "Yellow(silicone Treat Tray)"
+      ]
+    }
+  ],
+  "options_source": "page_data:detailData.globalData.product.sku.skuAttrs",
+  "page_kind": "product_detail",
+  "platform": "alibaba",
+  "price_candidates": {
+    "dom": [
+      {
+        "hint": "id-break-words id-text-xs min-[1600px]:i",
+        "text": "$1"
+      },
+      {
+        "hint": "",
+        "text": "₩27,327"
+      },
+      {
+        "hint": "id-flex id-flex-wrap id-items-center",
+        "text": "₩2,528-5,056"
+      },
+      {
+        "hint": "",
+        "text": "₩217,816"
+      },
+      {
+        "hint": "",
+        "text": "₩245,142"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩2,528-3,416"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩1,080"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩656-1,298"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩1,353-1,777"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩2,282-2,405"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩10,248"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩2,733-2,760"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩889-1,367"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩38,639-58,164"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩11,218-11,710"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩2,351-3,908"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩9,428-9,974"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩2,706-3,485"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩4,099"
+      },
+      {
+        "hint": "id-text-base id-font-bold id-leading-[22",
+        "text": "₩9,578-9,729"
+      }
+    ],
+    "page_data": [
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.dollarPriceRangeHigh",
+        "value": "3.7"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.dollarPriceRangeLow",
+        "value": "1.85"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.priceRangeHigh",
+        "value": "5056"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.priceRangeLow",
+        "value": "2528"
+      },
+      {
+        "path": "detailData.globalData.product.customPrice.productRangePrices.priceRangeText",
+        "value": "₩2,528-5,056"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.dollarPriceRangeHigh",
+        "value": "3.7"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.dollarPriceRangeLow",
+        "value": "1.85"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.priceRangeHigh",
+        "value": "5056"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.priceRangeLow",
+        "value": "2528"
+      },
+      {
+        "path": "detailData.globalData.product.price.productRangePrices.priceRangeText",
+        "value": "₩2,528-5,056"
+      },
+      {
+        "path": "detailData.globalData.product.sku.skuInfoMap.191288010:216016296;.dollarPrice",
+        "value": "3.7"
+      },
+      {
+        "path": "detailData.globalData.product.sku.skuInfoMap.191288010:216016296;.formatPrice",
+        "value": "₩5,056"
+      },
+      {
+        "path": "detailData.globalData.product.sku.skuInfoMap.191288010:216016296;.price",
+        "value": "5056"
+      },
+      {
+        "path": "detailData.globalData.product.sku.skuInfoMap.191288010:-1;.dollarPrice",
+        "value": "1.85"
+      },
+      {
+        "path": "detailData.globalData.product.sku.skuInfoMap.191288010:-1;.formatPrice",
+        "value": "₩2,528"
+      },
+      {
+        "path": "detailData.globalData.product.sku.skuInfoMap.191288010:-1;.price",
+        "value": "2528"
+      },
+      {
+        "path": "detailData.nodeMap.module_pop_customization.privateData.lightCustomContainer.lightCustomizeList[0].items[0].dollarPrice",
+        "value": "-1"
+      },
+      {
+        "path": "detailData.nodeMap.module_pop_customization.privateData.lightCustomContainer.lightCustomizeList[0].items[0].localCurrencyPrice",
+        "value": "-1"
+      },
+      {
+        "path": "detailData.nodeMap.module_pop_customization.privateData.lightCustomContainer.lightCustomizeList[0].items[0].price",
+        "value": "-1"
+      },
+      {
+        "path": "detailData.nodeMap.module_sku_fast_customization.privateData.fastCustomization.lightCustomizeList[0].items[0].dollarPrice",
+        "value": "0.1"
+      },
+      {
+        "path": "detailData.nodeMap.module_sku_fast_customization.privateData.fastCustomization.lightCustomizeList[0].items[0].localCurrencyPrice",
+        "value": "0.1"
+      },
+      {
+        "path": "detailData.nodeMap.module_sku_fast_customization.privateData.fastCustomization.lightCustomizeList[0].items[0].price",
+        "value": "137"
+      },
+      {
+        "path": "detailData.nodeMap.module_sku_fast_customization.privateData.fastCustomization.lightCustomizeList[0].items[0].formatPrice",
+        "value": "₩137"
+      },
+      {
+        "path": "detailData.nodeMap.module_sku_fast_customization.privateData.fastCustomization.lightCustomizeList[1].items[0].dollarPrice",
+        "value": "0.1"
+      },
+      {
+        "path": "detailData.nodeMap.module_sku_fast_customization.privateData.fastCustomization.lightCustomizeList[1].items[0].formatPrice",
+        "value": "₩137"
+      }
+    ]
+  },
+  "price_texts": [
+    "USD 1.85"
+  ],
+  "price_tiers": [],
+  "shipping_candidates": [
+    {
+      "path": "detailData.globalData.inventory.shippingToCountry",
+      "value": "KR"
+    },
+    {
+      "path": "detailData.globalData.product.logisticsFtId",
+      "value": "2010252063"
+    },
+    {
+      "path": "detailData.globalData.product.logisticsFtType",
+      "value": "aliLogistics"
+    },
+    {
+      "path": "detailData.globalData.seller.supplierOnTimeDeliveryRate",
+      "value": "99.1%"
+    },
+    {
+      "path": "detailData.nodeMap.module_dropshipping.moduleName",
+      "value": "Dropshipping"
+    },
+    {
+      "path": "detailData.nodeMap.module_dropshipping.nodeType",
+      "value": "Module"
+    },
+    {
+      "path": "detailData.nodeMap.module_dropshipping.renderType",
+      "value": "js_ssr"
+    },
+    {
+      "path": "detailData.nodeMap.module_free_shipping.moduleName",
+      "value": "FreeShipping"
+    },
+    {
+      "path": "detailData.nodeMap.module_free_shipping.nodeType",
+      "value": "Module"
+    },
+    {
+      "path": "detailData.nodeMap.module_free_shipping.renderType",
+      "value": "js_ssr"
+    },
+    {
+      "path": "detailData.nodeMap.module_product_highlights_dropshipping.moduleName",
+      "value": "customizationHighlights"
+    },
+    {
+      "path": "detailData.nodeMap.module_product_highlights_dropshipping.nodeType",
+      "value": "Module"
+    },
+    {
+      "path": "detailData.nodeMap.module_product_highlights_dropshipping.renderType",
+      "value": "js_ssr"
+    },
+    {
+      "path": "detailData.nodeMap.module_shipping.moduleName",
+      "value": "Shipping"
+    },
+    {
+      "path": "detailData.nodeMap.module_shipping.nodeType",
+      "value": "Module"
+    },
+    {
+      "path": "detailData.nodeMap.module_shipping.renderType",
+      "value": "js_ssr"
+    },
+    {
+      "path": "detailData.nodeMap.module_logistics_lead_time.moduleName",
+      "value": "LeadTime"
+    },
+    {
+      "path": "detailData.nodeMap.module_logistics_lead_time.nodeType",
+      "value": "Module"
+    },
+    {
+      "path": "detailData.nodeMap.module_logistics_lead_time.renderType",
+      "value": "js_ssr"
+    },
+    {
+      "path": "detailData.nodeMap.module_dropshipping_overview.moduleName",
+      "value": "DropShippingOverview"
+    },
+    {
+      "path": "detailData.nodeMap.module_dropshipping_overview.nodeType",
+      "value": "Module"
+    },
+    {
+      "path": "detailData.nodeMap.module_dropshipping_overview.renderType",
+      "value": "js_ssr"
+    },
+    {
+      "path": "detailData.globalData.product.dropshippingPrice.batchNum",
+      "value": "1"
+    },
+    {
+      "path": "detailData.globalData.product.dropshippingPrice.saleType",
+      "value": "normal"
+    },
+    {
+      "path": "detailData.globalData.product.dropshippingPrice.unit",
+      "value": "piece"
+    },
+    {
+      "path": "detailData.globalData.product.dropshippingPrice.unitEven",
+      "value": "pieces"
+    },
+    {
+      "path": "detailData.globalData.trade.logisticInfo.productShippingTemplateId",
+      "value": "2010252063"
+    },
+    {
+      "path": "detailData.globalData.trade.logisticInfo.unitSize",
+      "value": "10X10X9"
+    },
+    {
+      "path": "detailData.globalData.trade.logisticInfo.unitWeight",
+      "value": "0.35"
+    },
+    {
+      "path": "detailData.nodeMap.module_mini_company_card.privateData.onTimeDeliveryRateValue",
+      "value": "99.1%"
+    }
+  ],
+  "source_url": "https://www.alibaba.com/product-detail/Woof-Pupsicle-Long-Lasting-Interactive-Dog_1601391234725.html",
+  "tool": {
+    "name": "a02_capture_ext",
+    "version": "0.4.0"
+  },
+  "product_id": "prod-w2-09",
+  "collector": "A 형준",
+  "capture_mode": "alibaba",
+  "edited_fields": [],
+  "method_note": "사람이 페이지를 열고 버튼을 눌러 추출, 저장 전 사람이 값 확인 (W1-07: 페이지 열기·탐색 자동화 없음)"
+}
