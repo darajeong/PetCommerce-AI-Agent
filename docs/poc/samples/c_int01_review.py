@@ -56,15 +56,17 @@ FIELD_WORDS = [  # 문장에 이 낱말이 있는데 해당 원본 값이 비어
     (r"판매량|\d+\s*개\s*판매", "product.sales_count"),
     (r"평점|별점", "product.rating"),
 ]
-MATERIALS = {  # a03_normalize.MATERIALS 와 같게 유지 (main 브랜치에는 a03 가 없어 복사본을 둔다)
+MATERIALS = {  # a03_normalize.MATERIALS 복사본 (main 브랜치에는 a03 가 없음). a03 를 고치면 같이 고친다
     "nylon": ["nylon", "polyamide", "나일론", "폴리아미드"],
-    "polyester": ["polyester", "oxford", "폴리에스터", "폴리에스테르", "옥스포드"],
+    "polyester": ["polyester", "poly", "oxford", "oxford cloth", "폴리에스터", "폴리에스테르", "옥스포드"],
     "cotton": ["cotton", "면", "코튼"],
+    "mesh": ["mesh", "air mesh", "메쉬", "메시", "에어메쉬"],
+    "natural_rubber": ["natural rubber", "rubber", "천연고무", "고무"],
     "silicone": ["silicone", "food grade silicone", "실리콘", "식품 등급 실리콘", "식품등급 실리콘"],
-    "tpr": ["tpr", "열가소성 고무"],
-    "rubber": ["rubber", "고무", "천연 고무"],
-    "plush": ["plush", "velvet", "플러시", "벨벳", "극세사"],
-    "foam": ["foam", "memory foam", "폼", "메모리폼", "메모리 폼"],
+    "eva": ["eva"],
+    "tpr": ["tpr"],
+    "plush": ["plush", "faux fur", "fleece", "플러시", "인조 모피", "플리스"],
+    "memory_foam": ["memory foam", "foam", "메모리폼", "메모리 폼", "폼"],
 }
 try:
     sys.path.insert(0, str(HERE))
